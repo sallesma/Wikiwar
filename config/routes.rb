@@ -1,11 +1,9 @@
 Wikiwar::Application.routes.draw do
-  get "sessions/new"
 
-  get "users/new"
-
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
+  get "logout" => "welcome#logout", :as => "logout"
+  get "login" => "welcome#login", :as => "login"
+  post "login" => "welcome#login", :as => "login"
+  get "signup" => "users#new", :as => "signup"
   get "singleplayer" => "game#singleplayer", :as => "singleplayer"
   get "multiplayer" => "game#multiplayer", :as => "multiplayer"
   get "update_account" => "users#edit", :as => "update_account"

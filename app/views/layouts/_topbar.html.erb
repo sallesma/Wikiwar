@@ -20,17 +20,17 @@
                 <li class="settings hidden-xs hidden-sm">
                     <%= link_to(
                           content_tag(:i, nil, class: 'fa fa-sign-out'),
-                          log_out_path, 
+                          logout_path, 
                           data: { confirm: 'Are you sure?' } 
                         ) 
                     %>
                 </li>
             <% else %>
                 <li class="settings hidden-xs hidden-sm">
-                    <%= link_to "Sign up", sign_up_path %>
+                    <%= link_to "Sign up", signup_path %>
                 </li>
                 <li class="settings hidden-xs hidden-sm">
-                    <%= link_to "log in", log_in_path %>
+                    <%= link_to "log in", login_path %>
                 </li>
             <% end %>
         </ul>

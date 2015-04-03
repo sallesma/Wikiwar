@@ -10,8 +10,8 @@ Wikiwar::Application.routes.draw do
   get "statistics" => "users#statistics", :as => "statistics"
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"
+  
   resources :users
-  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

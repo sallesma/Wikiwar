@@ -203,10 +203,6 @@ textarea::-webkit-input-placeholder {
     background: linear-gradient(to bottom,  #2c3742 0%,#28303a 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c3742', endColorstr='#28303a',GradientType=0 ); /* IE6-9 */
 }
-/* navbar-nav*/
-.navbar-inverse .navbar-nav {
-    padding-right: 20px;
-}
 /* menu toggler */
 .navbar-inverse .navbar-toggle {
     float: left;
@@ -225,7 +221,9 @@ textarea::-webkit-input-placeholder {
     font-weight: normal;
 }
 /* navbar links */
+.navbar-inverse .nav > li > p,
 .navbar-inverse .nav > li > a {
+    margin: 0;
     padding: 13px 15px 8px;
     border-left: 1px solid #101417;
     color: rgb(214, 214, 214);

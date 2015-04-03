@@ -13,7 +13,18 @@
             </li>
             <li>
                 <a class="dropdown-toggle" href="#">
-                    <i class="fa fa-group"></i>
+                    <i class="fa fa-gamepad"></i>
+                    <span>Play</span>
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+                <ul class="submenu">
+                    <li><%= link_to "Single Player", singleplayer_path %></li>
+                    <li><%= link_to "Multiplayer", multiplayer_path %></li>
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <i class="fa fa-user"></i>
                     <span>User Menu</span>
                     <i class="fa fa-chevron-down"></i>
                 </a>
@@ -24,7 +35,7 @@
             </li>
             <li>
                 <a href="about">
-                    <i class="fa fa-group"></i>
+                    <i class="fa fa-info"></i>
                     <span>About</span>
                 </a>
             </li>

@@ -21,7 +21,7 @@ h1,h2,h3,h4,h5 {
 body.menu {
     overflow-x: hidden;
     .content {
-        margin-left: 165px;
+        margin-left: 185px;
         position: fixed;
         width: 850px;
     }
@@ -180,7 +180,7 @@ input.search{
                     position: absolute;
                     left: 19px;
                     font-size: 18px;
-                    &.icon-user {
+                    &.fa-user {
                         left: 18px;
                     }
                 }
@@ -270,7 +270,7 @@ input.search{
 /* Sidebar */
 #sidebar-nav {
     position: absolute;
-    width: 180px;
+    width: 200px;
     float: left;
     margin: 0em;
     padding-top: 5.8em;
@@ -296,7 +296,7 @@ input.search{
         > li {
             position: relative;
             /* font awesome icon */
-            .icon-group {
+            .fa-group {
                 font-size: 22px;
             }
             i {
@@ -372,7 +372,7 @@ input.search{
                 -webkit-transition: opacity .1s ease;
                 -o-transition: opacity .1s ease;
 
-                &.icon-chevron-down {
+                &.fa-chevron-down {
                     position: relative;
                     float: right;
                     top: 5px;
@@ -444,7 +444,7 @@ input.search{
     overflow: hidden;
     position: relative;
     background: #fff;
-    margin-left: 177px;
+    margin-left: 197px;
     border-left: 1px solid #dae3e9;
     border-bottom: 1px solid #dae3e9;
     box-shadow: -3px 3px 3px -2px #f1f1f3;
@@ -507,14 +507,14 @@ input.search{
                     background: rgba(36, 43, 77, 1);
                 }
             }
-            .icon {
+            .fa {
                 float: left;
                 width: 9px;
                 height: 10px;
                 background: url('../../img/skin-nav-bullets.png') 0 0 no-repeat;
                 margin: 15px 15px 0 5px;
             }
-            &.selected .icon {
+            &.selected .fa {
                 background-position: 0 -9px;
             }
             .text {
@@ -558,7 +558,7 @@ input.search{
         background-color: #f7f7f7;
         padding-top: 0px;
         border-right: 1px solid #ccc;
-        width: 165px;
+        width: 185px;
         box-shadow: 1px 1px 4px 1px rgb(233, 233, 233);
 
         -webkit-transition: left .3s ease;
@@ -576,14 +576,5 @@ input.search{
     #sidebar-nav #dashboard-menu li:last-child a {
         border-bottom: 0px;
         box-shadow: none;
-    }
-}
-@media (max-width: 822px) {
-    .navbar-inverse input.search {display: none;}
-}
-@media (max-width: 767px) {
-    #main-stats .stat{
-        width: 50%;
-        float: left;
     }
 }

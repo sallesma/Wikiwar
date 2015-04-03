@@ -1,5 +1,4 @@
     <div id="sidebar-nav">
-        <% if current_user %>
         <ul id="dashboard-menu">
             <li class="active">
                 <div class="pointer">
@@ -11,6 +10,7 @@
                     <span>Home</span>
                 </a>
             </li>
+            <% if current_user %>
             <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="fa fa-gamepad"></i>
@@ -33,6 +33,7 @@
                     <li><%= link_to "Statistics", statistics_path %></li>
                 </ul>
             </li>
+            <% end %>
             <li>
                 <a href="about">
                     <i class="fa fa-info"></i>
@@ -40,6 +41,5 @@
                 </a>
             </li>
         </ul>
-        <% end %>
     </div>
     <!-- end sidebar -->

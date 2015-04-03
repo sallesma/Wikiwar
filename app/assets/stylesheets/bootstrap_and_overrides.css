@@ -219,6 +219,7 @@ textarea::-webkit-input-placeholder {
     text-transform: uppercase;
     font-weight: lighter;
     padding: 11px 20px;
+    height: initial;
 }
 .navbar-inverse .navbar-brand strong {
     font-weight: normal;

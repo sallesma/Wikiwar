@@ -15,4 +15,7 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
   end
+
+  def statistics
+  end
 end

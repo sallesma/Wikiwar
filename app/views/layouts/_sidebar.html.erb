@@ -1,4 +1,5 @@
     <div id="sidebar-nav">
+        <% if current_user %>
         <ul id="dashboard-menu">
             <li class="active">
                 <div class="pointer">
@@ -23,5 +24,6 @@
                 </ul>
             </li>
         </ul>
+        <% end %>
     </div>
     <!-- end sidebar -->

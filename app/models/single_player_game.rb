@@ -1,4 +1,4 @@
 class SinglePlayerGame < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :from, :to, :user
+  attr_accessible :from, :to, :user, :is_victory, :duration, :steps
 end

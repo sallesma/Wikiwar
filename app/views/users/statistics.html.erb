@@ -9,12 +9,14 @@
     <th>From</th>
     <th>To</th>
     <th>Date</th>
+    <th>Victory</th>
   </tr>
   <% current_user.single_player_games.each do |game| %>
     <tr>
       <td><%= game.from %></td>
       <td><%= game.to %></td>
       <td><%= game.created_at %></td>
+      <td><%= game.is_victory %></td>
     </tr>
   <% end %>
 </table>

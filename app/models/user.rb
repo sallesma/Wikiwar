@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :pseudo, :password, :password_confirmation
+  has_many :single_player_games
   
   attr_accessor :password
   before_save :encrypt_password

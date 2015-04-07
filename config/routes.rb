@@ -5,6 +5,7 @@ Wikiwar::Application.routes.draw do
   post "login" => "welcome#login", :as => "login"
   get "signup" => "users#new", :as => "signup"
   get "singleplayer" => "game#singleplayer", :as => "singleplayer"
+  get "newsingleplayer" => "game#newsingleplayer", :as => "newsingleplayer"
   get "multiplayer" => "game#multiplayer", :as => "multiplayer"
   get "update_account" => "users#edit", :as => "update_account"
   get "statistics" => "users#statistics", :as => "statistics"

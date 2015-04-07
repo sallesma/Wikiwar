@@ -2,3 +2,19 @@
 <p>
     This is the stats page.
 </p>
+
+<h4>Single Player Games</h4>
+<table class="table table-hover">
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Date</th>
+  </tr>
+  <% current_user.single_player_games.each do |game| %>
+    <tr>
+      <td><%= game.from %></td>
+      <td><%= game.to %></td>
+      <td><%= game.created_at %></td>
+    </tr>
+  <% end %>
+</table>

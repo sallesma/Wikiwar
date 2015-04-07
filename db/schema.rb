@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150403092242) do
+ActiveRecord::Schema.define(:version => 20150407103051) do
+
+  create_table "single_player_games", :force => true do |t|
+    t.string   "from"
+    t.string   "to"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "single_player_games", ["user_id"], :name => "index_single_player_games_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

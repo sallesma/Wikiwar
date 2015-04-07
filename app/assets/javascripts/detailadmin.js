@@ -36,6 +36,21 @@ $(function () {
     });
   });
 
+  //sidebar menu arrow pointer
+  $("#dashboard-menu a").each(function(){
+    path = window.location.pathname;
+    if(path.match($(this).attr("href")+"$")) {
+      $item = $(this).parent();
+      if($item.parent().hasClass('submenu')) {
+        $item.find("a").toggleClass("active");
+        $item = $item.parent().parent();
+        $item.find(".submenu").css("display", "block");
+      }
+      $item.toggleClass("active");
+      $item.prepend("<div class='pointer'><div class='arrow'></div><div class='arrow_border'></div></div>");
+    }
+  });
+
   // sidebar menu dropdown toggle
   $("#dashboard-menu .dropdown-toggle").click(function (e) {
     e.preventDefault();
@@ -47,7 +62,6 @@ $(function () {
       $item.find(".submenu").slideUp("fast");
     }
   });
-
 
   // mobile side-menu slide toggler
   var $menu = $("#sidebar-nav");

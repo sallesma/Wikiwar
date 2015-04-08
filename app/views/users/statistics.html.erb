@@ -3,7 +3,7 @@
     This is the stats page.
 </p>
 
-<h4>Single Player Games</h4>
+<h4>Last 10 Single Player Games</h4>
 <table class="table table-hover">
   <tr>
     <th>From</th>
@@ -11,7 +11,7 @@
     <th>Date</th>
     <th>Victory</th>
   </tr>
-  <% current_user.single_player_games.each do |game| %>
+  <% current_user.single_player_games.first(10).each do |game| %>
     <tr>
       <td><%= game.from %></td>
       <td><%= game.to %></td>
@@ -19,4 +19,14 @@
       <td><%= game.is_victory %></td>
     </tr>
   <% end %>
+</table>
+
+<h4>Last 10 Multi Player Games</h4>
+<table class="table table-hover">
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Date</th>
+    <th>Victory</th>
+  </tr>
 </table>

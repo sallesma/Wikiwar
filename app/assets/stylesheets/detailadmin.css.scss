@@ -578,3 +578,15 @@ input.search{
         box-shadow: none;
     }
 }
+
+.with-sidebar {
+    border-right: 1px solid #edeef1;
+    box-shadow: 4px 0px 3px -1px rgba(226, 226, 226, 0.1);
+}
+
+@media (max-width: 991px) {
+    .with-sidebar {
+        border-right: 0 none;
+        box-shadow: none;
+    }
+}

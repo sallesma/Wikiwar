@@ -9,6 +9,20 @@
   <%= @game.to %>
 </p>
 
-<p>
-    Here is the game area.
-</p>
+<div id="wikipedia-area" class="col-md-10 with-sidebar">
+    <h3>Game</h3>
+    <iframe id="wikipedia-iframe" src="http://fr.wikipedia.org/wiki/<%= @game.from %>">
+    </iframe>
+</div>
+
+<div id="game-details" class="col-md-2">
+    <h3>Details</h3>
+    <p>
+        <strong>Steps:</strong>
+        <span id="steps">0</span>
+    </p>
+    <strong>History:</strong>
+    <ul id="game-history">
+        <li><%= @game.from %></li>
+    </ul>
+<div>

@@ -3,6 +3,20 @@
     This is the stats page.
 </p>
 
+<h3>Single Player Games</h3>
+<p>
+  <strong>Total:</strong>
+  <%= current_user.singleplayer_games_nb %>
+</p>
+<p>
+  <strong>Total victories:</strong>
+  <%= current_user.singleplayer_victories_nb %>
+</p>
+<p>
+  <strong>Victories ratio:</strong>
+  <%= current_user.victories_rate %>
+</p>
+
 <h4>Last 10 Single Player Games</h4>
 <table class="table table-hover">
   <tr>
@@ -10,17 +24,22 @@
     <th>To</th>
     <th>Date</th>
     <th>Victory</th>
+    <th>Duration</th>
+    <th>Steps</th>
   </tr>
-  <% current_user.single_player_games.first(10).each do |game| %>
+  <% current_user.singleplayer_games.first(10).each do |game| %>
     <tr>
       <td><%= game.from %></td>
       <td><%= game.to %></td>
       <td><%= game.created_at %></td>
       <td><%= game.is_victory %></td>
+      <td><%= game.duration %></td>
+      <td><%= game.steps %></td>
     </tr>
   <% end %>
 </table>
 
+<h3>Multi Player Games</h3>
 <h4>Last 10 Multi Player Games</h4>
 <table class="table table-hover">
   <tr>

@@ -4,7 +4,7 @@ class GameController < ApplicationController
     end
 
     def newsingleplayer
-        @game = SinglePlayerGame.new(user: current_user, from: 'Chocolat', to: 'Pistache', is_victory: false)
+        @game = SinglePlayerGame.new(user: current_user, from: 'Chocolat', to: 'Pistache', is_victory: false, duration: 0, steps: 0)
       if @game.save
         render "newsingleplayer"
       else

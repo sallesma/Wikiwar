@@ -9,3 +9,13 @@
     max-height: 600px;
     overflow: auto;
 }
+
+td {
+    &.victory-true {
+        color: #379E48;
+    }
+
+    &.victory-false {
+        color: #C73939;
+    }
+}

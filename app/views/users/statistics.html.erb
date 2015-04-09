@@ -32,8 +32,8 @@
       <td><%= game.from %></td>
       <td><%= game.to %></td>
       <td><%= game.created_at %></td>
-      <td><%= game.is_victory %></td>
-      <td><%= game.duration %></td>
+      <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
+      <td><%= game.duration/1000 %> sec</td>
       <td><%= game.steps %></td>
     </tr>
   <% end %>

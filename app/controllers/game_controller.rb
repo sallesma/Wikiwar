@@ -5,15 +5,24 @@ class GameController < ApplicationController
 
     def singleplayergame
       if(params.has_key?("game_id") and params.has_key?("article"))
-        article = params["article"]
         @game = SinglePlayerGame.find(params["game_id"])
+        article = params["article"]
         @game.steps = @game.steps + 1
+        @game.articles.create(title: article, position: @game.steps)
+        if(@game.to == article)
+          @game.is_victory = true
+          require 'date'
+          @game.duration = ((Time.now - @game.created_at.to_time)*1000).round
+          flash.now.alert = "Victory !"
+        end
         @game.save
         @wikipedia = get_wikipedia_article(article, @game.id)
         render "singleplayergame"
       else
         @game = SinglePlayerGame.new(user: current_user, from: 'Chocolat', to: 'Pistache', is_victory: false, duration: 0, steps: 0)
         if @game.save
+          @game.articles.create(title: @game.from, position: @game.steps)
+          @game.save
           @wikipedia = get_wikipedia_article(@game.from, @game.id)
           render "singleplayergame"
         else

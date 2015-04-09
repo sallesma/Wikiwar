@@ -18,7 +18,9 @@ class GameController < ApplicationController
         @wikipedia = get_wikipedia_article(article, @game.id)
         render "singleplayergame"
       else
-        @game = SinglePlayerGame.new(user: current_user, from: 'Chocolat', to: 'Pistache', is_victory: false, duration: 0, steps: 0)
+        from = get_wikipedia_random_article_title
+        to = get_wikipedia_random_article_title
+        @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0)
         if @game.save
           @game.articles.create(title: @game.from, position: @game.steps)
           @game.save
@@ -35,9 +37,16 @@ class GameController < ApplicationController
 
     private
 
+    def get_wikipedia_random_article_title
+      require 'open-uri'
+      doc = Nokogiri::HTML(open('http://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard'))
+      title  = doc.at_css "#content h1#firstHeading"
+      title.content
+    end
+
     def get_wikipedia_article(article, game_id)
       require 'open-uri'
-      doc = Nokogiri::HTML(open('http://fr.wikipedia.org/wiki/'+article))
+      doc = Nokogiri::HTML(open(URI.escape('http://fr.wikipedia.org/wiki/'+article).to_s))
       body  = doc.at_css "body"
       for link in body.css("a")
         url = link["href"]

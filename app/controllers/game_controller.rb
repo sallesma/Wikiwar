@@ -11,8 +11,7 @@ class GameController < ApplicationController
         @game.articles.create(title: article, position: @game.steps)
         if(@game.to == article)
           @game.is_victory = true
-          require 'date'
-          @game.duration = ((Time.now - @game.created_at.to_time)*1000).round
+          @game.duration = (Time.now - @game.created_at.to_time).round
           flash.now.alert = "Victory !"
         end
         @game.save

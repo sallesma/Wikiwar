@@ -16,6 +16,10 @@
   <strong>Victories ratio:</strong>
   <%= current_user.victories_rate %>
 </p>
+<p>
+  <strong>Average victory duration:</strong>
+  <%= current_user.average_victory_duration %>
+</p>
 
 <h4>Last 10 Single Player Games</h4>
 <table class="table table-hover">
@@ -33,7 +37,7 @@
       <td><%= game.to %></td>
       <td><%= game.created_at %></td>
       <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
-      <td><%= game.duration/1000 %> sec</td>
+      <td><%= game.duration %> sec</td>
       <td><%= game.steps %></td>
     </tr>
   <% end %>

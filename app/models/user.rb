@@ -24,6 +24,15 @@ class User < ActiveRecord::Base
     self.single_player_games.count
   end
 
+  def average_victory_duration
+    total_durations = 0
+    for game in self.single_player_games.where(is_victory: true)
+      total_durations = total_durations + game.duration
+    end
+    victories_nb = self.single_player_games.where(is_victory: true).count
+    format("%.2f",total_durations.to_f / victories_nb)
+  end
+
   def victories_rate
     total = self.single_player_games.count
     victories = self.single_player_games.where(is_victory: true).count

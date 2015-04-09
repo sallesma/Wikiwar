@@ -3,23 +3,25 @@
   <strong>From:</strong>
   <%= @game.from %>
 </p>
- 
 <p>
   <strong>To:</strong>
   <%= @game.to %>
 </p>
+<p>
+  <strong>Started at:</strong>
+  <%= @game.created_at %>
+</p>
 
-<div id="wikipedia-area" class="col-md-10 with-sidebar">
-    <h3>Game</h3>
-    <iframe id="wikipedia-iframe" src="http://fr.wikipedia.org/wiki/<%= @game.from %>">
-    </iframe>
+<h3>Game</h3>
+<div id="wikipedia-area" class="col-md-10 with-sidebar border-radius">
+  <%= @wikipedia.html_safe %>
 </div>
 
 <div id="game-details" class="col-md-2">
     <h3>Details</h3>
     <p>
         <strong>Steps:</strong>
-        <span id="steps">0</span>
+        <span id="steps"><%= @game.steps %></span>
     </p>
     <strong>History:</strong>
     <ul id="game-history">

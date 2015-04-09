@@ -41,3 +41,4 @@ gem "bcrypt-ruby", :require => "bcrypt"
 # gem 'debugger'
 
 gem "test-unit"
+gem "nokogiri"

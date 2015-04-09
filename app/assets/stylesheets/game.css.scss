@@ -2,13 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #wikipedia-area {
-    display: flex;
-    flex-direction: column;
+    border: 1px solid #A1A1A1;;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 0px #D6D6D6;
     min-height: 100vh;
-}
-
-#wikipedia-iframe {
-    background: #000;
-    border: 1px solid #EDEEF1;
-    flex-grow: 1;
+    max-height: 600px;
+    overflow: auto;
 }

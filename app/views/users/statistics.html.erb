@@ -1,35 +1,35 @@
-<h1>Your Stats</h1>
+<h1><%=t :statistics_title %></h1>
 <p>
-    This is the stats page.
+    <%=t :statistics_content %>
 </p>
 
-<h3>Single Player Games</h3>
+<h3><%=t :statistics_singleplayer_title %></h3>
 <p>
-  <strong>Total:</strong>
+  <strong><%=t :statistics_singleplayer_total %></strong>
   <%= current_user.singleplayer_games_nb %>
 </p>
 <p>
-  <strong>Total victories:</strong>
+  <strong><%=t :statistics_singleplayer_victories %></strong>
   <%= current_user.singleplayer_victories_nb %>
 </p>
 <p>
-  <strong>Victories ratio:</strong>
+  <strong><%=t :statistics_singleplayer_victories_rate %></strong>
   <%= current_user.victories_rate %>
 </p>
 <p>
-  <strong>Average victory duration:</strong>
+  <strong><%=t :statistics_singleplayer_victories_duration %></strong>
   <%= current_user.average_victory_duration %>
 </p>
 
-<h4>Last 10 Single Player Games</h4>
+<h4><%=t :statistics_singleplayer_last10 %></h4>
 <table class="table table-hover">
   <tr>
-    <th>From</th>
-    <th>To</th>
-    <th>Date</th>
-    <th>Victory</th>
-    <th>Duration</th>
-    <th>Steps</th>
+    <th><%=t :statistics_from %></th>
+    <th><%=t :statistics_to %></th>
+    <th><%=t :statistics_date %></th>
+    <th><%=t :statistics_victory %></th>
+    <th><%=t :statistics_duration %></th>
+    <th><%=t :statistics_steps %></th>
   </tr>
   <% current_user.singleplayer_games.first(10).each do |game| %>
     <tr>
@@ -37,19 +37,19 @@
       <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
       <td><%= game.created_at %></td>
       <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
-      <td><%= game.duration %> sec</td>
+      <td><%= game.duration %> <%=t :statistics_sec %></td>
       <td><%= game.steps %></td>
     </tr>
   <% end %>
 </table>
 
-<h3>Multi Player Games</h3>
-<h4>Last 10 Multi Player Games</h4>
+<h3><%=t :statistics_multiplayer_title %></h3>
+<h4><%=t :statistics_multiplayer_last10 %></h4>
 <table class="table table-hover">
   <tr>
-    <th>From</th>
-    <th>To</th>
-    <th>Date</th>
-    <th>Victory</th>
+    <th><%=t :statistics_from %></th>
+    <th><%=t :statistics_to %></th>
+    <th><%=t :statistics_date %></th>
+    <th><%=t :statistics_victory %></th>
   </tr>
 </table>

@@ -1,5 +1,72 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  wikipedia_random_url: http://en.wikipedia.org/wiki/Special:Random
+
+  menu_english: English
+  menu_french: French
+  menu_logged_as: "Logged in as "
+  menu_home: Home
+  menu_game: Play
+  menu_game_singleplayer: Single Player
+  menu_game_multiplayer: Multi Player
+  menu_user: User Menu
+  menu_user_update_account: Update Account
+  menu_user_statistics: Statistics
+  menu_about: About
+
+  index_title: Welcome
+  index_content: This is the index page.
+
+  about_title: About WikiWar
+  about_content_youtube: "The idea of wikiwar comes from these videos on youtube :"
+  about_content_rails: This web app was built only to learn a bit of ruby on rails.
+
+  not_signed_in: You must be signed in to view that page.
+  signed_up: Signed up!
+  sign_up_title: Sign Up
+  sign_up_submit: Sign up!
+  invalid_pseudo_or_password: Invalid pseudo or password
+  login_title: Log in
+  login_submit: Log in
+  logged_in: Logged in!
+  logged_out: Logged out!
+
+  edit_account_title: Edit Account
+  edit_account_content: Please fill your account information.
+
+  statistics_title: Your stats
+  statistics_content: Take your time to review your game stats.
+  statistics_singleplayer_title: Single Player Games
+  statistics_singleplayer_total: "Total:"
+  statistics_singleplayer_victories: "Victories:"
+  statistics_singleplayer_victories_rate: Victory ratio
+  statistics_singleplayer_victories_duration: Victories average duration
+  statistics_singleplayer_last10: Last 10 Single Player Games
+  statistics_multiplayer_title: MultiPlayer Games
+  statistics_multiplayer_last10: Last 10 MultiPlayer Games
+  statistics_from: From
+  statistics_to: To
+  statistics_date: Date
+  statistics_victory: Victory
+  statistics_duration: Duration
+  statistics_steps: Steps
+  statistics_sec: sec
+
+  singleplayer_title: Single player game
+  singleplayer_about: This is the single player game page.
+  singleplayer_rules: You will be given a starting wikipedia article inside the pagee on Wikiwar and a destination article to reach. All you have to do is browse wikipedia inside this page to reach the destination.
+  singleplayer_advise: Try to reach the destination with the fewest number of steps and quickly.
+  singleplayer_start: Start new game
+  singleplayer_from: "From:"
+  singleplayer_to: "To:"
+  singleplayer_started_at: "Started at:"
+  singleplayer_game: Game
+  singleplayer_details: Details
+  singleplayer_steps: "Steps:"
+  singleplayer_history: "History:"
+
+  multiplayer_title: Multiplayer game
+  multiplayer_about: This is the multiplayer game page.
+
+  form_invalid: Form is invalid
+  coming_soon: Not available yet. Coming soon...
+  are_you_sure: Are you sure?

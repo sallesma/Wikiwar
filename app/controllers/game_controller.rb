@@ -39,14 +39,14 @@ class GameController < ApplicationController
 
     def get_wikipedia_random_article_title
       require 'open-uri'
-      doc = Nokogiri::HTML(open('http://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard'))
+      doc = Nokogiri::HTML(open(t(:wikipedia_random_url)))
       title  = doc.at_css "#content h1#firstHeading"
       title.content
     end
 
     def get_wikipedia_article(article, game_id)
       require 'open-uri'
-      doc = Nokogiri::HTML(open(URI.escape('http://fr.wikipedia.org/wiki/'+article).to_s))
+      doc = Nokogiri::HTML(open(URI.escape('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article).to_s))
       body  = doc.at_css "body"
       for link in body.css("a")
         url = link["href"]

@@ -1,0 +1,72 @@
+fr:
+  wikipedia_random_url: http://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard
+
+  menu_english: Anglais
+  menu_french: Français
+  menu_logged_as: "Connecté en tant que "
+  menu_home: Accueil
+  menu_game: Jouer
+  menu_game_singleplayer: Solo
+  menu_game_multiplayer: Multijoueur
+  menu_user: Mon compte
+  menu_user_update_account: Modifier mon compte
+  menu_user_statistics: Statistiques
+  menu_about: A propos
+
+  index_title: Bienvenue
+  index_content: Page d'accueil.
+
+  about_title: A propos de WikiWar
+  about_content_youtube: "L'idée derrière wikiwar vient d'une vidéo youtube :"
+  about_content_rails: Cette application web a été mise en place dans le but d'en apprendre un peu sur ruby on rails.
+
+  not_signed_in: Vous devez être connecté pour voir cette page.
+  signed_up: Vous êtes inscrit!
+  sign_up_title: Inscription
+  sign_up_submit: S'inscrire!
+  invalid_pseudo_or_password: Pseudo ou mot de passe invalide
+  login_title: Connexion
+  login_submit: Se connecter
+  logged_in: Vous êtes connecté !
+  logged_out: Vous êtes déconnecté !
+
+  edit_account_title: Modifier le compte
+  edit_account_content: Merci de remplir vos informations.
+
+  statistics_title: Vos statistiques
+  statistics_content: Prenez votre temps pour consulter les statistiques de jeu.
+  statistics_singleplayer_title: Jeu un joueur
+  statistics_singleplayer_total: "Total :"
+  statistics_singleplayer_victories: "Victoires :"
+  statistics_singleplayer_victories_rate: Ratio de victoires
+  statistics_singleplayer_victories_duration: Durée moyenne
+  statistics_singleplayer_last10: 10 dernières parties à un joueur
+  statistics_multiplayer_title: Jeux multijoueurs
+  statistics_multiplayer_last10: 10 dernières parties multijoueurs
+  statistics_from: Début
+  statistics_to: Arrivée
+  statistics_date: Date
+  statistics_victory: Victoire
+  statistics_duration: Durée
+  statistics_steps: Étapes
+  statistics_sec: sec
+
+  singleplayer_title: Jeu à un joueur
+  singleplayer_about: Le jeu se déroule ici.
+  singleplayer_rules: Vous allez recevoir un article Wikipédia de départ et un article de destination. Tout ce que vous avez à faire est de parcourir Wikipedia d'article en article jusqu'à atteindre la destination.
+  singleplayer_advise: Essayez d'atteindre la destination le plus rapidement possible !
+  singleplayer_start: Nouvelle partie
+  singleplayer_from: "Début:"
+  singleplayer_to: "Fin:"
+  singleplayer_started_at: "Début à:"
+  singleplayer_game: Jeu
+  singleplayer_details: Détails
+  singleplayer_steps: "Étapes:"
+  singleplayer_history: "Historique:"
+
+  multiplayer_title: Jeu multijoueur
+  multiplayer_about: Le jeu multijoueur se déroule ici.
+
+  form_invalid: Le formulaire est invalide
+  coming_soon: Bientôt disponible...
+  are_you_sure: Êtes-vous sûr ?

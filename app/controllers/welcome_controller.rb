@@ -13,9 +13,9 @@ class WelcomeController < ApplicationController
                 user = User.authenticate(params[:pseudo], params[:password])
                 if user
                     session[:user_id] = user.id
-                    redirect_to root_url, :notice => "Logged in!"
+                    redirect_to root_url, :notice => t(:logged_in)
                 else
-                    flash.now.alert = "Invalid pseudo or password"
+                    flash.now.alert = t(:invalid_pseudo_or_password)
                     render "login"
                 end
             else
@@ -26,6 +26,6 @@ class WelcomeController < ApplicationController
 
     def logout
         session[:user_id] = nil
-        redirect_to root_url, :notice => "Logged out!"
+        redirect_to root_url, :notice => t(:logged_out)
     end
 end

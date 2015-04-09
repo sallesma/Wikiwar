@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery
     helper_method :current_user
+    before_filter :set_locale
+
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
+
+    def default_url_options(options = {})
+      { locale: I18n.locale }.merge options
+    end
 
     private
 
@@ -10,7 +19,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user
       if current_user.nil?
-        flash[:error] = 'You must be signed in to view that page.'
+        flash[:error] = t(:not_signed_in)
         redirect_to :root
       end
     end

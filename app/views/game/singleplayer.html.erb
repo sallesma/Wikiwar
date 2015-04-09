@@ -1,11 +1,11 @@
-<h1>Single player game</h1>
+<h1><%=t :singleplayer_title %></h1>
 <p>
-    This is the single player game page.
+    <%=t :singleplayer_about %>
 </p>
 <p>
-    You will be given a starting wikipedia article inside the pagee on Wikiwar and a destination article to reach. All you have to do is browse wikipedia inside this page to reach the destination.
+    <%=t :singleplayer_rules %>
 </p>
 <p>
-    Try to reach the destination with the fewest number of steps, and quickly.
+    <%=t :singleplayer_advise %>
 </p>
-<%= link_to "Start new game", singleplayergame_path, :class => "btn btn-default" %>
+<%= link_to t(:singleplayer_start), singleplayergame_path, :class => "btn btn-default" %>

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :pseudo, :password, :password_confirmation, :new_password, :new_password_confirmation
+  attr_accessible :email, :pseudo, :password, :password_confirmation, :remember_me, :new_password, :new_password_confirmation
   has_many :single_player_games
   
-  attr_accessor :password, :new_password
+  attr_accessor :password, :remember_me, :new_password
   before_save :encrypt_password
   
   validates_confirmation_of :password

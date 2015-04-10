@@ -27,6 +27,7 @@ fr:
   invalid_pseudo_or_password: Pseudo ou mot de passe invalide
   login_title: Connexion
   login_submit: Se connecter
+  login_remember_me: Rester connecté
   logged_in: Vous êtes connecté !
   logged_out: Vous êtes déconnecté !
 

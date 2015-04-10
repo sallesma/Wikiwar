@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150409133921) do
+ActiveRecord::Schema.define(:version => 20150410082907) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(:version => 20150409133921) do
   add_index "articles", ["single_player_game_id"], :name => "index_articles_on_single_player_game_id"
 
   create_table "single_player_games", :force => true do |t|
-    t.string    "from"
-    t.string    "to"
-    t.integer   "user_id"
-    t.datetime  "created_at", :null => false
-    t.datetime  "updated_at", :null => false
-    t.boolean   "is_victory"
-    t.timestamp "duration"
-    t.integer   "steps"
+    t.string   "from"
+    t.string   "to"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "is_victory"
+    t.datetime "duration"
+    t.integer  "steps"
   end
 
   add_index "single_player_games", ["user_id"], :name => "index_single_player_games_on_user_id"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20150409133921) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "pseudo"
+    t.string   "authentication_token"
   end
 
 end

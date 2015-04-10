@@ -1,13 +1,17 @@
 <h1><%=t :login_title %></h1>
 
-<%= form_tag login_path do %>
+<%= form_for @user, :as => :user, :url => login_path do |f| %>
   <p>
-    <%= label_tag :pseudo %><br />
-    <%= text_field_tag :pseudo, params[:pseudo] %>
+    <%= f.label :pseudo %><br />
+    <%= f.text_field :pseudo %>
   </p>
   <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.check_box :remember_me %>
+    <%= f.label t(:login_remember_me) %>
   </p>
   <p class="button"><%= submit_tag t(:login_submit) %></p>
 <% end %>

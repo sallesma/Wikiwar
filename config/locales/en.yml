@@ -27,6 +27,7 @@ en:
   invalid_pseudo_or_password: Invalid pseudo or password
   login_title: Log in
   login_submit: Log in
+  login_remember_me: Remember me
   logged_in: Logged in!
   logged_out: Logged out!
 

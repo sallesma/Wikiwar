@@ -1,7 +1,7 @@
 Wikiwar::Application.routes.draw do
 
   get "logout" => "users#logout", :as => "logout"
-  get "login" => "users#login", :as => "login"
+  get "login" => "users#sign_in", :as => "login"
   post "login" => "users#login", :as => "login"
   get "signup" => "users#new", :as => "signup"
   post "signup" => "users#create", :as => "signup"

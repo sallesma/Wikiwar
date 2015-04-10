@@ -28,8 +28,22 @@ en:
   login_title: Log in
   login_submit: Log in
   login_remember_me: Remember me
+  login_forgot_password: Forgot you password?
   logged_in: Logged in!
   logged_out: Logged out!
+
+  password_forgot_title: Forgot Password
+  password_forgot_submit: Send Password Reset Instructions
+  password_reset_title: Password Reset
+  password_reset_new_password: "New password:"
+  password_reset_new_password_confirmation: "New password confirmation:"
+  password_reset_submit: Reset
+  password_user_not_registered: is not a registered user.
+  password_no_request: You have not requested a password reset.
+  password_request_expired: Password reset has expired. Please request a new password reset.
+  password_reset_invalid: Cannot be blank and must match the password verification.
+  password_sent_mail: Password instructions have been mailed to you. Please check your inbox.
+  password_reset_confirm: Your password has been reset. Please sign in with your new password.
 
   edit_account_title: Edit Account
   edit_account_content: Please fill your account information.

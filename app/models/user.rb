@@ -40,7 +40,16 @@ class User < ActiveRecord::Base
     format("%.2f",victories.to_f / total)
   end
 
-  def self.authenticate(pseudo, password)
+  def self.authenticate_by_email(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
+
+  def self.authenticate_by_pseudo(pseudo, password)
     user = find_by_pseudo(pseudo)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user

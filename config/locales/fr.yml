@@ -28,8 +28,22 @@ fr:
   login_title: Connexion
   login_submit: Se connecter
   login_remember_me: Rester connecté
+  login_forgot_password: Mot de passe oublié ?
   logged_in: Vous êtes connecté !
   logged_out: Vous êtes déconnecté !
+
+  password_forgot_title: Mot de passe oublié
+  password_forgot_submit: Envoyer les instructions
+  password_reset_title: Nouveau mot de passe
+  password_reset_new_password: "Nouveau mot de passe :"
+  password_reset_new_password_confirmation: "Confirmation du mot de passe:"
+  password_reset_submit: Valider
+  password_user_not_registered: n'est pas un utilisateur enregistré.
+  password_no_request: Vous n'avez pas demandé de nouveau mot de passe.
+  password_request_expired: Votre demande de nouveau mot de passe a expiré. Vous pouvez en demander un autre.
+  password_reset_invalid: Ne peut pas être vide et doit correspondre à la confirmation.
+  password_sent_mail: Les instructions vous ont été envoyées par email.
+  password_reset_confirm: Votre mot de passe a été changé. Vous pouvez vous connecter avec votre nouveau mot de passe.
 
   edit_account_title: Modifier le compte
   edit_account_content: Merci de remplir vos informations.

@@ -6,6 +6,12 @@ Wikiwar::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   post "signup" => "users#create", :as => "signup"
 
+  get "forgot_password" => "users#forgot_password"
+  put "forgot_password" => "users#send_password_reset_instructions"
+
+  get "password_reset" => "users#password_reset"
+  put "password_reset" => "users#new_password"
+
   get "update_account" => "users#edit", :as => "update_account"
   put "update_account" => "users#update", :as => "update_account"
   get "statistics" => "users#statistics", :as => "statistics"

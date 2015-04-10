@@ -33,6 +33,13 @@ fr:
   edit_account_title: Modifier le compte
   edit_account_content: Merci de remplir vos informations.
   edit_account_submit: Mettre à jour
+  edit_account_pseudo: Pseudo
+  edit_account_email: Email
+  edit_account_password: Mot de passe
+  edit_account_password_confirmation: Confirmation du mot de passe
+  edit_account_password_current: Mot de passe actuel
+  edit_account_password_error: Le mot de passe est invalide
+  edit_account_confirm: Votre compte a été mis à jour.
 
   statistics_title: Vos statistiques
   statistics_content: Prenez votre temps pour consulter les statistiques de jeu.

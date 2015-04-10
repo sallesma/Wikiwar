@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :pseudo, :password, :password_confirmation
+  attr_accessible :email, :pseudo, :password, :password_confirmation, :new_password, :new_password_confirmation
   has_many :single_player_games
   
-  attr_accessor :password
+  attr_accessor :password, :new_password
   before_save :encrypt_password
   
   validates_confirmation_of :password
+  validates_confirmation_of :new_password, :if => Proc.new {|user| !user.new_password.nil? && !user.new_password.empty? }
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email

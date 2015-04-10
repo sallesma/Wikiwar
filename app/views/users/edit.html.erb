@@ -14,20 +14,24 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :pseudo %><br />
+    <%= f.label t(:edit_account_password_current) %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.label t(:edit_account_pseudo) %><br />
     <%= f.text_field :pseudo %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label t(:edit_account_email) %><br />
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.label t(:edit_account_password) %><br />
+    <%= f.password_field :new_password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.label t(:edit_account_password_confirmation) %><br />
+    <%= f.password_field :new_password_confirmation %>
   </p>
   <p class="button"><%= f.submit t(:edit_account_submit)%></p>
 <% end %>

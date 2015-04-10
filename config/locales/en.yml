@@ -33,6 +33,13 @@ en:
   edit_account_title: Edit Account
   edit_account_content: Please fill your account information.
   edit_account_submit: Update
+  edit_account_pseudo: Pseudo
+  edit_account_email: Email
+  edit_account_password: Password
+  edit_account_password_confirmation: Password Confirmation
+  edit_account_password_current: Current Password
+  edit_account_password_error: Password is incorrect
+  edit_account_confirm: Account settings have been changed.
 
   statistics_title: Your stats
   statistics_content: Take your time to review your game stats.

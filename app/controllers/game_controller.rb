@@ -9,7 +9,7 @@ class GameController < ApplicationController
         article = params["article"]
         @game.steps = @game.steps + 1
         @game.articles.create(title: article, position: @game.steps)
-        if(@game.to == article)
+        if(is_victory(@game.to, article))
           @game.is_victory = true
           @game.duration = (Time.now - @game.created_at.to_time).round
           flash.now.alert = "Victory !"
@@ -37,6 +37,10 @@ class GameController < ApplicationController
 
     private
 
+    def is_victory(destination, article)
+      destination.downcase.gsub(" ", "_") == article.downcase
+    end
+
     def get_wikipedia_random_article_title
       require 'open-uri'
       doc = Nokogiri::HTML(open(t(:wikipedia_random_url)))
@@ -47,12 +51,12 @@ class GameController < ApplicationController
     def get_wikipedia_article(article, game_id)
       require 'open-uri'
       doc = Nokogiri::HTML(open(URI.escape('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article).to_s))
-      body  = doc.at_css "body"
+      body  = doc.at_css "body #content"
       for link in body.css("a")
         url = link["href"]
         if url != nil and !url.start_with?("#")
           article = url.split('/').last
-          link['href'] = "singleplayergame?article=" << article << "&game_id=" << game_id.to_s
+          link['href'] = "singleplayergame?locale="<<I18n.locale.to_s<<"&article=" << article << "&game_id=" << game_id.to_s
         end
       end
       body.inner_html

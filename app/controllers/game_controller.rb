@@ -12,7 +12,7 @@ class GameController < ApplicationController
         if(is_victory(@game.to, article))
           @game.is_victory = true
           @game.duration = (Time.now - @game.created_at.to_time).round
-          flash.now.alert = "Victory !"
+          flash.now.notice = "Victory !"
         end
         @game.save
         @wikipedia = get_wikipedia_article(article, @game.id)

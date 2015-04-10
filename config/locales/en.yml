@@ -1,6 +1,7 @@
 en:
   wikipedia_random_url: http://en.wikipedia.org/wiki/Special:Random
 
+  menu_language: Languages
   menu_english: English
   menu_french: French
   menu_logged_as: "Logged in as "

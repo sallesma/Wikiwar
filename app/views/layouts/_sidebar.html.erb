@@ -1,10 +1,7 @@
     <div id="sidebar-nav">
         <ul id="dashboard-menu">
             <li>
-                <a href="/">
-                    <i class="fa fa-home"></i>
-                    <span><%=t :menu_home %></span>
-                </a>
+                <%= link_to content_tag(:i, "", :class=> "fa fa-home") + content_tag(:span, t(:menu_home)), root_path %>
             </li>
             <% if current_user %>
             <li>
@@ -31,10 +28,7 @@
             </li>
             <% end %>
             <li>
-                <a href="about">
-                    <i class="fa fa-info"></i>
-                    <span><%=t :menu_about %></span>
-                </a>
+                <%= link_to content_tag(:i, "", :class=> "fa fa-info") + content_tag(:span, t(:menu_about)), about_path %>
             </li>
         </ul>
     </div>

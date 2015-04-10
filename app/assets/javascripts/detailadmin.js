@@ -37,9 +37,10 @@ $(function () {
   });
 
   //sidebar menu arrow pointer
+  path = window.location.href;
   $("#dashboard-menu a").each(function(){
-    path = window.location.pathname;
-    if(path.match($(this).attr("href")+"$")) {
+    href = $(this).attr("href").replace("?", "\\?")
+    if(path.match(href)) {
       $item = $(this).parent();
       if($item.parent().hasClass('submenu')) {
         $item.find("a").toggleClass("active");

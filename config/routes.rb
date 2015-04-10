@@ -1,19 +1,22 @@
 Wikiwar::Application.routes.draw do
 
-  get "logout" => "welcome#logout", :as => "logout"
-  get "login" => "welcome#login", :as => "login"
-  post "login" => "welcome#login", :as => "login"
+  get "logout" => "users#logout", :as => "logout"
+  get "login" => "users#login", :as => "login"
+  post "login" => "users#login", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  post "signup" => "users#create", :as => "signup"
+
+  get "update_account" => "users#edit", :as => "update_account"
+  put "update_account" => "users#update", :as => "update_account"
+  get "statistics" => "users#statistics", :as => "statistics"
+
   get "singleplayer" => "game#singleplayer", :as => "singleplayer"
   get "singleplayergame" => "game#singleplayergame", :as => "singleplayergame"
   get "wikipedia" => "game#wikipedia", :as => "wikipedia"
   get "multiplayer" => "game#multiplayer", :as => "multiplayer"
-  get "update_account" => "users#edit", :as => "update_account"
-  get "statistics" => "users#statistics", :as => "statistics"
+
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"
-  
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

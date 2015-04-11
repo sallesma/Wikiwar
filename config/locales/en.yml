@@ -12,6 +12,7 @@ en:
   menu_user: User Menu
   menu_user_update_account: Update Account
   menu_user_statistics: Statistics
+  menu_user_ranking: Ranking
   menu_about: About
 
   index_title: Welcome
@@ -74,6 +75,17 @@ en:
   statistics_duration: Duration
   statistics_steps: Steps
   statistics_sec: sec
+
+  ranking_title: Ranking
+  ranking_content: Have a look at the other players stats here.
+  ranking_user_nb: "Number of players: "
+  ranking_games_total: Games played
+  ranking_victories_total: Games won
+  ranking_rate: Victory rate
+  ranking_pseudo: Pseudo
+  ranking_singleplayer_total: Total Games
+  ranking_singleplayer_victories: Total Victories
+  ranking_singleplayer_victories_rate: Victory rate
 
   singleplayer_title: Single player game
   singleplayer_about: This is the single player game page.

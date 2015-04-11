@@ -14,8 +14,10 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
   
   def singleplayer_games
-    games = self.single_player_games.sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.sort_by { |h| h[:created_at] }.reverse
   end
+
+  # ========= Account Statistics ==========
 
   def singleplayer_victories_nb
     self.single_player_games.where(is_victory: true).count
@@ -37,8 +39,14 @@ class User < ActiveRecord::Base
   def victories_rate
     total = self.single_player_games.count
     victories = self.single_player_games.where(is_victory: true).count
-    format("%.2f",victories.to_f / total)
+    if total > 0
+      victories.to_f / total
+    else
+      -1
+    end
   end
+
+  # ========= Account Authentication ==========
 
   def self.authenticate_by_email(email, password)
     user = find_by_email(email)

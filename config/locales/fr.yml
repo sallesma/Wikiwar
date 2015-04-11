@@ -12,6 +12,7 @@ fr:
   menu_user: Mon compte
   menu_user_update_account: Modifier mon compte
   menu_user_statistics: Statistiques
+  menu_user_ranking: Classements
   menu_about: A propos
 
   index_title: Bienvenue
@@ -74,6 +75,17 @@ fr:
   statistics_duration: Durée
   statistics_steps: Étapes
   statistics_sec: sec
+
+  ranking_title: Classement
+  ranking_content: Jetez un coup d'oeil aux statistiques des autres joueurs
+  ranking_user_nb: "Nombre de joueurs : "
+  ranking_games_total: Nombre de parties jouées
+  ranking_victories_total: Nombre de victoires
+  ranking_rate: Ratio de victoires
+  ranking_pseudo: Pseudo
+  ranking_singleplayer_total: Total
+  ranking_singleplayer_victories: Total Victoires
+  ranking_singleplayer_victories_rate: Ratio
 
   singleplayer_title: Jeu à un joueur
   singleplayer_about: Le jeu se déroule ici.

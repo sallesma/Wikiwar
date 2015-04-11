@@ -37,3 +37,8 @@
         <% end %>
     </ul>
 </div>
+
+<%= form_tag(singleplayergame_path, method: "post", id: "poster") do %>
+  <input type="hidden" name="game_id"/>
+  <input type="hidden" name="article"/>
+<% end %>

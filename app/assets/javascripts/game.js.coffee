@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+    $("#wikipedia-area a").click (e) ->
+        if( !$(this).attr('href').match('#'))
+            e.preventDefault()
+            $("#poster input[name=game_id]").val $(this).data('game_id')
+            $("#poster input[name=article]").val $(this).data('article')
+            $("#poster").submit()

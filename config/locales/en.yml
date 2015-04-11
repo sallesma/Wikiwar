@@ -98,6 +98,8 @@ en:
   singleplayer_details: Details
   singleplayer_steps: "Steps:"
   singleplayer_history: "History:"
+  singleplayer_victory: Victory !
+  singleplayer_error: An error occured creating the game
 
   multiplayer_title: Multiplayer game
   multiplayer_about: This is the multiplayer game page.

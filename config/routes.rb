@@ -19,6 +19,7 @@ Wikiwar::Application.routes.draw do
 
   get "singleplayer" => "game#singleplayer", :as => "singleplayer"
   get "singleplayergame" => "game#singleplayergame", :as => "singleplayergame"
+  post "singleplayergame" => "game#singleplayergame_next", :as => "singleplayergame"
   get "wikipedia" => "game#wikipedia", :as => "wikipedia"
   get "multiplayer" => "game#multiplayer", :as => "multiplayer"
 

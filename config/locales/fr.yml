@@ -98,6 +98,8 @@ fr:
   singleplayer_details: Détails
   singleplayer_steps: "Étapes:"
   singleplayer_history: "Historique:"
+  singleplayer_victory: Victoire !
+  singleplayer_error: Une erreur est survenue pendant la création de la partie
 
   multiplayer_title: Jeu multijoueur
   multiplayer_about: Le jeu multijoueur se déroule ici.

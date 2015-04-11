@@ -26,10 +26,11 @@
                 </ul>
             </li>
             <% if current_user %>
-                <li class="dropdown">
-                    <p class="hidden-xs hidden-sm">
-                        <%=t :menu_logged_as %><%= current_user.pseudo %>
-                    </p>
+                <li class="user-area">
+                    <%= image_tag current_user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+                    <div class="pseudo ellipsis hidden-xs hidden-sm" title="<%= current_user.pseudo %>">
+                        <%= current_user.pseudo %>
+                    </div>
                 </li>
                 <li class="settings hidden-xs hidden-sm">
                     <%= link_to(

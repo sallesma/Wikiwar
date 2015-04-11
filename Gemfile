@@ -42,3 +42,4 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "test-unit"
 gem "nokogiri"
+gem 'gravtastic'

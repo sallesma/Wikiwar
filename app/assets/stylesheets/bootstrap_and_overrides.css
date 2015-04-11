@@ -221,7 +221,6 @@ textarea::-webkit-input-placeholder {
     font-weight: normal;
 }
 /* navbar links */
-.navbar-inverse .nav > li > p,
 .navbar-inverse .nav > li > a {
     margin: 0;
     padding: 13px 15px 8px;

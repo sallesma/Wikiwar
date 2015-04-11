@@ -1,3 +1,56 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar-inverse {
+    .user-area {
+        min-width: 150px;
+        margin: 0;
+        padding: 5px;
+        border-left: 1px solid #101417;
+        color: rgb(214, 214, 214);
+        outline: 0px;
+        height: 46px;
+        transition: background .1s linear;
+        -moz-transition: background .1s linear; /* Firefox 4 */
+        -webkit-transition: background .1s linear; /* Safari and Chrome */
+        -o-transition: background .1s linear;  /* Opera */
+
+        .gravatar {
+            float: left;
+            margin-right: 14px;
+            max-width: 35px;
+        }
+        .pseudo {
+            min-width: 80px;
+            max-width: 200px;
+            margin: 5px;
+            margin-top: 10px;
+            display: block;
+        }
+    }
+}
+
+.table-ranking {
+    td {
+        height: 45px;
+        .gravatar {
+                float: left;
+                margin-right: 14px;
+                max-width: 35px;
+        }
+        .pseudo {
+            max-width: 300px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 8px 0px 0px;
+        }
+    }
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}

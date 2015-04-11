@@ -24,7 +24,7 @@ class GameController < ApplicationController
     def singleplayergame_next
       if(params.has_key?("game_id") and params.has_key?("article"))
         @game = SinglePlayerGame.find(params["game_id"])
-        article = params["article"].gsub(" ", "_")
+        article = decode_article(params["article"]).gsub(" ", "_")
         @game.steps = @game.steps + 1
         @game.articles.create(title: URI.unescape(article), position: @game.steps)
         if(is_victory(@game.to, article))
@@ -64,7 +64,7 @@ class GameController < ApplicationController
         url = link["href"]
         if url != nil and !url.start_with?("#")
           article = url.split('/').last
-          link['data-article'] = article
+          link['data-article'] = encode_article(article)
           link['data-game_id'] = game_id.to_s
         end
       end
@@ -83,4 +83,15 @@ class GameController < ApplicationController
           description.inner_html
         end
     end
+
+    Password = "password"
+
+    def encode_article(article)
+      article.encrypt(:symmetric, :password => Password)
+    end
+
+    def decode_article(article)
+      article.decrypt(:symmetric, :password => Password)
+    end
 end
+

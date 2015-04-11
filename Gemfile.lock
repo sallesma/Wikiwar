@@ -52,6 +52,7 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     commonjs (0.2.7)
+    encrypted_strings (0.3.3)
     erubis (2.7.0)
     execjs (2.4.0)
     font-awesome-rails (4.3.0.0)
@@ -133,6 +134,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
+  encrypted_strings
   font-awesome-rails
   gravtastic
   jquery-rails

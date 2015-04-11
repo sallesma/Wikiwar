@@ -14,8 +14,10 @@ class GameController < ApplicationController
           @game.duration = (Time.now - @game.created_at.to_time).round
           flash.now.notice = "Victory !"
         end
-        @game.save
         @wikipedia = get_wikipedia_article(article, @game.id)
+        @game.from_desc = get_small_description(@game.from)
+        @game.to_desc = get_small_description(@game.to)
+        @game.save
         render "singleplayergame"
       else
         from = get_wikipedia_random_article_title
@@ -23,8 +25,10 @@ class GameController < ApplicationController
         @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0)
         if @game.save
           @game.articles.create(title: @game.from, position: @game.steps)
-          @game.save
           @wikipedia = get_wikipedia_article(@game.from, @game.id)
+          @game.from_desc = get_small_description(@game.from, @wikipedia)
+          @game.to_desc = get_small_description(@game.to)
+          @game.save
           render "singleplayergame"
         else
           render "singleplayer"
@@ -60,5 +64,18 @@ class GameController < ApplicationController
         end
       end
       body.inner_html
+    end
+
+    def get_small_description(article, page=nil)
+      if page.nil?
+        page = get_wikipedia_article(article, -1)
+      end
+        page = Nokogiri::HTML(page)
+        description = page.at_css "#bodyContent #mw-content-text > p"
+        if description.nil?
+          ""
+        else
+          description.inner_html
+        end
     end
 end

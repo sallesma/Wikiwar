@@ -4,12 +4,14 @@
 
 <div class="section">
   <p>
-    <strong><%=t :singleplayer_from %></strong>
+    <strong><%= t :singleplayer_from %></strong>
     <%= @game.from %>
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @game.from_desc %>"></i>
   </p>
   <p>
-    <strong><%=t :singleplayer_to %></strong>
+    <strong><%= t :singleplayer_to %></strong>
     <%= @game.to %>
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @game.to_desc %>"></i>
   </p>
   <p>
     <strong><%=t :singleplayer_started_at %></strong>

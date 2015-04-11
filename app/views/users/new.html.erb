@@ -1,31 +1,35 @@
-<h1><%=t :sign_up_title %></h1>
+<div class="page-title">
+  <h1><%=t :sign_up_title %></h1>
+</div>
 
-<%= form_for @user, :as => :user, :url =>signup_path, :method => :post do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2><%=t :form_invalid %></h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="section">
+  <%= form_for @user, :as => :user, :url =>signup_path, :method => :post do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2><%=t :form_invalid %></h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+      <%= f.label :pseudo %><br />
+      <%= f.text_field :pseudo %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p class="button"><%= f.submit t(:sign_up_submit)%></p>
   <% end %>
-  <p>
-    <%= f.label :pseudo %><br />
-    <%= f.text_field :pseudo %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p class="button"><%= f.submit t(:sign_up_submit)%></p>
-<% end %>
+</div>

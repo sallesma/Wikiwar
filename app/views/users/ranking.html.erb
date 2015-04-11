@@ -1,71 +1,82 @@
-<h1><%=t :ranking_title %></h1>
-<p>
-    <%=t :ranking_content %>
-</p>
-<p>
-  <strong><%=t :ranking_user_nb %></strong>
-  <%= @ranking_nb_player %>
-</p>
+<div class="page-title">
+  <h1><%=t :ranking_title %></h1>
+  <p>
+      <%=t :ranking_content %>
+  </p>
+</div>
 
-<h3><%=t :ranking_games_total %></h3>
-<table class="table table-hover table-ranking">
-  <tr>
-    <th><%=t :ranking_pseudo %></th>
-    <th><%=t :ranking_singleplayer_total %></th>
-    <th><%=t :ranking_singleplayer_victories %></th>
-    <th><%=t :ranking_singleplayer_victories_rate %></th>
-  </tr>
-  <% @ranking_total.each do |user| %>
-    <tr>
-      <td>
-        <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-        <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
-      </td>
-      <td><%= user.singleplayer_games_nb %></td>
-      <td><%= user.singleplayer_victories_nb %></td>
-      <td><%= format("%.2f",user.victories_rate) %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="section">
+  <p>
+    <strong><%=t :ranking_user_nb %></strong>
+    <%= @ranking_nb_player %>
+  </p>
+</div>
 
-<h3><%=t :ranking_victories_total %></h3>
-<table class="table table-hover table-ranking">
-  <tr>
-    <th><%=t :ranking_pseudo %></th>
-    <th><%=t :ranking_singleplayer_total %></th>
-    <th><%=t :ranking_singleplayer_victories %></th>
-    <th><%=t :ranking_singleplayer_victories_rate %></th>
-  </tr>
-  <% @ranking_victories.each do |user| %>
+<div class="section">
+  <h3><%=t :ranking_games_total %></h3>
+  <table class="table table-hover table-ranking">
     <tr>
-      <td>
-        <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-        <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
-      </td>
-      <td><%= user.singleplayer_games_nb %></td>
-      <td><%= user.singleplayer_victories_nb %></td>
-      <td><%= format("%.2f",user.victories_rate) %></td>
+      <th><%=t :ranking_pseudo %></th>
+      <th><%=t :ranking_singleplayer_total %></th>
+      <th><%=t :ranking_singleplayer_victories %></th>
+      <th><%=t :ranking_singleplayer_victories_rate %></th>
     </tr>
-  <% end %>
-</table>
+    <% @ranking_total.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+        </td>
+        <td><%= user.singleplayer_games_nb %></td>
+        <td><%= user.singleplayer_victories_nb %></td>
+        <td><%= format("%.2f",user.victories_rate) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<h3><%=t :ranking_rate %></h3>
-<table class="table table-hover table-ranking">
-  <tr>
-    <th><%=t :ranking_pseudo %></th>
-    <th><%=t :ranking_singleplayer_total %></th>
-    <th><%=t :ranking_singleplayer_victories %></th>
-    <th><%=t :ranking_singleplayer_victories_rate %></th>
-  </tr>
-  <% @ranking_rate.each do |user| %>
+<div class="section">
+  <h3><%=t :ranking_victories_total %></h3>
+  <table class="table table-hover table-ranking">
     <tr>
-      <td>
-        <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-        <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
-      </td>
-      <td><%= user.singleplayer_games_nb %></td>
-      <td><%= user.singleplayer_victories_nb %></td>
-      <td><%= format("%.2f",user.victories_rate) %></td>
+      <th><%=t :ranking_pseudo %></th>
+      <th><%=t :ranking_singleplayer_total %></th>
+      <th><%=t :ranking_singleplayer_victories %></th>
+      <th><%=t :ranking_singleplayer_victories_rate %></th>
     </tr>
-  <% end %>
-</table>
+    <% @ranking_victories.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+        </td>
+        <td><%= user.singleplayer_games_nb %></td>
+        <td><%= user.singleplayer_victories_nb %></td>
+        <td><%= format("%.2f",user.victories_rate) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="section">
+  <h3><%=t :ranking_rate %></h3>
+  <table class="table table-hover table-ranking">
+    <tr>
+      <th><%=t :ranking_pseudo %></th>
+      <th><%=t :ranking_singleplayer_total %></th>
+      <th><%=t :ranking_singleplayer_victories %></th>
+      <th><%=t :ranking_singleplayer_victories_rate %></th>
+    </tr>
+    <% @ranking_rate.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+        </td>
+        <td><%= user.singleplayer_games_nb %></td>
+        <td><%= user.singleplayer_victories_nb %></td>
+        <td><%= format("%.2f",user.victories_rate) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

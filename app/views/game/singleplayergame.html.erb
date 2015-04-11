@@ -1,16 +1,21 @@
-<h1><%=t :singleplayer_title %></h1>
-<p>
-  <strong><%=t :singleplayer_from %></strong>
-  <%= @game.from %>
-</p>
-<p>
-  <strong><%=t :singleplayer_to %></strong>
-  <%= @game.to %>
-</p>
-<p>
-  <strong><%=t :singleplayer_started_at %></strong>
-  <%= @game.created_at %>
-</p>
+<div class="page-title">
+  <h1><%=t :singleplayer_title %></h1>
+</div>
+
+<div class="section">
+  <p>
+    <strong><%=t :singleplayer_from %></strong>
+    <%= @game.from %>
+  </p>
+  <p>
+    <strong><%=t :singleplayer_to %></strong>
+    <%= @game.to %>
+  </p>
+  <p>
+    <strong><%=t :singleplayer_started_at %></strong>
+    <%= @game.created_at %>
+  </p>
+</div>
 
 <h3><%=t :singleplayer_game %></h3>
 <div id="wikipedia-area" class="col-md-10 with-sidebar border-radius">
@@ -29,4 +34,4 @@
           <li><%= article.title %></li>
         <% end %>
     </ul>
-<div>
+</div>

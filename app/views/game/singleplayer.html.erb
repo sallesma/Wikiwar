@@ -1,11 +1,16 @@
-<h1><%=t :singleplayer_title %></h1>
-<p>
-    <%=t :singleplayer_about %>
-</p>
-<p>
-    <%=t :singleplayer_rules %>
-</p>
-<p>
-    <%=t :singleplayer_advise %>
-</p>
-<%= link_to t(:singleplayer_start), singleplayergame_path, :class => "btn btn-default" %>
+<div class="page-title">
+    <h1><%=t :singleplayer_title %></h1>
+    <p>
+        <%=t :singleplayer_about %>
+    </p>
+</div>
+
+<div class="section">
+    <p>
+        <%=t :singleplayer_rules %>
+    </p>
+    <p>
+        <%=t :singleplayer_advise %>
+    </p>
+    <%= link_to t(:singleplayer_start), singleplayergame_path, :class => "btn btn-default" %>
+</div>

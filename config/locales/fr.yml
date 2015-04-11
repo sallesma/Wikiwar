@@ -103,6 +103,12 @@ fr:
 
   multiplayer_title: Jeu multijoueur
   multiplayer_about: Le jeu multijoueur se déroule ici.
+  multiplayer_requests_received_title: Nouvelles demandes
+  multiplayer_requests_received: Les demandes que vous avez reçues
+  multiplayer_requests_sent_title: Demandes envoyées
+  multiplayer_requests_sent: Les demandes que vous avez envoyées et qui attendent une réponse
+  multiplayer_find_title: Trouver un joueur
+  multiplayer_find: Trouver des joueurs avec lesquels jouer
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

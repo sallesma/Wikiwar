@@ -103,6 +103,12 @@ en:
 
   multiplayer_title: Multiplayer game
   multiplayer_about: This is the multiplayer game page.
+  multiplayer_requests_received_title: New requests
+  multiplayer_requests_received: The requests that have been sent to you
+  multiplayer_requests_sent_title: Sent requests
+  multiplayer_requests_sent: Unanswered requests you have sent
+  multiplayer_find_title: Find a player
+  multiplayer_find: Find players to play with
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

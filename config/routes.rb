@@ -17,11 +17,11 @@ Wikiwar::Application.routes.draw do
   get "statistics" => "users#statistics", :as => "statistics"
   get "ranking" => "users#ranking", :as => "ranking"
 
-  get "singleplayer" => "game#singleplayer", :as => "singleplayer"
-  get "singleplayergame" => "game#singleplayergame", :as => "singleplayergame"
-  post "singleplayergame" => "game#singleplayergame_next", :as => "singleplayergame"
-  get "wikipedia" => "game#wikipedia", :as => "wikipedia"
-  get "multiplayer" => "game#multiplayer", :as => "multiplayer"
+  get "singleplayer" => "singleplayer_game#index", :as => "singleplayer"
+  get "singleplayergame" => "singleplayer_game#game", :as => "singleplayergame"
+  post "singleplayergame" => "singleplayer_game#game_next", :as => "singleplayergame"
+  
+  get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

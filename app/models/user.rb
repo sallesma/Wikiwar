@@ -33,7 +33,11 @@ class User < ActiveRecord::Base
       total_durations = total_durations + game.duration
     end
     victories_nb = self.single_player_games.where(is_victory: true).count
-    format("%.2f",total_durations.to_f / victories_nb)
+    if victories_nb > 0
+      total_durations.to_f / victories_nb
+    else
+      -1
+    end
   end
 
   def victories_rate

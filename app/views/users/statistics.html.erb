@@ -18,7 +18,7 @@
 </p>
 <p>
   <strong><%=t :statistics_singleplayer_victories_duration %></strong>
-  <%= current_user.average_victory_duration %>
+  <%= format("%.f",current_user.average_victory_duration) %> <%=t :statistics_sec %>
 </p>
 
 <h4><%=t :statistics_singleplayer_last10 %></h4>

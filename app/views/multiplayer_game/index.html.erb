@@ -24,7 +24,7 @@
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
         <td><%= challenge.status %></td>
-        <td><%= challenge.created_at.to_formatted_s(:short) %></td>
+        <td><%= challenge.created_at.to_time.to_formatted_s(:long_date) %></td>
       </tr>
     <% end %>
   </table>
@@ -49,7 +49,7 @@
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
         <td><%= challenge.status %></td>
-        <td><%= challenge.created_at.to_formatted_s(:short) %></td>
+        <td><%= challenge.created_at.to_time.to_formatted_s(:long_date) %></td>
       </tr>
     <% end %>
   </table>

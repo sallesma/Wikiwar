@@ -40,7 +40,7 @@
       <td><%= link_to game.from, 'http://fr.wikipedia.org/wiki/'+game.from, target: "_blank" %></td>
       <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
       <td><%= game.locale %></td>
-      <td><%= game.created_at.to_formatted_s(:short) %></td>
+      <td><%= game.created_at.to_time.to_formatted_s(:long_date) %></td>
       <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
       <td><%= game.duration %> <%=t :statistics_sec %></td>
       <td><%= game.steps %></td>

@@ -158,6 +158,16 @@ class UsersController < ApplicationController
     @ranking_rate = users.sort_by{|user| -user.victories_rate}.first(10)
   end
 
+  def profile
+    @profile = User.find_by_id(params[:id])
+    if @profile.nil?
+      flash[:error] = t(:profile_user_not_found)
+      redirect_to :root
+    else
+      render "profile"
+    end
+  end
+
   # ========= Private Functions ==========
 
   private

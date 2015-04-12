@@ -25,7 +25,9 @@
       <tr>
         <td>
           <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>">
+            <%= link_to user.pseudo, profile_path(id: user.id) %>
+          </span>
         </td>
         <td><%= user.singleplayer_games_nb %></td>
         <td><%= user.singleplayer_victories_nb %></td>
@@ -48,7 +50,9 @@
       <tr>
         <td>
           <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>">
+            <%= link_to user.pseudo, profile_path(id: user.id) %>
+          </span>
         </td>
         <td><%= user.singleplayer_games_nb %></td>
         <td><%= user.singleplayer_victories_nb %></td>
@@ -71,7 +75,9 @@
       <tr>
         <td>
           <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-          <span class="pseudo ellipsis" title="<%= user.pseudo %>"><%= user.pseudo %></span>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>">
+            <%= link_to user.pseudo, profile_path(id: user.id) %>
+          </span>
         </td>
         <td><%= user.singleplayer_games_nb %></td>
         <td><%= user.singleplayer_victories_nb %></td>

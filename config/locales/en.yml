@@ -86,6 +86,9 @@ en:
   ranking_singleplayer_victories: Total Victories
   ranking_singleplayer_victories_rate: Victory rate
 
+  profile_title: "Player Profile: "
+  profile_user_not_found: Could not find user
+
   singleplayer_title: Single player game
   singleplayer_about: This is the single player game page.
   singleplayer_rules: You will be given a starting wikipedia article inside the pagee on Wikiwar and a destination article to reach. All you have to do is browse wikipedia inside this page to reach the destination.

@@ -86,6 +86,9 @@ fr:
   ranking_singleplayer_victories: Total Victoires
   ranking_singleplayer_victories_rate: Ratio
 
+  profile_title: "Profil du joueur : "
+  profile_user_not_found: Impossible de trouver le joueur
+
   singleplayer_title: Jeu à un joueur
   singleplayer_about: Le jeu se déroule ici.
   singleplayer_rules: Vous allez recevoir un article Wikipédia de départ et un article de destination. Tout ce que vous avez à faire est de parcourir Wikipedia d'article en article jusqu'à atteindre la destination.

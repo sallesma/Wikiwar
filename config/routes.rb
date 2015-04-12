@@ -16,6 +16,7 @@ Wikiwar::Application.routes.draw do
   put "update_account" => "users#update", :as => "update_account"
   get "statistics" => "users#statistics", :as => "statistics"
   get "ranking" => "users#ranking", :as => "ranking"
+  get "profile" => "users#profile", :as => "profile"
 
   get "singleplayer" => "singleplayer_game#index", :as => "singleplayer"
   get "singleplayergame" => "singleplayer_game#game", :as => "singleplayergame"

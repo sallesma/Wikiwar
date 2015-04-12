@@ -1,0 +1,59 @@
+<div class="page-title">
+  <h1><%=t :profile_title %><%= @profile.pseudo %></h1>
+  <a class="btn btn-default">Défier</a>
+</div>
+
+<div class="section">
+<h3><%=t :statistics_singleplayer_title %></h3>
+<p>
+  <strong><%=t :statistics_singleplayer_total %></strong>
+  <%= @profile.singleplayer_games_nb %>
+</p>
+<p>
+  <strong><%=t :statistics_singleplayer_victories %></strong>
+  <%= @profile.singleplayer_victories_nb %>
+</p>
+<p>
+  <strong><%=t :statistics_singleplayer_victories_rate %></strong>
+  <%= format("%.2f", @profile.victories_rate) %>
+</p>
+<p>
+  <strong><%=t :statistics_singleplayer_victories_duration %></strong>
+  <%= format("%.f", @profile.average_victory_duration) %> <%=t :statistics_sec %>
+</p>
+
+<h4><%=t :statistics_singleplayer_last10 %></h4>
+<table class="table table-hover">
+  <tr>
+    <th><%=t :statistics_from %></th>
+    <th><%=t :statistics_to %></th>
+    <th><%=t :statistics_date %></th>
+    <th><%=t :statistics_victory %></th>
+    <th><%=t :statistics_duration %></th>
+    <th><%=t :statistics_steps %></th>
+  </tr>
+  <% @profile.singleplayer_games.first(10).each do |game| %>
+    <tr>
+      <td><%= link_to game.from, 'http://fr.wikipedia.org/wiki/'+game.from, target: "_blank" %></td>
+      <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
+      <td><%= game.created_at %></td>
+      <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
+      <td><%= game.duration %> <%=t :statistics_sec %></td>
+      <td><%= game.steps %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<div class="section">
+  <h3><%=t :statistics_multiplayer_title %></h3>
+  <h4><%=t :statistics_multiplayer_last10 %></h4>
+  <table class="table table-hover">
+    <tr>
+      <th><%=t :statistics_from %></th>
+      <th><%=t :statistics_to %></th>
+      <th><%=t :statistics_date %></th>
+      <th><%=t :statistics_victory %></th>
+    </tr>
+  </table>
+</div>

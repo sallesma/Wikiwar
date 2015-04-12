@@ -69,6 +69,7 @@ en:
   statistics_multiplayer_last10: Last 10 MultiPlayer Games
   statistics_from: From
   statistics_to: To
+  statistics_locale: Language
   statistics_date: Date
   statistics_victory: Victory
   statistics_duration: Duration

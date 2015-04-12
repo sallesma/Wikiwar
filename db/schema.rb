@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150410085414) do
+ActiveRecord::Schema.define(:version => 20150412095736) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20150410085414) do
     t.boolean  "is_victory"
     t.datetime "duration"
     t.integer  "steps"
+    t.string   "locale"
   end
 
   add_index "single_player_games", ["user_id"], :name => "index_single_player_games_on_user_id"

@@ -7,7 +7,7 @@ class SingleplayerGameController < GameController
     def game
       from = get_wikipedia_random_article_title.gsub(" ", "_")
       to = get_wikipedia_random_article_title.gsub(" ", "_")
-      @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0)
+      @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
       if @game.save
         @game.articles.create(title: @game.from, position: @game.steps)
         @wikipedia = get_wikipedia_article(@game.from, @game.id)

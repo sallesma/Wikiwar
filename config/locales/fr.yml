@@ -69,6 +69,7 @@ fr:
   statistics_multiplayer_last10: 10 dernières parties multijoueurs
   statistics_from: Début
   statistics_to: Arrivée
+  statistics_locale: Langue
   statistics_date: Date
   statistics_victory: Victoire
   statistics_duration: Durée

@@ -27,6 +27,7 @@
   <tr>
     <th><%=t :statistics_from %></th>
     <th><%=t :statistics_to %></th>
+    <th><%=t :statistics_locale %></th>
     <th><%=t :statistics_date %></th>
     <th><%=t :statistics_victory %></th>
     <th><%=t :statistics_duration %></th>
@@ -36,6 +37,7 @@
     <tr>
       <td><%= link_to game.from, 'http://fr.wikipedia.org/wiki/'+game.from, target: "_blank" %></td>
       <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
+      <td><%= game.locale %></td>
       <td><%= game.created_at %></td>
       <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
       <td><%= game.duration %> <%=t :statistics_sec %></td>
@@ -52,6 +54,7 @@
     <tr>
       <th><%=t :statistics_from %></th>
       <th><%=t :statistics_to %></th>
+      <th><%=t :statistics_locale %></th>
       <th><%=t :statistics_date %></th>
       <th><%=t :statistics_victory %></th>
     </tr>

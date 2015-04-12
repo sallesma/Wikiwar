@@ -16,6 +16,7 @@
       <th><%=t :multiplayer_challenge_receiver %></th>
       <th><%=t :multiplayer_challenge_locale %></th>
       <th><%=t :multiplayer_challenge_status %></th>
+      <th><%=t :multiplayer_challenge_date %></th>
     </tr>
     <% current_user.challenges_received.first(10).each do |challenge| %>
       <tr>
@@ -23,6 +24,7 @@
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
         <td><%= challenge.status %></td>
+        <td><%= challenge.created_at.to_formatted_s(:short) %></td>
       </tr>
     <% end %>
   </table>
@@ -39,6 +41,7 @@
       <th><%=t :multiplayer_challenge_receiver %></th>
       <th><%=t :multiplayer_challenge_locale %></th>
       <th><%=t :multiplayer_challenge_status %></th>
+      <th><%=t :multiplayer_challenge_date %></th>
     </tr>
     <% current_user.challenges_sent.first(10).each do |challenge| %>
       <tr>
@@ -46,6 +49,7 @@
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
         <td><%= challenge.status %></td>
+        <td><%= challenge.created_at.to_formatted_s(:short) %></td>
       </tr>
     <% end %>
   </table>

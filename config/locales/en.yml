@@ -4,6 +4,8 @@ en:
   menu_language: Languages
   menu_english: English
   menu_french: French
+  menu_requests: You have pending requests
+  menu_requests_all: View all requests
   menu_home: Home
   menu_game: Play
   menu_game_singleplayer: Single Player
@@ -125,6 +127,7 @@ en:
   multiplayer_challenge_receiver: Receiver
   multiplayer_challenge_locale: Language
   multiplayer_challenge_status: Status
+  multiplayer_challenge_date: Date
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

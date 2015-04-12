@@ -4,6 +4,8 @@ fr:
   menu_language: Langues
   menu_english: Anglais
   menu_french: Français
+  menu_requests: Vous avez des demandes en attente
+  menu_requests_all: Voir toutes les demandes
   menu_home: Accueil
   menu_game: Jouer
   menu_game_singleplayer: Solo
@@ -125,6 +127,7 @@ fr:
   multiplayer_challenge_receiver: Destinataire
   multiplayer_challenge_locale: Langue
   multiplayer_challenge_status: Statut
+  multiplayer_challenge_date: Date
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

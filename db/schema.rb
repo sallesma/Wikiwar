@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150412095736) do
+ActiveRecord::Schema.define(:version => 20150412104119) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20150412095736) do
   end
 
   add_index "articles", ["single_player_game_id"], :name => "index_articles_on_single_player_game_id"
+
+  create_table "challenges", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "locale"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "challenges", ["receiver_id"], :name => "index_challenges_on_receiver_id"
+  add_index "challenges", ["sender_id"], :name => "index_challenges_on_sender_id"
 
   create_table "single_player_games", :force => true do |t|
     t.string   "from"

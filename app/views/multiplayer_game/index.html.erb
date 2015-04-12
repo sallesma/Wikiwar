@@ -10,6 +10,22 @@
     <p>
         <%=t :multiplayer_requests_received %>
     </p>
+    <table class="table table-hover">
+    <tr>
+      <th><%=t :multiplayer_challenge_sender %></th>
+      <th><%=t :multiplayer_challenge_receiver %></th>
+      <th><%=t :multiplayer_challenge_locale %></th>
+      <th><%=t :multiplayer_challenge_status %></th>
+    </tr>
+    <% current_user.challenges_received.first(10).each do |challenge| %>
+      <tr>
+        <td><%= challenge.sender.pseudo %></td>
+        <td><%= challenge.receiver.pseudo %></td>
+        <td><%= challenge.locale %></td>
+        <td><%= challenge.status %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <div class="section">
@@ -17,6 +33,22 @@
     <p>
         <%=t :multiplayer_requests_sent %>
     </p>
+    <table class="table table-hover">
+    <tr>
+      <th><%=t :multiplayer_challenge_sender %></th>
+      <th><%=t :multiplayer_challenge_receiver %></th>
+      <th><%=t :multiplayer_challenge_locale %></th>
+      <th><%=t :multiplayer_challenge_status %></th>
+    </tr>
+    <% current_user.challenges_sent.first(10).each do |challenge| %>
+      <tr>
+        <td><%= challenge.sender.pseudo %></td>
+        <td><%= challenge.receiver.pseudo %></td>
+        <td><%= challenge.locale %></td>
+        <td><%= challenge.status %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <div class="section">
@@ -51,7 +83,7 @@
               <td><%= user.singleplayer_games_nb %></td>
               <td><%= user.singleplayer_victories_nb %></td>
               <td><%= format("%.2f",user.victories_rate) %></td>
-              <td><a class="btn btn-default">Défier</a></td>
+              <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
             </tr>
           <% end %>
       </table>
@@ -79,7 +111,7 @@
             <td><%= user.singleplayer_games_nb %></td>
             <td><%= user.singleplayer_victories_nb %></td>
             <td><%= format("%.2f",user.victories_rate) %></td>
-            <td><a class="btn btn-default">Défier</a></td>
+              <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
           </tr>
         <% end %>
     </table>

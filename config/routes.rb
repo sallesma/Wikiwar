@@ -23,6 +23,7 @@ Wikiwar::Application.routes.draw do
   post "singleplayergame" => "singleplayer_game#game_next", :as => "singleplayergame"
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
+  get "challenge" => "multiplayer_game#challenge", :as => "challenge"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

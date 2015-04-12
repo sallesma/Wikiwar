@@ -118,6 +118,13 @@ fr:
   multiplayer_find_submit: "Chercher"
   multiplayer_found_title: "Joueur trouvés"
   multiplayer_suggested_title: Adversaires suggérés
+  multiplayer_challenge: Défier
+  multiplayer_challenge_success: Défi envoyé avec succès
+  multiplayer_challenge_already: Vous avez déjà un défi en cours avec ce joueur
+  multiplayer_challenge_sender: Challenger
+  multiplayer_challenge_receiver: Destinataire
+  multiplayer_challenge_locale: Langue
+  multiplayer_challenge_status: Statut
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

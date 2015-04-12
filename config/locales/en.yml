@@ -118,6 +118,13 @@ en:
   multiplayer_find_submit: "Find"
   multiplayer_found_title: "Players found"
   multiplayer_suggested_title: Suggested players
+  multiplayer_challenge: Challenge
+  multiplayer_challenge_success: Challenge successfully sent
+  multiplayer_challenge_already: You have already challenged this player
+  multiplayer_challenge_sender: Sender
+  multiplayer_challenge_receiver: Receiver
+  multiplayer_challenge_locale: Language
+  multiplayer_challenge_status: Status
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

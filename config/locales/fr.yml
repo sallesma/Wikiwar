@@ -109,6 +109,8 @@ fr:
   multiplayer_requests_sent: Les demandes que vous avez envoyées et qui attendent une réponse
   multiplayer_find_title: Trouver un joueur
   multiplayer_find: Trouver des joueurs avec lesquels jouer
+  multiplayer_find_pseudo: "Pseudo: "
+  multiplayer_suggested_title: Adversaires suggérés
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

@@ -10,8 +10,12 @@ class MultiplayerGameController < GameController
 
   def challenge
     receiver = User.find_by_id(params[:id])
-    challenge = Challenge.create(sender: current_user, receiver: receiver, locale: I18n.locale.to_s, status: "pending")
-    flash[:notice] = t(:multiplayer_challenge_success)
+    if current_user.challenges_sent.find{|challenge| challenge.receiver.id == receiver.id and challenge.status == "pending"}.nil?
+        challenge = Challenge.create(sender: current_user, receiver: receiver, locale: I18n.locale.to_s, status: "pending")
+        flash[:notice] = t(:multiplayer_challenge_success)
+    else
+        flash[:error] = t(:multiplayer_challenge_already)
+    end
     redirect_to :action => "index"
   end
 end

@@ -115,6 +115,8 @@ en:
   multiplayer_find_title: Find a player
   multiplayer_find: Find players to play with
   multiplayer_find_pseudo: "Pseudo: "
+  multiplayer_find_submit: "Find"
+  multiplayer_found_title: "Players found"
   multiplayer_suggested_title: Suggested players
 
   form_invalid: Form is invalid

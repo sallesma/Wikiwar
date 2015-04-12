@@ -115,6 +115,8 @@ fr:
   multiplayer_find_title: Trouver un joueur
   multiplayer_find: Trouver des joueurs avec lesquels jouer
   multiplayer_find_pseudo: "Pseudo: "
+  multiplayer_find_submit: "Chercher"
+  multiplayer_found_title: "Joueur trouvés"
   multiplayer_suggested_title: Adversaires suggérés
 
   form_invalid: Le formulaire est invalide

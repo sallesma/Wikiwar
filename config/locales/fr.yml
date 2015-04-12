@@ -91,9 +91,10 @@ fr:
   singleplayer_rules: Vous allez recevoir un article Wikipédia de départ et un article de destination. Tout ce que vous avez à faire est de parcourir Wikipedia d'article en article jusqu'à atteindre la destination.
   singleplayer_advise: Essayez d'atteindre la destination le plus rapidement possible !
   singleplayer_start: Nouvelle partie
-  singleplayer_from: "Début:"
-  singleplayer_to: "Fin:"
-  singleplayer_started_at: "Début à:"
+  singleplayer_from: "Début : "
+  singleplayer_to: "Fin : "
+  singleplayer_started_at: "Début à : "
+  singleplayer_timer: "Temps : "
   singleplayer_game: Jeu
   singleplayer_details: Détails
   singleplayer_steps: "Étapes:"

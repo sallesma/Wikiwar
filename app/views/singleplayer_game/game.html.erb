@@ -17,6 +17,11 @@
     <strong><%=t :singleplayer_started_at %></strong>
     <%= @game.created_at %>
   </p>
+  <p>
+    <strong><%=t :singleplayer_timer %></strong>
+    <span id="timer-int" class="hidden"><%= @game.created_at.to_time.to_i %></span>
+    <span id="timer">-</span> <%=t :statistics_sec %>
+  </p>
 </div>
 
 <h3><%=t :singleplayer_game %></h3>

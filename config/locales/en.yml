@@ -93,7 +93,8 @@ en:
   singleplayer_start: Start new game
   singleplayer_from: "From:"
   singleplayer_to: "To:"
-  singleplayer_started_at: "Started at:"
+  singleplayer_started_at: "Started at: "
+  singleplayer_timer: "Time: "
   singleplayer_game: Game
   singleplayer_details: Details
   singleplayer_steps: "Steps:"

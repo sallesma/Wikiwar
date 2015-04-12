@@ -39,14 +39,12 @@ class GameController < ApplicationController
         end
     end
 
-    Password = "password"
-
     def encode_article(article)
-      article.encrypt(:symmetric, :password => Password)
+      article.encrypt(:symmetric, :password => session[:user_id].to_s)
     end
 
     def decode_article(article)
-      article.decrypt(:symmetric, :password => Password)
+      article.decrypt(:symmetric, :password => session[:user_id].to_s)
     end
 end
 

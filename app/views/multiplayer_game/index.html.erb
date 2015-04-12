@@ -52,67 +52,75 @@
 </div>
 
 <div class="section">
-    <h3><%= t :multiplayer_find_title %></h3>
-    <p>
-        <%=t :multiplayer_find %>
-    </p>
-    <%= form_tag(multiplayer_path, method: "get") do %>
-      <%= label_tag t :multiplayer_find_pseudo %>
-      <%= text_field_tag :find %>
-      <%= submit_tag t(:multiplayer_find_submit)%>
-    <% end %>
+  <h3><%= t :multiplayer_find_title %></h3>
+  <p>
+      <%=t :multiplayer_find %>
+  </p>
+  <%= form_tag(multiplayer_path, method: "get") do %>
+    <%= label_tag t :multiplayer_find_pseudo %>
+    <%= text_field_tag :find %>
+    <%= submit_tag t(:multiplayer_find_submit)%>
+  <% end %>
 
-    <% if @found_users %>
-      <h4><%= t :multiplayer_found_title %></h4>
-      <table class="table table-hover table-ranking">
-          <tr>
-            <th><%=t :ranking_pseudo %></th>
-            <th><%=t :ranking_singleplayer_total %></th>
-            <th><%=t :ranking_singleplayer_victories %></th>
-            <th><%=t :ranking_singleplayer_victories_rate %></th>
-            <th></th>
-          </tr>
-          <% @found_users.each do |user| %>
-            <tr>
-              <td>
-                <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-                <span class="pseudo ellipsis" title="<%= user.pseudo %>">
-                  <%= link_to user.pseudo, profile_path(id: user.id) %>
-                </span>
-              </td>
-              <td><%= user.singleplayer_games_nb %></td>
-              <td><%= user.singleplayer_victories_nb %></td>
-              <td><%= format("%.2f",user.victories_rate) %></td>
-              <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
-            </tr>
+  <% if @found_users %>
+    <h4><%= t :multiplayer_found_title %></h4>
+    <table class="table table-hover table-ranking">
+      <tr>
+        <th><%=t :ranking_pseudo %></th>
+        <th><%=t :ranking_singleplayer_total %></th>
+        <th><%=t :ranking_singleplayer_victories %></th>
+        <th><%=t :ranking_singleplayer_victories_rate %></th>
+        <th></th>
+      </tr>
+      <% @found_users.each do |user| %>
+        <tr>
+          <td>
+            <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+            <span class="pseudo ellipsis" title="<%= user.pseudo %>">
+              <%= link_to user.pseudo, profile_path(id: user.id) %>
+            </span>
+          </td>
+          <td><%= user.singleplayer_games_nb %></td>
+          <td><%= user.singleplayer_victories_nb %></td>
+          <td><%= format("%.2f",user.victories_rate) %></td>
+          <% if user.id != current_user.id %>
+            <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
+          <% else %>
+            <td></td>
           <% end %>
-      </table>
-    <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
 
 <div class="section">
-    <h4><%= t :multiplayer_suggested_title %></h4>
-    <table class="table table-hover table-ranking">
-        <tr>
-          <th><%=t :ranking_pseudo %></th>
-          <th><%=t :ranking_singleplayer_total %></th>
-          <th><%=t :ranking_singleplayer_victories %></th>
-          <th><%=t :ranking_singleplayer_victories_rate %></th>
-          <th></th>
-        </tr>
-        <% @suggested_users.each do |user| %>
-          <tr>
-            <td>
-              <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
-              <span class="pseudo ellipsis" title="<%= user.pseudo %>">
-                <%= link_to user.pseudo, profile_path(id: user.id) %>
-              </span>
-            </td>
-            <td><%= user.singleplayer_games_nb %></td>
-            <td><%= user.singleplayer_victories_nb %></td>
-            <td><%= format("%.2f",user.victories_rate) %></td>
-              <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
-          </tr>
+  <h4><%= t :multiplayer_suggested_title %></h4>
+  <table class="table table-hover table-ranking">
+    <tr>
+      <th><%=t :ranking_pseudo %></th>
+      <th><%=t :ranking_singleplayer_total %></th>
+      <th><%=t :ranking_singleplayer_victories %></th>
+      <th><%=t :ranking_singleplayer_victories_rate %></th>
+      <th></th>
+    </tr>
+    <% @suggested_users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+          <span class="pseudo ellipsis" title="<%= user.pseudo %>">
+            <%= link_to user.pseudo, profile_path(id: user.id) %>
+          </span>
+        </td>
+        <td><%= user.singleplayer_games_nb %></td>
+        <td><%= user.singleplayer_victories_nb %></td>
+        <td><%= format("%.2f",user.victories_rate) %></td>
+        <% if user.id != current_user.id %>
+          <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
+        <% else %>
+          <td></td>
         <% end %>
-    </table>
+      </tr>
+    <% end %>
+  </table>
 </div>

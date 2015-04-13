@@ -91,6 +91,9 @@ fr:
 
   profile_title: "Profil du joueur : "
   profile_user_not_found: Impossible de trouver le joueur
+  profile_general_title: Informations générales
+  profile_general_registered: "Enregistré depuis : "
+  profile_general_last: "Dernière connexion : "
 
   singleplayer_title: Jeu à un joueur
   singleplayer_about: Le jeu se déroule ici.

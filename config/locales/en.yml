@@ -91,6 +91,9 @@ en:
 
   profile_title: "Player Profile: "
   profile_user_not_found: Could not find user
+  profile_general_title: General Information
+  profile_general_registered: "Registered since: "
+  profile_general_last: "Last connection: "
 
   singleplayer_title: Single player game
   singleplayer_about: This is the single player game page.

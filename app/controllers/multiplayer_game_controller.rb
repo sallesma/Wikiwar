@@ -18,4 +18,51 @@ class MultiplayerGameController < GameController
     end
     redirect_to :action => "index"
   end
+
+  def challenge_accept
+    challenge = current_user.challenges_received.find_by_id(params[:id])
+    if challenge.nil?
+      flash[:error] = t(:multiplayer_challenge_not_found)
+      redirect_to :action => "index"
+    else
+      if challenge.status != "pending"
+        flash[:error] = t(:multiplayer_challenge_not_pending)
+        redirect_to :action => "index"
+      else
+        challenge.status = "accepted"
+        if challenge.save
+          redirect_to :action => "index"
+        else
+          flash[:error] = t(:multiplayer_challenge_not_found)
+          redirect_to :action => "index"
+        end
+      end
+    end
+  end
+
+  def challenge_refuse
+    challenge = current_user.challenges_received.find_by_id(params[:id])
+    if challenge.nil?
+      flash[:error] = t(:multiplayer_challenge_not_found)
+      redirect_to :action => "index"
+    else
+      if challenge.status != "pending"
+        flash[:error] = t(:multiplayer_challenge_not_pending)
+        redirect_to :action => "index"
+      else
+        challenge.status = "refused"
+        if challenge.save
+          redirect_to :action => "index"
+        else
+          flash[:error] = t(:multiplayer_challenge_not_found)
+          redirect_to :action => "index"
+        end
+      end
+    end
+  end
+
+  def challenge_play
+      flash[:error] = t(:coming_soon)
+      redirect_to :action => "index"
+  end
 end

@@ -22,6 +22,25 @@ class User < ActiveRecord::Base
     self.single_player_games.sort_by { |h| h[:created_at] }.reverse
   end
 
+  # ========= Account Challenges ==========
+
+  def challenges_received_pending
+    self.challenges_received.where("status = 'pending'").sort_by { |h| h[:updated_at] }.reverse
+  end
+
+  def challenges_received_pending_or_accepted
+    self.challenges_received.where("status = 'pending'").concat(challenges_accepted).sort_by { |h| h[:updated_at] }.reverse
+  end
+
+  def challenges_sent_pending_or_accepted
+    self.challenges_sent.where("status = 'pending' OR status = 'accepted'").sort_by { |h| h[:updated_at] }.reverse
+  end
+
+  def challenges_accepted
+    accepted = self.challenges_received.where("status = 'accepted'").concat(self.challenges_sent.where("status = 'accepted'"))
+    accepted.sort_by { |h| h[:updated_at] }.reverse
+  end
+
   # ========= Account Statistics ==========
 
   def singleplayer_victories_nb

@@ -6,6 +6,35 @@
 </div>
 
 <div class="section">
+    <h3><%= t :multiplayer_requests_accepted_title %></h3>
+    <p>
+        <%=t :multiplayer_requests_accepted %>
+    </p>
+    <table class="table table-hover">
+    <tr>
+      <th><%=t :multiplayer_challenge_sender %></th>
+      <th><%=t :multiplayer_challenge_receiver %></th>
+      <th><%=t :multiplayer_challenge_locale %></th>
+      <th><%=t :multiplayer_challenge_status %></th>
+      <th><%=t :multiplayer_challenge_date %></th>
+      <th></th>
+    </tr>
+    <% current_user.challenges_accepted.first(10).each do |challenge| %>
+      <tr>
+        <td><%= challenge.sender.pseudo %></td>
+        <td><%= challenge.receiver.pseudo %></td>
+        <td><%= challenge.locale %></td>
+        <td><%= challenge.status %></td>
+        <td><%= challenge.created_at.to_s(:long_date) %></td>
+          <td>
+            <%= link_to t(:multiplayer_challenge_play), challenge_play_path(id: challenge.id), class: "btn btn-success" %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="section">
     <h3><%= t :multiplayer_requests_received_title %></h3>
     <p>
         <%=t :multiplayer_requests_received %>
@@ -17,14 +46,19 @@
       <th><%=t :multiplayer_challenge_locale %></th>
       <th><%=t :multiplayer_challenge_status %></th>
       <th><%=t :multiplayer_challenge_date %></th>
+      <th></th>
     </tr>
-    <% current_user.challenges_received.first(10).each do |challenge| %>
+    <% current_user.challenges_received_pending.first(10).each do |challenge| %>
       <tr>
         <td><%= challenge.sender.pseudo %></td>
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
         <td><%= challenge.status %></td>
         <td><%= challenge.created_at.to_s(:long_date) %></td>
+        <td>
+          <%= link_to t(:multiplayer_challenge_accept), challenge_accept_path(id: challenge.id), class: "btn btn-success" %>
+          <%= link_to t(:multiplayer_challenge_refuse), challenge_refuse_path(id: challenge.id), class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </table>
@@ -43,7 +77,7 @@
       <th><%=t :multiplayer_challenge_status %></th>
       <th><%=t :multiplayer_challenge_date %></th>
     </tr>
-    <% current_user.challenges_sent.first(10).each do |challenge| %>
+    <% current_user.challenges_sent_pending_or_accepted.first(10).each do |challenge| %>
       <tr>
         <td><%= challenge.sender.pseudo %></td>
         <td><%= challenge.receiver.pseudo %></td>

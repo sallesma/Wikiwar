@@ -24,6 +24,9 @@ Wikiwar::Application.routes.draw do
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
   get "challenge" => "multiplayer_game#challenge", :as => "challenge"
+  get "challenge_accept" => "multiplayer_game#challenge_accept", :as => "challenge_accept"
+  get "challenge_refuse" => "multiplayer_game#challenge_refuse", :as => "challenge_refuse"
+  get "challenge_play" => "multiplayer_game#challenge_play", :as => "challenge_play"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

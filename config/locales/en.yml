@@ -113,6 +113,8 @@ en:
 
   multiplayer_title: Multiplayer game
   multiplayer_about: This is the multiplayer game page.
+  multiplayer_requests_accepted_title: Playable challenges
+  multiplayer_requests_accepted: Challenges waiting for you to play
   multiplayer_requests_received_title: New requests
   multiplayer_requests_received: The requests that have been sent to you
   multiplayer_requests_sent_title: Sent requests
@@ -124,8 +126,13 @@ en:
   multiplayer_found_title: "Players found"
   multiplayer_suggested_title: Suggested players
   multiplayer_challenge: Challenge
+  multiplayer_challenge_accept: Accept
+  multiplayer_challenge_refuse: Decline
+  multiplayer_challenge_play: Play
   multiplayer_challenge_success: Challenge successfully sent
   multiplayer_challenge_already: You have already challenged this player
+  multiplayer_challenge_not_found: An error occured while accessing this challenge request
+  multiplayer_challenge_not_pending: This challenge resquest was not pending
   multiplayer_challenge_sender: Sender
   multiplayer_challenge_receiver: Receiver
   multiplayer_challenge_locale: Language

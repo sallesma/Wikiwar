@@ -113,6 +113,8 @@ fr:
 
   multiplayer_title: Jeu multijoueur
   multiplayer_about: Le jeu multijoueur se déroule ici.
+  multiplayer_requests_accepted_title: Défis à jouer
+  multiplayer_requests_accepted: Les défis qui n'attendent plus que vous pour jouer
   multiplayer_requests_received_title: Nouvelles demandes
   multiplayer_requests_received: Les demandes que vous avez reçues
   multiplayer_requests_sent_title: Demandes envoyées
@@ -124,8 +126,13 @@ fr:
   multiplayer_found_title: "Joueur trouvés"
   multiplayer_suggested_title: Adversaires suggérés
   multiplayer_challenge: Défier
+  multiplayer_challenge_accept: Accepter
+  multiplayer_challenge_refuse: Refuser
+  multiplayer_challenge_play: Jouer
   multiplayer_challenge_success: Défi envoyé avec succès
   multiplayer_challenge_already: Vous avez déjà un défi en cours avec ce joueur
+  multiplayer_challenge_not_found: Une erreur est survenue en accédant à cette demande
+  multiplayer_challenge_not_pending: Cette demande n'était pas en attente
   multiplayer_challenge_sender: Challenger
   multiplayer_challenge_receiver: Destinataire
   multiplayer_challenge_locale: Langue

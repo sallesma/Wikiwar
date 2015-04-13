@@ -5,8 +5,10 @@ class MultiplayerGameController < GameController
     if params.has_key?("find") and not params[:find].empty?
       @found_users = User.where("pseudo LIKE ?", "%#{params[:find]}%").first(10)
     end
-    @suggested_users = User.all.first(10)
+    @suggested_users = get_suggested_users
   end
+
+  # ========= Challenges ==========
 
   def challenge
     receiver = User.find_by_id(params[:id])
@@ -66,3 +68,9 @@ class MultiplayerGameController < GameController
       redirect_to :action => "index"
   end
 end
+
+  # ========= Private methods ==========
+  
+  def get_suggested_users
+    User.all.sort_by{|u| u.singleplayer_games_nb * u.victories_rate}.reverse.first(10)
+  end

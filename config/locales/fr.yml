@@ -110,6 +110,7 @@ fr:
   singleplayer_history: "Historique:"
   singleplayer_victory: Victoire !
   singleplayer_error: Une erreur est survenue pendant la création de la partie
+  singleplayer_game_resume: Reprendre
 
   multiplayer_title: Jeu multijoueur
   multiplayer_about: Le jeu multijoueur se déroule ici.

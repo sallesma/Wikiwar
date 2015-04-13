@@ -21,6 +21,7 @@ Wikiwar::Application.routes.draw do
   get "singleplayer" => "singleplayer_game#index", :as => "singleplayer"
   get "singleplayergame" => "singleplayer_game#game", :as => "singleplayergame"
   post "singleplayergame" => "singleplayer_game#game_next", :as => "singleplayergame"
+  get "singleplayergame_resume" => "singleplayer_game#game_resume", :as => "singleplayergame_resume"
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
   get "challenge" => "multiplayer_game#challenge", :as => "challenge"

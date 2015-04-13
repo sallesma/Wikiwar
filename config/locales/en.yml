@@ -110,6 +110,7 @@ en:
   singleplayer_history: "History:"
   singleplayer_victory: Victory !
   singleplayer_error: An error occured creating the game
+  singleplayer_game_resume: Resume
 
   multiplayer_title: Multiplayer game
   multiplayer_about: This is the multiplayer game page.

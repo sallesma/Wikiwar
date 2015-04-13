@@ -16,9 +16,25 @@ class SingleplayerGameController < GameController
         @game.save
         render "game"
       else
-        flash.now.error = t(:singleplayer_error)
+        flash[:error] = t(:singleplayer_error)
         render "index"
       end
+    end
+
+    def game_resume
+      if params.has_key?("game_id")
+        @game = SinglePlayerGame.find(params["game_id"])
+        if not @game.is_victory
+          article = @game.articles.last.title
+          @wikipedia = get_wikipedia_article(article, @game.id)
+          @game.from_desc = get_small_description(@game.from)
+          @game.to_desc = get_small_description(@game.to)
+          @game.save
+          return render "game"
+        end
+      end
+        flash[:error] = t(:singleplayer_error)
+        render "index"
     end
 
     def game_next
@@ -30,7 +46,7 @@ class SingleplayerGameController < GameController
         if(is_victory(@game.to, article))
           @game.is_victory = true
           @game.duration = (Time.now - @game.created_at.to_time).round
-          flash.now.notice = t(:singleplayer_victory)
+          flash[:notice] = t(:singleplayer_victory)
         end
         @wikipedia = get_wikipedia_article(article, @game.id)
         @game.from_desc = get_small_description(@game.from)

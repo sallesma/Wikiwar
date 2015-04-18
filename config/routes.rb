@@ -24,6 +24,7 @@ Wikiwar::Application.routes.draw do
   get "singleplayergame_resume" => "singleplayer_game#game_resume", :as => "singleplayergame_resume"
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
+  post "multiplayergame" => "multiplayer_game#game_next", :as => "multiplayergame"
   get "challenge" => "multiplayer_game#challenge", :as => "challenge"
   get "challenge_accept" => "multiplayer_game#challenge_accept", :as => "challenge_accept"
   get "challenge_refuse" => "multiplayer_game#challenge_refuse", :as => "challenge_refuse"

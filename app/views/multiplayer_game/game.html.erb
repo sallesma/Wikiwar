@@ -1,0 +1,49 @@
+<div class="page-title">
+  <h1><%=t :multiplayer_title %></h1>
+</div>
+
+<div class="section">
+  <p>
+    <strong><%= t :singleplayer_from %></strong>
+    <%= @game.from %>
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @game.from_desc %>"></i>
+  </p>
+  <p>
+    <strong><%= t :singleplayer_to %></strong>
+    <%= @game.to %>
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @game.to_desc %>"></i>
+  </p>
+  <p>
+    <strong><%=t :singleplayer_started_at %></strong>
+    <%= @game.created_at.to_s(:long_date) %>
+  </p>
+  <p>
+    <strong><%=t :singleplayer_timer %></strong>
+    <span id="timer-int" class="hidden"><%= @game.created_at.to_time.to_i %></span>
+    <span id="timer">-</span> <%=t :statistics_sec %>
+  </p>
+</div>
+
+<h3><%=t :singleplayer_game %></h3>
+<div id="wikipedia-area" class="col-md-10 with-sidebar border-radius">
+  <%= @wikipedia.html_safe %>
+</div>
+
+<div id="game-details" class="col-md-2">
+    <h3><%=t :singleplayer_details %></h3>
+    <p>
+        <strong><%=t :singleplayer_steps %></strong>
+        <span id="steps"><%= @game.steps %></span>
+    </p>
+    <strong><%=t :singleplayer_history %></strong>
+    <ul id="game-history">
+        <% @game.articles.each do |article| %>
+          <li><%= article.title %></li>
+        <% end %>
+    </ul>
+</div>
+
+<%= form_tag(multiplayergame_path, method: "post", id: "poster") do %>
+  <input type="hidden" name="game_id"/>
+  <input type="hidden" name="article"/>
+<% end %>

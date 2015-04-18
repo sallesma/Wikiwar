@@ -11,40 +11,53 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150412104119) do
+ActiveRecord::Schema.define(:version => 20150418181019) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.integer  "position"
-    t.integer  "single_player_game_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "game_id"
+    t.string   "game_type"
   end
-
-  add_index "articles", ["single_player_game_id"], :name => "index_articles_on_single_player_game_id"
 
   create_table "challenges", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.string   "locale"
     t.string   "status"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "sender_game_id"
+    t.integer  "receiver_game_id"
   end
 
+  add_index "challenges", ["receiver_game_id"], :name => "index_challenges_on_receiver_game_id"
   add_index "challenges", ["receiver_id"], :name => "index_challenges_on_receiver_id"
+  add_index "challenges", ["sender_game_id"], :name => "index_challenges_on_sender_game_id"
   add_index "challenges", ["sender_id"], :name => "index_challenges_on_sender_id"
 
-  create_table "single_player_games", :force => true do |t|
+  create_table "multi_player_games", :force => true do |t|
     t.string   "from"
     t.string   "to"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "is_victory"
+    t.string   "locale"
     t.datetime "duration"
     t.integer  "steps"
-    t.string   "locale"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "single_player_games", :force => true do |t|
+    t.string    "from"
+    t.string    "to"
+    t.integer   "user_id"
+    t.datetime  "created_at", :null => false
+    t.datetime  "updated_at", :null => false
+    t.boolean   "is_victory"
+    t.timestamp "duration"
+    t.integer   "steps"
+    t.string    "locale"
   end
 
   add_index "single_player_games", ["user_id"], :name => "index_single_player_games_on_user_id"

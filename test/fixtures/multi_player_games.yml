@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from: MyString
+  to: MyString
+  challenge: 
+  locale: MyString
+  duration: 2015-04-18 20:10:19
+  steps: 1
+
+two:
+  from: MyString
+  to: MyString
+  challenge: 
+  locale: MyString
+  duration: 2015-04-18 20:10:19
+  steps: 1

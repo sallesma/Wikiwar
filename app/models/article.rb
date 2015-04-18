@@ -1,4 +1,4 @@
 class Article < ActiveRecord::Base
-  belongs_to :single_player_game
+  belongs_to :game, polymorphic: true
   attr_accessible :position, :title
 end

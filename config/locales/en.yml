@@ -139,6 +139,9 @@ en:
   multiplayer_challenge_locale: Language
   multiplayer_challenge_status: Status
   multiplayer_challenge_date: Date
+  multiplayer_challenge_accepted: Accepted
+  multiplayer_challenge_playing: Playing
+  multiplayer_challenge_resume: Resume
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150418181019) do
+ActiveRecord::Schema.define(:version => 20150418190452) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(:version => 20150418181019) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.string   "locale"
-    t.string   "status"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "sender_game_id"
     t.integer  "receiver_game_id"
+    t.string   "sender_status"
+    t.string   "receiver_status"
   end
 
   add_index "challenges", ["receiver_game_id"], :name => "index_challenges_on_receiver_game_id"

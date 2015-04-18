@@ -24,11 +24,12 @@ Wikiwar::Application.routes.draw do
   get "singleplayergame_resume" => "singleplayer_game#game_resume", :as => "singleplayergame_resume"
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
-  post "multiplayergame" => "multiplayer_game#game_next", :as => "multiplayergame"
   get "challenge" => "multiplayer_game#challenge", :as => "challenge"
   get "challenge_accept" => "multiplayer_game#challenge_accept", :as => "challenge_accept"
   get "challenge_refuse" => "multiplayer_game#challenge_refuse", :as => "challenge_refuse"
   get "challenge_play" => "multiplayer_game#challenge_play", :as => "challenge_play"
+  post "challenge_play" => "multiplayer_game#game_next", :as => "challenge_play"
+  get "challenge_resume" => "multiplayer_game#challenge_resume", :as => "challenge_resume"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

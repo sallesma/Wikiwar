@@ -19,12 +19,24 @@
       <th><%=t :multiplayer_challenge_date %></th>
       <th></th>
     </tr>
+    <% current_user.challenges_playing.first(10).each do |challenge| %>
+      <tr>
+        <td><%= challenge.sender.pseudo %></td>
+        <td><%= challenge.receiver.pseudo %></td>
+        <td><%= challenge.locale %></td>
+        <td><%= t :multiplayer_challenge_playing %></td>
+        <td><%= challenge.created_at.to_s(:long_date) %></td>
+          <td>
+            <%= link_to t(:multiplayer_challenge_resume), challenge_resume_path(id: challenge.id), class: "btn btn-success" %>
+          </td>
+      </tr>
+    <% end %>
     <% current_user.challenges_accepted.first(10).each do |challenge| %>
       <tr>
         <td><%= challenge.sender.pseudo %></td>
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
-        <td><%= challenge.status %></td>
+        <td><%= t :multiplayer_challenge_accepted %></td>
         <td><%= challenge.created_at.to_s(:long_date) %></td>
           <td>
             <%= link_to t(:multiplayer_challenge_play), challenge_play_path(id: challenge.id), class: "btn btn-success" %>
@@ -53,7 +65,7 @@
         <td><%= challenge.sender.pseudo %></td>
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
-        <td><%= challenge.status %></td>
+        <td><%= challenge.receiver_status %></td>
         <td><%= challenge.created_at.to_s(:long_date) %></td>
         <td>
           <%= link_to t(:multiplayer_challenge_accept), challenge_accept_path(id: challenge.id), class: "btn btn-success" %>
@@ -82,7 +94,7 @@
         <td><%= challenge.sender.pseudo %></td>
         <td><%= challenge.receiver.pseudo %></td>
         <td><%= challenge.locale %></td>
-        <td><%= challenge.status %></td>
+        <td><%= challenge.sender_status %></td>
         <td><%= challenge.created_at.to_s(:long_date) %></td>
       </tr>
     <% end %>

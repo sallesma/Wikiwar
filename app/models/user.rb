@@ -25,20 +25,24 @@ class User < ActiveRecord::Base
   # ========= Account Challenges ==========
 
   def challenges_received_pending
-    self.challenges_received.where("status = 'pending'").sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_received.where("receiver_status = 'pending'").sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_received_pending_or_accepted
-    self.challenges_received.where("status = 'pending'").concat(challenges_accepted).sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_received.where("receiver_status = 'pending'").concat(challenges_accepted).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_sent_pending_or_accepted
-    self.challenges_sent.where("status = 'pending' OR status = 'accepted'").sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_sent.where("sender_status = 'pending' OR sender_status = 'accepted'").sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_accepted
-    accepted = self.challenges_received.where("status = 'accepted'").concat(self.challenges_sent.where("status = 'accepted'"))
+    accepted = self.challenges_received.where("receiver_status = 'accepted'").concat(self.challenges_sent.where("sender_status = 'accepted'"))
     accepted.sort_by { |h| h[:updated_at] }.reverse
+  end
+
+  def challenges_playing
+    accepted = self.challenges_received.where("receiver_status = 'playing'").concat(self.challenges_sent.where("sender_status = 'playing'"))
   end
 
   # ========= Account Statistics ==========

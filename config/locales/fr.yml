@@ -139,6 +139,9 @@ fr:
   multiplayer_challenge_locale: Langue
   multiplayer_challenge_status: Statut
   multiplayer_challenge_date: Date
+  multiplayer_challenge_accepted: Accepté
+  multiplayer_challenge_playing: Commencé 
+  multiplayer_challenge_resume: Reprendre
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

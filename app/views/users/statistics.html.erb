@@ -6,58 +6,25 @@
 </div>
 
 <div class="section">
-<h3><%=t :statistics_singleplayer_title %></h3>
-<p>
-  <strong><%=t :statistics_singleplayer_total %></strong>
-  <%= current_user.singleplayer_games_nb %>
-</p>
-<p>
-  <strong><%=t :statistics_singleplayer_victories %></strong>
-  <%= current_user.singleplayer_victories_nb %>
-</p>
-<p>
-  <strong><%=t :statistics_singleplayer_victories_rate %></strong>
-  <%= format("%.2f",current_user.victories_rate) %>
-</p>
-<p>
-  <strong><%=t :statistics_singleplayer_victories_duration %></strong>
-  <%= format("%.f",current_user.average_victory_duration) %> <%=t :statistics_sec %>
-</p>
+  <h3><%=t :statistics_singleplayer_title %></h3>
+  <p>
+    <strong><%=t :statistics_singleplayer_total %></strong>
+    <%= current_user.singleplayer_games_nb %>
+  </p>
+  <p>
+    <strong><%=t :statistics_singleplayer_victories %></strong>
+    <%= current_user.singleplayer_victories_nb %>
+  </p>
+  <p>
+    <strong><%=t :statistics_singleplayer_victories_rate %></strong>
+    <%= format("%.2f",current_user.singleplayer_victories_rate) %>
+  </p>
+  <p>
+    <strong><%=t :statistics_singleplayer_victories_duration %></strong>
+    <%= format("%.f",current_user.singleplayer_average_victory_duration) %> <%=t :statistics_sec %>
+  </p>
 
-<h4><%=t :statistics_singleplayer_last10 %></h4>
-<table class="table table-hover">
-  <tr>
-    <th><%=t :statistics_from %></th>
-    <th><%=t :statistics_to %></th>
-    <th><%=t :statistics_locale %></th>
-    <th><%=t :statistics_date %></th>
-    <th><%=t :statistics_victory %></th>
-    <th><%=t :statistics_duration %></th>
-    <th><%=t :statistics_steps %></th>
-    <th></th>
-  </tr>
-  <% current_user.singleplayer_games.first(10).each do |game| %>
-    <tr>
-      <td><%= link_to game.from, 'http://fr.wikipedia.org/wiki/'+game.from, target: "_blank" %></td>
-      <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
-      <td><%= game.locale %></td>
-      <td><%= game.created_at.to_s(:long_date) %></td>
-      <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
-      <td><%= game.duration %> <%=t :statistics_sec %></td>
-      <td><%= game.steps %></td>
-      <td>
-        <% if not game.is_victory %>
-        <%= link_to t(:singleplayer_game_resume), singleplayergame_resume_path(game_id: game.id), class: "btn btn-default" %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-</div>
-
-<div class="section">
-  <h3><%=t :statistics_multiplayer_title %></h3>
-  <h4><%=t :statistics_multiplayer_last10 %></h4>
+  <h4><%=t :statistics_singleplayer_last10 %></h4>
   <table class="table table-hover">
     <tr>
       <th><%=t :statistics_from %></th>
@@ -65,6 +32,54 @@
       <th><%=t :statistics_locale %></th>
       <th><%=t :statistics_date %></th>
       <th><%=t :statistics_victory %></th>
+      <th><%=t :statistics_duration %></th>
+      <th><%=t :statistics_steps %></th>
+      <th></th>
     </tr>
+    <% current_user.singleplayer_games_finished.first(10).each do |game| %>
+      <tr>
+        <td><%= link_to game.from, 'http://fr.wikipedia.org/wiki/'+game.from, target: "_blank" %></td>
+        <td><%= link_to game.to, 'http://fr.wikipedia.org/wiki/'+game.to, target: "_blank" %></td>
+        <td><%= game.locale %></td>
+        <td><%= game.created_at.to_s(:long_date) %></td>
+        <td class="victory-<%= game.is_victory %>"><%= game.is_victory %></td>
+        <td><%= game.duration %> <%=t :statistics_sec %></td>
+        <td><%= game.steps %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="section">
+  <h3><%=t :statistics_multiplayer_title %></h3>
+  <p>
+    <strong><%=t :statistics_singleplayer_total %></strong>
+    <%= current_user.challenges_finished.count %>
+  </p>
+  <p>
+    <strong><%=t :statistics_singleplayer_victories %></strong>
+    <%= current_user.challenges_won.count %>
+  </p>
+  <p>
+    <strong><%=t :statistics_singleplayer_victories_rate %></strong>
+    <%= format("%.2f",current_user.challenges_victory_rate) %>
+  </p>
+
+  <h4><%=t :statistics_multiplayer_last10 %></h4>
+  <table class="table table-hover">
+    <tr>
+      <th><%=t :multiplayer_challenge_sender %></th>
+      <th><%=t :multiplayer_challenge_receiver %></th>
+      <th><%=t :multiplayer_challenge_locale %></th>
+      <th><%=t :multiplayer_challenge_date %></th>
+    </tr>
+    <% current_user.challenges_finished.first(10).each do |challenge| %>
+      <tr>
+        <td><%= challenge.sender.pseudo %></td>
+        <td><%= challenge.receiver.pseudo %></td>
+        <td><%= challenge.locale %></td>
+        <td><%= challenge.created_at.to_s(:long_date) %></td>
+      </tr>
+    <% end %>
   </table>
 </div>

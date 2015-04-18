@@ -132,7 +132,7 @@
           </td>
           <td><%= user.singleplayer_games_nb %></td>
           <td><%= user.singleplayer_victories_nb %></td>
-          <td><%= format("%.2f",user.victories_rate) %></td>
+          <td><%= format("%.2f",user.singleplayer_victories_rate) %></td>
           <% if user.id != current_user.id %>
             <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
           <% else %>
@@ -164,7 +164,7 @@
         </td>
         <td><%= user.singleplayer_games_nb %></td>
         <td><%= user.singleplayer_victories_nb %></td>
-        <td><%= format("%.2f",user.victories_rate) %></td>
+        <td><%= format("%.2f",user.singleplayer_victories_rate) %></td>
         <% if user.id != current_user.id %>
           <td><%= link_to t(:multiplayer_challenge), challenge_path(id: user.id), class: "btn btn-default" %></td>
         <% else %>

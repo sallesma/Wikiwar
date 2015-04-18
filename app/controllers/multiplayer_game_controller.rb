@@ -110,11 +110,12 @@ class MultiplayerGameController < GameController
       @game.articles.create(title: URI.unescape(article), position: @game.steps)
       if(is_victory(@game.to, article))
         challenge = current_user.challenges_sent.find{|challenge| challenge.sender_game_id == params[:game_id].to_i}
-        challenge.sender_status = "finished"
-        challenge.save
         if challenge.nil?
           challenge = current_user.challenges_received.find{|challenge| challenge.receiver_game_id == params[:game_id].to_i}
           challenge.receiver_status = "finished"
+          challenge.save
+        else
+          challenge.sender_status = "finished"
           challenge.save
         end
         @game.duration = (Time.now - @game.created_at.to_time).round
@@ -153,7 +154,7 @@ class MultiplayerGameController < GameController
   # ========= Private methods ==========
   
   def get_suggested_users
-    User.all.sort_by{|u| u.singleplayer_games_nb * u.victories_rate}.reverse.first(10)
+    User.all.sort_by{|u| u.singleplayer_games_nb * u.singleplayer_victories_rate}.reverse.first(10)
   end
 
 end

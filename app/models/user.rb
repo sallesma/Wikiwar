@@ -18,8 +18,18 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
+  # ========= Account SinglePlayerGames ==========
+
   def singleplayer_games
     self.single_player_games.sort_by { |h| h[:created_at] }.reverse
+  end
+
+  def singleplayer_games_finished
+    self.single_player_games.where(is_victory: true).sort_by { |h| h[:created_at] }.reverse
+  end
+
+  def singleplayer_games_playing
+    self.single_player_games.where(is_victory: [false, nil]).sort_by { |h| h[:created_at] }.reverse
   end
 
   # ========= Account Challenges ==========
@@ -42,7 +52,26 @@ class User < ActiveRecord::Base
   end
 
   def challenges_playing
-    accepted = self.challenges_received.where("receiver_status = 'playing'").concat(self.challenges_sent.where("sender_status = 'playing'"))
+    self.challenges_received.where("receiver_status = 'playing'").concat(self.challenges_sent.where("sender_status = 'playing'"))
+  end
+
+  def challenges_finished
+    self.challenges_received.where("receiver_status = 'finished' AND sender_status = 'finished'").concat(self.challenges_sent.where("receiver_status = 'finished' AND sender_status = 'playing'"))
+  end
+
+  def challenges_won
+    finished = self.challenges_finished
+    finished.select{|challenge| challenge.winner == self}
+  end
+
+  def challenges_victory_rate
+    total = self.challenges_finished.count
+    victories = self.challenges_won.count
+    if total > 0
+      victories.to_f / total
+    else
+      -1
+    end
   end
 
   # ========= Account Statistics ==========
@@ -55,7 +84,7 @@ class User < ActiveRecord::Base
     self.single_player_games.count
   end
 
-  def average_victory_duration
+  def singleplayer_average_victory_duration
     total_durations = 0
     for game in self.single_player_games.where(is_victory: true)
       total_durations = total_durations + game.duration
@@ -68,7 +97,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def victories_rate
+  def singleplayer_victories_rate
     total = self.single_player_games.count
     victories = self.single_player_games.where(is_victory: true).count
     if total > 0

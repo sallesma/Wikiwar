@@ -30,6 +30,7 @@ Wikiwar::Application.routes.draw do
   get "challenge_play" => "multiplayer_game#challenge_play", :as => "challenge_play"
   post "challenge_play" => "multiplayer_game#game_next", :as => "challenge_play"
   get "challenge_resume" => "multiplayer_game#challenge_resume", :as => "challenge_resume"
+  get "challenge_withdraw" => "multiplayer_game#challenge_withdraw", :as => "challenge_withdraw"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

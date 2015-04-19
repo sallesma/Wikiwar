@@ -56,7 +56,8 @@ class User < ActiveRecord::Base
   end
 
   def challenges_finished
-    self.challenges_received.where("receiver_status = 'finished' AND sender_status = 'finished'").concat(self.challenges_sent.where("receiver_status = 'finished' AND sender_status = 'playing'"))
+    condition = "(receiver_status = 'finished' OR receiver_status = 'withdrawn' ) AND (sender_status = 'finished' OR sender_status = 'withdrawn')"
+    self.challenges_received.where(condition).concat(self.challenges_sent.where(condition))
   end
 
   def challenges_won

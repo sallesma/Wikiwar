@@ -139,7 +139,6 @@ class MultiplayerGameController < GameController
     end
   end
 
-
   def challenge_resume
     if params.has_key?(:id)
       challenge = current_user.challenges_playing.find{|challenge| challenge.id == params[:id].to_i}
@@ -158,6 +157,23 @@ class MultiplayerGameController < GameController
       end
     end
     flash[:error] = t(:multiplayer_challenge_not_found)
+    redirect_to :action => "index"
+  end
+
+  def challenge_withdraw
+    if params.has_key?(:id)
+      challenge = current_user.challenges_playing.concat(current_user.challenges_accepted).find{|challenge| challenge.id == params[:id].to_i}
+      if not challenge.nil?
+        if challenge.sender.id == current_user.id
+          challenge.sender_status = "withdrawn"
+        elsif challenge.receiver.id == current_user.id
+          challenge.receiver_status = "withdrawn"
+        end
+        challenge.save
+      else
+        flash[:error] = t(:multiplayer_challenge_not_found)
+      end
+    end
     redirect_to :action => "index"
   end
 

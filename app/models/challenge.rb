@@ -14,6 +14,10 @@ class Challenge < ActiveRecord::Base
         else
             self.sender
         end
+    elsif self.sender_status == 'finished' and self.receiver_status == 'withdrawn'
+      self.sender
+    elsif self.sender_status == 'withdrawn' and self.receiver_status == 'finished'
+      self.receiver
     else
         nil
     end

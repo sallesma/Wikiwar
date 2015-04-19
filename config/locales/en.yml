@@ -143,6 +143,7 @@ en:
   multiplayer_challenge_accepted: Accepted
   multiplayer_challenge_playing: Playing
   multiplayer_challenge_resume: Resume
+  multiplayer_challenge_withdraw: Withdraw
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

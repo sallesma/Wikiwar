@@ -1,7 +1,12 @@
 class GameController < ApplicationController
 
     def is_victory(destination, article)
-      destination.downcase.gsub(" ", "_") == article.downcase
+      begin
+        current = URI.unescape(article)
+      rescue
+        current = article
+      end
+      destination.downcase.gsub(" ", "_") == current.downcase
     end
 
     def get_wikipedia_random_article_title

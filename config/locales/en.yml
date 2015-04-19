@@ -140,6 +140,7 @@ en:
   multiplayer_challenge_locale: Language
   multiplayer_challenge_status: Status
   multiplayer_challenge_date: Date
+  multiplayer_challenge_winner: Winner
   multiplayer_challenge_accepted: Accepted
   multiplayer_challenge_playing: Playing
   multiplayer_challenge_resume: Resume

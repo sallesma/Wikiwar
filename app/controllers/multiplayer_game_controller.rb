@@ -72,8 +72,13 @@ class MultiplayerGameController < GameController
       redirect_to :action => "index"
     else
       if challenge.sender.id == current_user.id
-        from = get_wikipedia_random_article_title.gsub(" ", "_")
-        to = get_wikipedia_random_article_title.gsub(" ", "_")
+        if challenge.receiver_game.nil?
+          from = get_wikipedia_random_article_title.gsub(" ", "_")
+          to = get_wikipedia_random_article_title.gsub(" ", "_")
+        else
+          from = challenge.receiver_game.from
+          to = challenge.receiver_game.to
+        end
         @game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
         if @game.save
           challenge.sender_game = @game
@@ -81,8 +86,13 @@ class MultiplayerGameController < GameController
           challenge.save
         end
       elsif challenge.receiver.id == current_user.id
-        from = get_wikipedia_random_article_title.gsub(" ", "_")
-        to = get_wikipedia_random_article_title.gsub(" ", "_")
+        if challenge.sender_game.nil?
+          from = get_wikipedia_random_article_title.gsub(" ", "_")
+          to = get_wikipedia_random_article_title.gsub(" ", "_")
+        else
+          from = challenge.sender_game.from
+          to = challenge.sender_game.to
+        end
         @game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
         if @game.save
           challenge.receiver_game = @game

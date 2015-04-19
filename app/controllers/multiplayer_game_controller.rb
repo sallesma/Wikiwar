@@ -177,6 +177,23 @@ class MultiplayerGameController < GameController
     redirect_to :action => "index"
   end
 
+  def challenge_review
+    if params.has_key?("challenge_id")
+      @challenge = Challenge.find(params["challenge_id"])
+      if @challenge.sender_status == "finished"
+        @challenge.sender_game.from_desc = get_small_description(@challenge.sender_game.from)
+        @challenge.sender_game.to_desc = get_small_description(@challenge.sender_game.to)
+      end
+      if @challenge.receiver_status == "finished"
+        @challenge.receiver_game.from_desc = get_small_description(@challenge.receiver_game.from)
+        @challenge.receiver_game.to_desc = get_small_description(@challenge.receiver_game.to)
+      end
+      return render "review"  
+    end
+    flash[:error] = t(:singleplayer_review_error)
+    render "index"
+  end
+
   # ========= Private methods ==========
   
   def get_suggested_users

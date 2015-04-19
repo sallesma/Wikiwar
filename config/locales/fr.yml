@@ -77,6 +77,7 @@ fr:
   statistics_duration: Durée
   statistics_steps: Étapes
   statistics_sec: sec
+  statistics_review: Revoir
 
   ranking_title: Classement
   ranking_content: Jetez un coup d'oeil aux statistiques des autres joueurs
@@ -104,6 +105,7 @@ fr:
   singleplayer_to: "Fin : "
   singleplayer_started_at: "Début à : "
   singleplayer_timer: "Temps : "
+  singleplayer_duration: "Durée: "
   singleplayer_game: Jeu
   singleplayer_details: Détails
   singleplayer_steps: "Étapes:"
@@ -112,6 +114,8 @@ fr:
   singleplayer_error: Une erreur est survenue pendant la création de la partie
   singleplayer_game_resume: Reprendre
   singleplayer_current: Parties commencées
+  singleplayer_review_title: Partie terminée
+  singleplayer_review_error: Impossible de retrouver cette partie...
 
   multiplayer_title: Jeu multijoueur
   multiplayer_about: Le jeu multijoueur se déroule ici.
@@ -145,6 +149,8 @@ fr:
   multiplayer_challenge_playing: Commencé 
   multiplayer_challenge_resume: Reprendre
   multiplayer_challenge_withdraw: Abandonner
+  multiplayer_review_withdrawn: Ce joueur a abandonné la partie.
+  multiplayer_review_winner: Gagnant !
 
   form_invalid: Le formulaire est invalide
   coming_soon: Bientôt disponible...

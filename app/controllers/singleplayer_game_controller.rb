@@ -55,4 +55,17 @@ class SingleplayerGameController < GameController
         render "game"
       end
     end
+
+    def game_review
+      if params.has_key?("game_id")
+        @game = SinglePlayerGame.find(params["game_id"])
+        if @game.is_victory
+          @game.from_desc = get_small_description(@game.from)
+          @game.to_desc = get_small_description(@game.to)
+          return render "review"
+        end
+      end
+      flash[:error] = t(:singleplayer_review_error)
+      render "index"
+    end
 end

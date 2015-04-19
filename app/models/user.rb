@@ -47,22 +47,20 @@ class User < ActiveRecord::Base
   end
 
   def challenges_accepted
-    accepted = self.challenges_received.where("receiver_status = 'accepted'").concat(self.challenges_sent.where("sender_status = 'accepted'"))
-    accepted.sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_received.where("receiver_status = 'accepted'").concat(self.challenges_sent.where("sender_status = 'accepted'")).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_playing
-    self.challenges_received.where("receiver_status = 'playing'").concat(self.challenges_sent.where("sender_status = 'playing'"))
+    self.challenges_received.where("receiver_status = 'playing'").concat(self.challenges_sent.where("sender_status = 'playing'")).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_finished
     condition = "(receiver_status = 'finished' OR receiver_status = 'withdrawn' ) AND (sender_status = 'finished' OR sender_status = 'withdrawn')"
-    self.challenges_received.where(condition).concat(self.challenges_sent.where(condition))
+    self.challenges_received.where(condition).concat(self.challenges_sent.where(condition)).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_won
-    finished = self.challenges_finished
-    finished.select{|challenge| challenge.winner == self}
+    finished = self.challenges_finished.select{|challenge| challenge.winner == self}
   end
 
   def challenges_victory_rate

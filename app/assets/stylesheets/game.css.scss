@@ -19,3 +19,21 @@ td {
         color: #C73939;
     }
 }
+
+.review-player {
+    margin: 10px;
+    .gravatar {
+            margin-right: 14px;
+            max-width: 60px;
+    }
+    .pseudo {
+        max-width: 300px;
+        font-weight: 500;
+        font-size: 14px;
+        margin: 18px 0px 0px;
+    }
+}
+
+.withdraw {
+    padding: 10%;
+}

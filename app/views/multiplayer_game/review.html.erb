@@ -1,0 +1,119 @@
+<div class="page-title">
+  <h1><%=t :singleplayer_review_title %></h1>
+</div>
+
+<div id="sender-area" class="col-md-6 with-sidebar">
+  <div class="review-player">
+    <%= image_tag @challenge.sender.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+    <span class="pseudo ellipsis" title="<%= @challenge.sender.pseudo %>">
+      <%= link_to @challenge.sender.pseudo, profile_path(id: @challenge.sender.id) %>
+    </span>
+  </div>
+  <% if @challenge.sender_status == "finished" %>
+    <div class="section">
+      <% if not @challenge.winner.nil? and @challenge.winner == @challenge.sender %>
+        <div class="alert alert-success">
+            <i class="fa fa-trophy"></i>
+            <%= t :multiplayer_review_winner %>
+        </div>
+      <% end %>
+      <p>
+        <strong><%= t :singleplayer_from %></strong>
+        <%= @challenge.sender_game.from %>
+        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @challenge.sender_game.from_desc %>"></i>
+      </p>
+      <p>
+        <strong><%= t :singleplayer_to %></strong>
+        <%= @challenge.sender_game.to %>
+        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @challenge.sender_game.to_desc %>"></i>
+      </p>
+      <p>
+        <strong><%=t :singleplayer_started_at %></strong>
+        <%= @challenge.sender_game.created_at.to_s(:long_date) %>
+      </p>
+      <p>
+        <strong><%=t :singleplayer_duration %></strong>
+        <%= @challenge.sender_game.duration %> <%=t :statistics_sec %>
+      </p>
+    </div>
+
+    <div id="game-details" class="section">
+        <h3><%=t :singleplayer_details %></h3>
+        <p>
+            <strong><%=t :singleplayer_steps %></strong>
+            <span id="steps"><%= @challenge.sender_game.steps %></span>
+        </p>
+        <strong><%=t :singleplayer_history %></strong>
+        <ul id="game-history">
+            <% @challenge.sender_game.articles.each do |article| %>
+              <li><%= article.title %></li>
+            <% end %>
+        </ul>
+    </div>
+  <% else %>
+    <div class="withdraw">
+      <div class="alert alert-danger">
+          <i class="fa fa-thumbs-down"></i>
+          <%= t :multiplayer_review_withdrawn %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div id="receiver-area" class="col-md-6">
+  <div class="review-player">
+    <%= image_tag @challenge.receiver.gravatar_url(default: "identicon"), :class => "gravatar img-circle" %>
+    <span class="pseudo ellipsis" title="<%= @challenge.receiver.pseudo %>">
+      <%= link_to @challenge.receiver.pseudo, profile_path(id: @challenge.receiver.id) %>
+    </span>
+  </div>
+  <% if @challenge.receiver_status == "finished" %>
+    <div class="section">
+      <% if not @challenge.winner.nil? and @challenge.winner == @challenge.receiver %>
+        <div class="alert alert-success">
+            <i class="fa fa-trophy"></i>
+            <%= t :multiplayer_review_winner %>
+        </div>
+      <% end %>
+      <p>
+        <strong><%= t :singleplayer_from %></strong>
+        <%= @challenge.receiver_game.from %>
+        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @challenge.receiver_game.from_desc %>"></i>
+      </p>
+      <p>
+        <strong><%= t :singleplayer_to %></strong>
+        <%= @challenge.receiver_game.to %>
+        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="<%= strip_tags @challenge.receiver_game.to_desc %>"></i>
+      </p>
+      <p>
+        <strong><%=t :singleplayer_started_at %></strong>
+        <%= @challenge.receiver_game.created_at.to_s(:long_date) %>
+      </p>
+      <p>
+        <strong><%=t :singleplayer_duration %></strong>
+        <%= @challenge.receiver_game.duration %> <%=t :statistics_sec %>
+      </p>
+    </div>
+
+    <div id="game-details" class="section">
+        <h3><%=t :singleplayer_details %></h3>
+        <p>
+            <strong><%=t :singleplayer_steps %></strong>
+            <span id="steps"><%= @challenge.receiver_game.steps %></span>
+        </p>
+        <strong><%=t :singleplayer_history %></strong>
+        <ul id="game-history">
+            <% @challenge.receiver_game.articles.each do |article| %>
+              <li><%= article.title %></li>
+            <% end %>
+        </ul>
+    </div>
+  <% else %>
+    <div class="withdraw">
+      <div class="alert alert-danger">
+          <i class="fa fa-thumbs-down"></i>
+          <%= t :multiplayer_review_withdrawn %>
+      </div>
+    </div>
+  <% end %>
+</div>

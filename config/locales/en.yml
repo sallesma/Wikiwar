@@ -77,6 +77,7 @@ en:
   statistics_duration: Duration
   statistics_steps: Steps
   statistics_sec: sec
+  statistics_review: Review
 
   ranking_title: Ranking
   ranking_content: Have a look at the other players stats here.
@@ -104,6 +105,7 @@ en:
   singleplayer_to: "To:"
   singleplayer_started_at: "Started at: "
   singleplayer_timer: "Time: "
+  singleplayer_duration: "Duration: "
   singleplayer_game: Game
   singleplayer_details: Details
   singleplayer_steps: "Steps:"
@@ -112,6 +114,8 @@ en:
   singleplayer_error: An error occured creating the game
   singleplayer_game_resume: Resume
   singleplayer_current: Current games
+  singleplayer_review_title: Review game
+  singleplayer_review_error: Could not find finished game
 
   multiplayer_title: Multiplayer game
   multiplayer_about: This is the multiplayer game page.
@@ -145,6 +149,8 @@ en:
   multiplayer_challenge_playing: Playing
   multiplayer_challenge_resume: Resume
   multiplayer_challenge_withdraw: Withdraw
+  multiplayer_review_withdrawn: This player withdrew from the challenge
+  multiplayer_review_winner: Winner!
 
   form_invalid: Form is invalid
   coming_soon: Not available yet. Coming soon...

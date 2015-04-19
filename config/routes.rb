@@ -22,6 +22,7 @@ Wikiwar::Application.routes.draw do
   get "singleplayergame" => "singleplayer_game#game", :as => "singleplayergame"
   post "singleplayergame" => "singleplayer_game#game_next", :as => "singleplayergame"
   get "singleplayergame_resume" => "singleplayer_game#game_resume", :as => "singleplayergame_resume"
+  get "singleplayergame_review" => "singleplayer_game#game_review", :as => "singleplayergame_review"
   
   get "multiplayer" => "multiplayer_game#index", :as => "multiplayer"
   get "challenge" => "multiplayer_game#challenge", :as => "challenge"
@@ -31,6 +32,7 @@ Wikiwar::Application.routes.draw do
   post "challenge_play" => "multiplayer_game#game_next", :as => "challenge_play"
   get "challenge_resume" => "multiplayer_game#challenge_resume", :as => "challenge_resume"
   get "challenge_withdraw" => "multiplayer_game#challenge_withdraw", :as => "challenge_withdraw"
+  get "challenge_review" => "multiplayer_game#challenge_review", :as => "challenge_review"
 
   get "about" => "welcome#about", :as => "about"
   root :to => "welcome#index"

@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
     self.challenges_received.where("receiver_status = 'pending'").sort_by { |h| h[:updated_at] }.reverse
   end
 
-  def challenges_received_pending_or_accepted
-    self.challenges_received.where("receiver_status = 'pending'").concat(challenges_accepted).sort_by { |h| h[:updated_at] }.reverse
+  def challenges_notification
+    self.challenges_received_pending.concat(challenges_accepted).concat(challenges_playing).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_sent_pending_or_accepted

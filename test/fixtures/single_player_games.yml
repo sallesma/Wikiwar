@@ -1,1 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+won:
+    user: martin
+    from: Chocolat
+    to: Pistache
+    locale: fr
+    is_victory: true
+    steps: 4
+    duration: 120
+    created_at: 2015-04-20 14:39:32
+
+lost:
+    user: martin
+    from: Martin_Luther_King_Jr.
+    to: Mahatma_Gandhi
+    locale: en
+    is_victory: false
+    created_at: 2015-04-20 14:39:33

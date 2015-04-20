@@ -1,13 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: Article1
+won1:
+  title: Chocolat
   position: 1
-  game_id: 1
-  game_type: SinglePlayerGame
+  game: won(SinglePlayerGame)
 
-two:
-  title: Article2
+won2:
+  title: Noisette
   position: 2
-  game_id: 1
-  game_type: SinglePlayerGame
+  game: won(SinglePlayerGame)
+
+
+won3:
+  title: Fruit_sec
+  position: 3
+  game: won(SinglePlayerGame)
+
+
+won4:
+  title: Pistache
+  position: 4
+  game: won(SinglePlayerGame)
+
+lost1:
+  title: Martin_Luther_King_Jr.
+  position: 1
+  game: lost(SinglePlayerGame)

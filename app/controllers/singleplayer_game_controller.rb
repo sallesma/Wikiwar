@@ -1,4 +1,5 @@
-class SingleplayerGameController < GameController
+class SingleplayerGameController < ApplicationController
+    include GameHelper
     before_filter :authenticate_user
 
     def index
@@ -43,7 +44,7 @@ class SingleplayerGameController < GameController
         article = decode_article(params["article"]).gsub(" ", "_")
         @game.steps = @game.steps + 1
         @game.articles.create(title: URI.unescape(article), position: @game.steps)
-        if(is_victory(@game.to, article))
+        if(is_finished(@game.to, article))
           @game.is_victory = true
           @game.duration = (Time.now - @game.created_at.to_time).round
           flash[:notice] = t(:singleplayer_victory)

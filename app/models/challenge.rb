@@ -7,6 +7,9 @@ class Challenge < ActiveRecord::Base
 
   attr_accessible :locale, :sender_status, :receiver_status, :sender, :receiver, :sender_game, :receiver_game
 
+  validates_inclusion_of :sender_status, :in => %w( pending accepted refused playing finished withdrawn )
+  validates_inclusion_of :receiver_status, :in => %w( pending accepted refused playing finished withdrawn )
+
   def winner
     if self.sender_status == 'finished' and self.receiver_status == 'finished'
         if self.sender_game.duration > self.receiver_game.duration

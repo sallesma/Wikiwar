@@ -54,6 +54,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not save user with existing pseudo" do
+    martin = User.find_by_pseudo("Martin")
+    assert !martin.nil?
     user = User.new
     user.pseudo = "Martin"
     user.email = "test1@test.te"
@@ -63,11 +65,31 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not save user with existing email" do
+    martin = User.find_by_email("salles.martin@gmail.com")
+    assert !martin.nil?
     user = User.new
     user.pseudo = "testtest"
     user.email = "salles.martin@gmail.com"
     user.password = "test"
     user.password_confirmation = "test"
     assert !user.save, "Saved the user with existing email"
+  end
+
+  test "authenticate_by_pseudo" do
+    user = User.authenticate_by_pseudo(users(:martin).pseudo, "test")
+    assert !user.nil?
+    user = User.authenticate_by_pseudo(users(:martin).pseudo, "invalid")
+    assert user.nil?
+    user = User.authenticate_by_pseudo("invalid", "test")
+    assert user.nil?
+  end
+
+  test "authenticate_by_email" do
+    user = User.authenticate_by_email(users(:martin).email, "test")
+    assert !user.nil?
+    user = User.authenticate_by_email(users(:martin).email, "invalid")
+    assert user.nil?
+    user = User.authenticate_by_email("test@test.te", "test")
+    assert user.nil?
   end
 end

@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+martin:
   email: salles.martin@gmail.com
   pseudo: Martin
+  password_salt: $2a$10$p9xkDsZUPKvCMiItu3fuKu
+  password_hash: $2a$10$p9xkDsZUPKvCMiItu3fuKuGwlofv7cclEM3Jt9ibH9mcvg3M6AsEW
+  # password: test
 
-two:
+test:
   email: martin.salles@free.fr
   pseudo: Test
+  password_salt: $2a$10$lnN4qKaaXd3G33kLMpIbq.
+  password_hash: $2a$10$lnN4qKaaXd3G33kLMpIbq.htsvrFnjPDRSS.3jE1XF2kQeogA9Fd6
+  # password: test

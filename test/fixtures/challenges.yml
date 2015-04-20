@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  sender: 
-  receiver: 
-  locale: MyString
-  status: MyString
+  sender_id: 1
+  receiver_id: 2
+  locale: en
+  sender_status: pending
+  receiver_status: pending
 
 two:
-  sender: 
-  receiver: 
-  locale: MyString
-  status: MyString
+  sender_id: 2
+  receiver_id: 1
+  locale: en
+  sender_status: pending
+  receiver_status: pending

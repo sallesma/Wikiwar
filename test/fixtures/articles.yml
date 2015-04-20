@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
+  title: Article1
   position: 1
-  single_player_game: 
+  game_id: 1
+  game_type: SinglePlayerGame
 
 two:
-  title: MyString
-  position: 1
-  single_player_game: 
+  title: Article2
+  position: 2
+  game_id: 1
+  game_type: SinglePlayerGame

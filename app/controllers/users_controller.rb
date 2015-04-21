@@ -205,12 +205,6 @@ class UsersController < ApplicationController
   end
 
   def verify_new_password(passwords)
-    result = true
-
-    if passwords[:new_password].blank? || (passwords[:new_password] != passwords[:new_password_confirmation])
-      result = false
-    end
-
-    result
+    !passwords[:new_password].blank? and (passwords[:new_password] == passwords[:new_password_confirmation])
   end
 end

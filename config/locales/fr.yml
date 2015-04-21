@@ -20,7 +20,7 @@ fr:
   index_content: Page d'accueil.
 
   about_title: A propos de WikiWar
-  about_content_youtube: "L'idée derrière wikiwar vient d'une vidéo youtube :"
+  about_content_wikipedia: "L'idée derrière wikiwar existait déjà avant : "
   about_content_rails: Cette application web a été mise en place dans le but d'en apprendre un peu sur ruby on rails.
 
   not_signed_in: Vous devez être connecté pour voir cette page.

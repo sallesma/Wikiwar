@@ -20,7 +20,7 @@ en:
   index_content: This is the index page.
 
   about_title: About WikiWar
-  about_content_youtube: "The idea of wikiwar comes from these videos on youtube :"
+  about_content_wikipedia: "The idea behind this app already existed before: "
   about_content_rails: This web app was built only to learn a bit of ruby on rails.
 
   not_signed_in: You must be signed in to view that page.

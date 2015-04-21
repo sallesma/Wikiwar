@@ -1,2 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+martin_playing:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+
+martin_finished:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+    steps: 4
+    duration: 120
+
+bruno_playing:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+
+bruno_finished:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+    steps: 8
+    duration: 888

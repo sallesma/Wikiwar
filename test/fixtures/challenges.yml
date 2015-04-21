@@ -1,15 +1,65 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  sender_id: 1
-  receiver_id: 2
+pending_pending:
+  sender: martin
+  receiver: bruno
   locale: en
   sender_status: pending
   receiver_status: pending
 
-two:
-  sender_id: 2
-  receiver_id: 1
+pending_accepted:
+  sender: martin
+  receiver: bruno
   locale: en
   sender_status: pending
-  receiver_status: pending
+  receiver_status: accepted
+
+pending_refused:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: pending
+  receiver_status: refused
+
+playing_accepted:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: playing
+  receiver_status: accepted
+  sender_game: martin_playing
+
+playing_playing:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: playing
+  receiver_status: playing
+  sender_game: martin_playing
+  receiver_game: bruno_playing
+
+finished_playing:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: finished
+  receiver_status: playing
+  sender_game: martin_finished
+  receiver_game: bruno_playing
+
+finished_finished:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: finished
+  receiver_status: finished
+  sender_game: martin_finished
+  receiver_game: bruno_finished
+
+finished_withdrawn:
+  sender: martin
+  receiver: bruno
+  locale: en
+  sender_status: finished
+  receiver_status: withdrawn
+  sender_game: martin_finished

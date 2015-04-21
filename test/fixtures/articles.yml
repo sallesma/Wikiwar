@@ -10,12 +10,10 @@ won2:
   position: 2
   game: won(SinglePlayerGame)
 
-
 won3:
   title: Fruit_sec
   position: 3
   game: won(SinglePlayerGame)
-
 
 won4:
   title: Pistache

@@ -9,7 +9,7 @@ martin:
 
 bruno:
   email: martin.salles@free.fr
-  pseudo: Test
+  pseudo: Bruno
   password_salt: $2a$10$lnN4qKaaXd3G33kLMpIbq.
   password_hash: $2a$10$lnN4qKaaXd3G33kLMpIbq.htsvrFnjPDRSS.3jE1XF2kQeogA9Fd6
   # password: test

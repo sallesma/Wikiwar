@@ -30,4 +30,15 @@ class ChallengeTest < ActiveSupport::TestCase
     challenge = Challenge.new(sender: users(:martin), receiver: users(:bruno), sender_status: "pending", receiver_status: "invalid")
     assert !challenge.save
   end
+
+  test "winner" do
+    assert_nil challenges(:pending_pending).winner
+    assert_nil challenges(:pending_accepted).winner
+    assert_nil challenges(:pending_refused).winner
+    assert_nil challenges(:playing_accepted).winner
+    assert_nil challenges(:playing_playing).winner
+    assert_nil challenges(:finished_playing).winner
+    assert_equal challenges(:finished_finished).winner, users(:martin)
+    assert_equal challenges(:finished_withdrawn).winner, users(:martin)
+  end
 end

@@ -5,19 +5,19 @@ module GameHelper
       rescue
         current = article
       end
-      destination.downcase.gsub(" ", "_") == current.downcase
+      destination.downcase.gsub(" ", "_") == current.downcase.gsub(" ", "_")
     end
 
     def get_wikipedia_random_article_title
       require 'open-uri'
       doc = Nokogiri::HTML(open(t(:wikipedia_random_url)))
       title  = doc.at_css "#content h1#firstHeading"
-      title.content
+      title.content.gsub(" ", "_")
     end
 
     def get_wikipedia_article(article, game_id)
       require 'open-uri'
-      doc = Nokogiri::HTML(open('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article))
+      doc = Nokogiri::HTML(open(URI.escape('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article)))
       body  = doc.at_css "body #content"
       for link in body.css("a")
         url = link["href"]

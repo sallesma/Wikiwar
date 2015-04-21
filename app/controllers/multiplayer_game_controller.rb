@@ -74,8 +74,8 @@ class MultiplayerGameController < ApplicationController
     else
       if challenge.sender.id == current_user.id
         if challenge.receiver_game.nil?
-          from = get_wikipedia_random_article_title.gsub(" ", "_")
-          to = get_wikipedia_random_article_title.gsub(" ", "_")
+          from = get_wikipedia_random_article_title
+          to = get_wikipedia_random_article_title
         else
           from = challenge.receiver_game.from
           to = challenge.receiver_game.to
@@ -88,8 +88,8 @@ class MultiplayerGameController < ApplicationController
         end
       elsif challenge.receiver.id == current_user.id
         if challenge.sender_game.nil?
-          from = get_wikipedia_random_article_title.gsub(" ", "_")
-          to = get_wikipedia_random_article_title.gsub(" ", "_")
+          from = get_wikipedia_random_article_title
+          to = get_wikipedia_random_article_title
         else
           from = challenge.sender_game.from
           to = challenge.sender_game.to
@@ -116,9 +116,9 @@ class MultiplayerGameController < ApplicationController
   def game_next
     if(params.has_key?("game_id") and params.has_key?("article"))
       @game = MultiPlayerGame.find(params["game_id"])
-      article = decode_article(params["article"]).gsub(" ", "_")
+      article = decode_article(params["article"])
       @game.steps = @game.steps + 1
-      @game.articles.create(title: URI.unescape(article), position: @game.steps)
+      @game.articles.create(title: article, position: @game.steps)
       if(is_finished(@game.to, article))
         challenge = current_user.challenges_sent.find{|challenge| challenge.sender_game_id == params[:game_id].to_i}
         if challenge.nil?

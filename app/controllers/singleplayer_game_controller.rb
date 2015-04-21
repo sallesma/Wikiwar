@@ -6,8 +6,8 @@ class SingleplayerGameController < ApplicationController
     end
 
     def game
-      from = get_wikipedia_random_article_title.gsub(" ", "_")
-      to = get_wikipedia_random_article_title.gsub(" ", "_")
+      from = get_wikipedia_random_article_title
+      to = get_wikipedia_random_article_title
       @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
       if @game.save
         @game.articles.create(title: @game.from, position: @game.steps)
@@ -41,9 +41,9 @@ class SingleplayerGameController < ApplicationController
     def game_next
       if(params.has_key?("game_id") and params.has_key?("article"))
         @game = SinglePlayerGame.find(params["game_id"])
-        article = decode_article(params["article"]).gsub(" ", "_")
+        article = decode_article(params["article"])
         @game.steps = @game.steps + 1
-        @game.articles.create(title: URI.unescape(article), position: @game.steps)
+        @game.articles.create(title: article, position: @game.steps)
         if(is_finished(@game.to, article))
           @game.is_victory = true
           @game.duration = (Time.now - @game.created_at.to_time).round

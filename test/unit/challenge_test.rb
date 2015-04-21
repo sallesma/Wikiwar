@@ -33,7 +33,7 @@ class ChallengeTest < ActiveSupport::TestCase
 
   test "winner" do
     assert_nil challenges(:pending_pending).winner
-    assert_nil challenges(:pending_accepted).winner
+    assert_nil challenges(:accepted_accepted).winner
     assert_nil challenges(:pending_refused).winner
     assert_nil challenges(:playing_accepted).winner
     assert_nil challenges(:playing_playing).winner

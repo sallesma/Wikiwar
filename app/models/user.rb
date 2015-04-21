@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def challenges_sent_pending_or_accepted
-    self.challenges_sent.where("sender_status = 'pending' OR sender_status = 'accepted'").sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_sent.where("receiver_status = 'pending' OR (sender_status = 'accepted' AND receiver_status = 'accepted')").sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_accepted

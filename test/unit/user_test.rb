@@ -140,4 +140,91 @@ class UserTest < ActiveSupport::TestCase
     assert_equal users(:bruno).singleplayer_victories_rate, -1
   end
 
+  # ========= Account Challenges ==========
+
+  test "challenges_received_pending" do
+    challenges_bruno = users(:bruno).challenges_received_pending
+    assert_equal challenges_bruno.count, 1
+    assert_equal challenges_bruno[0], challenges(:pending_pending)
+
+    challenges_martin = users(:martin).challenges_received_pending
+    assert_equal challenges_martin.count, 0
+  end
+
+  test "challenges_notification" do
+    challenges_bruno = users(:bruno).challenges_notification
+    assert_equal challenges_bruno.count, 5
+    assert_equal challenges_bruno[0], challenges(:finished_playing)
+    assert_equal challenges_bruno[1], challenges(:playing_playing)
+    assert_equal challenges_bruno[2], challenges(:playing_accepted)
+    assert_equal challenges_bruno[3], challenges(:accepted_accepted)
+    assert_equal challenges_bruno[4], challenges(:pending_pending)
+
+    challenges_martin = users(:martin).challenges_notification
+    assert_equal challenges_martin.count, 3
+    assert_equal challenges_martin[0], challenges(:playing_playing)
+    assert_equal challenges_martin[1], challenges(:playing_accepted)
+    assert_equal challenges_martin[2], challenges(:accepted_accepted)
+  end
+
+  test "challenges_sent_pending_or_accepted" do
+    challenges_bruno = users(:bruno).challenges_sent_pending_or_accepted
+    assert_equal challenges_bruno.count, 0
+
+    challenges_martin = users(:martin).challenges_sent_pending_or_accepted
+    assert_equal challenges_martin.count, 2
+    assert_equal challenges_martin[0], challenges(:accepted_accepted)
+    assert_equal challenges_martin[1], challenges(:pending_pending)
+  end
+
+  test "challenges_accepted" do
+    challenges_bruno = users(:bruno).challenges_accepted
+    assert_equal challenges_bruno.count, 2
+    assert_equal challenges_bruno[0], challenges(:playing_accepted)
+    assert_equal challenges_bruno[1], challenges(:accepted_accepted)
+
+    challenges_martin = users(:martin).challenges_accepted
+    assert_equal challenges_martin.count, 1
+    assert_equal challenges_martin[0], challenges(:accepted_accepted)
+  end
+
+  test "challenges_playing" do
+    challenges_bruno = users(:bruno).challenges_playing
+    assert_equal challenges_bruno.count, 2
+    assert_equal challenges_bruno[0], challenges(:finished_playing)
+    assert_equal challenges_bruno[1], challenges(:playing_playing)
+
+    challenges_martin = users(:martin).challenges_playing
+    assert_equal challenges_martin.count, 2
+    assert_equal challenges_martin[0], challenges(:playing_playing)
+    assert_equal challenges_martin[1], challenges(:playing_accepted)
+  end
+
+  test "challenges_finished" do
+    challenges_bruno = users(:bruno).challenges_finished
+    assert_equal challenges_bruno.count, 2
+    assert_equal challenges_bruno[0], challenges(:finished_withdrawn)
+    assert_equal challenges_bruno[1], challenges(:finished_finished)
+
+    challenges_martin = users(:martin).challenges_finished
+    assert_equal challenges_martin.count, 2
+    assert_equal challenges_martin[0], challenges(:finished_withdrawn)
+    assert_equal challenges_martin[1], challenges(:finished_finished)
+  end
+
+  test "challenges_won" do
+    challenges_bruno = users(:bruno).challenges_won
+    assert_equal challenges_bruno.count, 0
+
+    challenges_martin = users(:martin).challenges_won
+    assert_equal challenges_martin.count, 2
+    assert_equal challenges_martin[0], challenges(:finished_withdrawn)
+    assert_equal challenges_martin[1], challenges(:finished_finished)
+  end
+
+  test "challenges_victory_rate" do
+    assert_equal users(:martin).challenges_victory_rate, 1
+    assert_equal users(:bruno).challenges_victory_rate, 0
+  end
+
 end

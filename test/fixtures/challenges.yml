@@ -6,13 +6,15 @@ pending_pending:
   locale: en
   sender_status: pending
   receiver_status: pending
+  updated_at: 2015-04-20 14:39:00
 
-pending_accepted:
+accepted_accepted:
   sender: martin
   receiver: bruno
   locale: en
-  sender_status: pending
+  sender_status: accepted
   receiver_status: accepted
+  updated_at: 2015-04-20 14:39:05
 
 pending_refused:
   sender: martin
@@ -20,6 +22,7 @@ pending_refused:
   locale: en
   sender_status: pending
   receiver_status: refused
+  updated_at: 2015-04-20 14:39:10
 
 playing_accepted:
   sender: martin
@@ -28,6 +31,7 @@ playing_accepted:
   sender_status: playing
   receiver_status: accepted
   sender_game: martin_playing
+  updated_at: 2015-04-20 14:39:15
 
 playing_playing:
   sender: martin
@@ -37,6 +41,7 @@ playing_playing:
   receiver_status: playing
   sender_game: martin_playing
   receiver_game: bruno_playing
+  updated_at: 2015-04-20 14:39:20
 
 finished_playing:
   sender: martin
@@ -46,6 +51,7 @@ finished_playing:
   receiver_status: playing
   sender_game: martin_finished
   receiver_game: bruno_playing
+  updated_at: 2015-04-20 14:39:25
 
 finished_finished:
   sender: martin
@@ -55,6 +61,7 @@ finished_finished:
   receiver_status: finished
   sender_game: martin_finished
   receiver_game: bruno_finished
+  updated_at: 2015-04-20 14:39:30
 
 finished_withdrawn:
   sender: martin
@@ -63,3 +70,4 @@ finished_withdrawn:
   sender_status: finished
   receiver_status: withdrawn
   sender_game: martin_finished
+  updated_at: 2015-04-20 14:39:35

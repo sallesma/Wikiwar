@@ -88,15 +88,6 @@ class UserTest < ActiveSupport::TestCase
     assert_nil user
   end
 
-  test "authenticate_by_email" do
-    user = User.authenticate_by_email(users(:martin).email, "test")
-    assert_not_nil user
-    user = User.authenticate_by_email(users(:martin).email, "invalid")
-    assert_nil user
-    user = User.authenticate_by_email("test@test.te", "test")
-    assert_nil user
-  end
-
   # ========= Account SinglePlayerGames ==========
 
   test "singleplayergames list" do

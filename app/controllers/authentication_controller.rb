@@ -114,22 +114,8 @@ class AuthenticationController < ApplicationController
 
 
   # ========= Private Functions ==========
-  
+
   private
-
-  # Verifies the user by checking their email and password or their username and password
-  def verify_user(username_or_email)
-    password = params[:user][:password]
-    if username_or_email.rindex('@')
-      email=username_or_email
-      user = User.authenticate_by_email(email, password)
-    else
-      username=username_or_email
-      user = User.authenticate_by_pseudo(username, password)
-    end
-
-    user
-  end
 
   def update_authentication_token(user, remember_me)
     if remember_me == 1

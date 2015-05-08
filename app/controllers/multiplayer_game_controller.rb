@@ -119,7 +119,7 @@ class MultiplayerGameController < ApplicationController
       article = decode_article(params["article"])
       @game.steps = @game.steps + 1
       @game.articles.create(title: article, position: @game.steps)
-      if(is_finished(@game.to, article))
+      if(is_finished(@game, article))
         challenge = current_user.challenges_sent.find{|challenge| challenge.sender_game_id == params[:game_id].to_i}
         if challenge.nil?
           challenge = current_user.challenges_received.find{|challenge| challenge.receiver_game_id == params[:game_id].to_i}

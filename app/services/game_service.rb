@@ -1,10 +1,11 @@
 module GameService
-    def is_finished(destination, article)
+    def is_finished(game, article)
+      return false if game.nil?
       begin
         current = URI.unescape(article)
       rescue
         current = article
       end
-      destination.downcase.gsub(" ", "_") == current.downcase.gsub(" ", "_")
+      game.to.downcase.gsub(" ", "_") == current.downcase.gsub(" ", "_")
     end
 end

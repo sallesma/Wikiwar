@@ -1,16 +1,16 @@
 Wikiwar::Application.routes.draw do
 
-  get "logout" => "users#logout", :as => "logout"
-  get "login" => "users#sign_in", :as => "login"
-  post "login" => "users#login", :as => "login"
-  get "signup" => "users#new", :as => "signup"
-  post "signup" => "users#create", :as => "signup"
+  get "logout" => "authentication#logout", :as => "logout"
+  get "login" => "authentication#sign_in", :as => "login"
+  post "login" => "authentication#login", :as => "login"
+  get "signup" => "authentication#new", :as => "signup"
+  post "signup" => "authentication#create", :as => "signup"
 
-  get "forgot_password" => "users#forgot_password"
-  put "forgot_password" => "users#send_password_reset_instructions"
+  get "forgot_password" => "authentication#forgot_password"
+  put "forgot_password" => "authentication#send_password_reset_instructions"
 
-  get "password_reset" => "users#password_reset"
-  put "password_reset" => "users#new_password"
+  get "password_reset" => "authentication#password_reset"
+  put "password_reset" => "authentication#new_password"
 
   get "update_account" => "users#edit", :as => "update_account"
   put "update_account" => "users#update", :as => "update_account"

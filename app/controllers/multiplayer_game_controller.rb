@@ -1,10 +1,11 @@
 class MultiplayerGameController < ApplicationController
-  include GameService, WikipediaService
+  include GameService, WikipediaService, ChallengeService
   before_filter :authenticate_user
 
   def index
     if params.has_key?("find") and not params[:find].empty?
-      @found_users = User.where("pseudo LIKE ?", "%#{params[:find]}%").first(10)
+
+      @found_users = get_found_users(params[:find])
     end
     @suggested_users = get_suggested_users
   end
@@ -13,7 +14,7 @@ class MultiplayerGameController < ApplicationController
 
   def challenge
     receiver = User.find_by_id(params[:id])
-    if current_user.challenges_sent.find{|challenge| challenge.receiver.id == receiver.id and challenge.sender_status == "pending"}.nil?
+    if !challenge_pending_exists?(current_user, receiver)
         challenge = Challenge.create(sender: current_user, receiver: receiver, locale: I18n.locale.to_s, sender_status: "pending", receiver_status: "pending", sender_game: nil, receiver_game: nil)
         flash[:notice] = t(:multiplayer_challenge_success)
     else
@@ -28,18 +29,16 @@ class MultiplayerGameController < ApplicationController
       flash[:error] = t(:multiplayer_challenge_not_found)
       redirect_to :action => "index"
     else
-      if challenge.sender_status != "pending"
-        flash[:error] = t(:multiplayer_challenge_not_pending)
-        redirect_to :action => "index"
-      else
-        challenge.sender_status = "accepted"
-        challenge.receiver_status = "accepted"
-        if challenge.save
+      if is_pending?(challenge)
+        if save_accepted(challenge)
           redirect_to :action => "index"
         else
           flash[:error] = t(:multiplayer_challenge_not_found)
           redirect_to :action => "index"
         end
+      else
+        flash[:error] = t(:multiplayer_challenge_not_pending)
+        redirect_to :action => "index"
       end
     end
   end
@@ -50,18 +49,16 @@ class MultiplayerGameController < ApplicationController
       flash[:error] = t(:multiplayer_challenge_not_found)
       redirect_to :action => "index"
     else
-      if challenge.sender_status != "pending"
-        flash[:error] = t(:multiplayer_challenge_not_pending)
-        redirect_to :action => "index"
-      else
-        challenge.sender_status = "refused"
-        challenge.receiver_status = "refused"
-        if challenge.save
+      if is_pending?(challenge)
+        if save_refused(challenge)
           redirect_to :action => "index"
         else
           flash[:error] = t(:multiplayer_challenge_not_found)
           redirect_to :action => "index"
         end
+      else
+        flash[:error] = t(:multiplayer_challenge_not_pending)
+        redirect_to :action => "index"
       end
     end
   end
@@ -72,7 +69,7 @@ class MultiplayerGameController < ApplicationController
       flash[:error] = t(:multiplayer_challenge_not_found)
       redirect_to :action => "index"
     else
-      if challenge.sender.id == current_user.id
+      if is_sender?(challenge, current_user)
         if challenge.receiver_game.nil?
           from = get_wikipedia_random_article_title
           to = get_wikipedia_random_article_title
@@ -86,7 +83,7 @@ class MultiplayerGameController < ApplicationController
           challenge.sender_status = "playing"
           challenge.save
         end
-      elsif challenge.receiver.id == current_user.id
+      elsif is_receiver?(challenge, current_user)
         if challenge.sender_game.nil?
           from = get_wikipedia_random_article_title
           to = get_wikipedia_random_article_title
@@ -144,9 +141,9 @@ class MultiplayerGameController < ApplicationController
     if params.has_key?(:id)
       challenge = current_user.challenges_playing.find{|challenge| challenge.id == params[:id].to_i}
       if not challenge.nil?
-        if challenge.sender.id == current_user.id
+        if is_sender?(challenge, current_user)
           @game = challenge.sender_game
-        elsif challenge.receiver.id == current_user.id
+        elsif is_receiver?(challenge, current_user)
           @game = challenge.receiver_game
         end
         article = @game.articles.last.title
@@ -165,12 +162,7 @@ class MultiplayerGameController < ApplicationController
     if params.has_key?(:id)
       challenge = current_user.challenges_playing.concat(current_user.challenges_accepted).find{|challenge| challenge.id == params[:id].to_i}
       if not challenge.nil?
-        if challenge.sender.id == current_user.id
-          challenge.sender_status = "withdrawn"
-        elsif challenge.receiver.id == current_user.id
-          challenge.receiver_status = "withdrawn"
-        end
-        challenge.save
+        save_withdraw(challenge, current_user)
       else
         flash[:error] = t(:multiplayer_challenge_not_found)
       end
@@ -181,11 +173,11 @@ class MultiplayerGameController < ApplicationController
   def challenge_review
     if params.has_key?("challenge_id")
       @challenge = Challenge.find(params["challenge_id"])
-      if @challenge.sender_status == "finished"
+      if is_sender_finished?(@challenge)
         @challenge.sender_game.from_desc = get_small_description(@challenge.sender_game.from)
         @challenge.sender_game.to_desc = get_small_description(@challenge.sender_game.to)
       end
-      if @challenge.receiver_status == "finished"
+      if is_receiver_finished?(@challenge)
         @challenge.receiver_game.from_desc = get_small_description(@challenge.receiver_game.from)
         @challenge.receiver_game.to_desc = get_small_description(@challenge.receiver_game.to)
       end
@@ -194,11 +186,4 @@ class MultiplayerGameController < ApplicationController
     flash[:error] = t(:singleplayer_review_error)
     render "index"
   end
-
-  # ========= Private methods ==========
-  
-  def get_suggested_users
-    User.all.sort_by{|u| u.singleplayer_games_nb * u.singleplayer_victories_rate}.reverse.first(10)
-  end
-
 end

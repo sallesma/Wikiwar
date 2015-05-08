@@ -1,5 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+nil_users:
+  locale: en
+  sender_status: pending
+  receiver_status: pending
+  updated_at: 2015-04-20 14:39:00
+
 pending_pending:
   sender: martin
   receiver: bruno

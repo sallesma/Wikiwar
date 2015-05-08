@@ -112,20 +112,11 @@ class MultiplayerGameController < ApplicationController
 
   def game_next
     if(params.has_key?("game_id") and params.has_key?("article"))
-      @game = MultiPlayerGame.find(params["game_id"])
+      @game = MultiPlayerGame.find(params[:game_id])
       article = decode_article(params["article"])
       add_step(@game, article)
       if is_finished(@game, article)
-        challenge = current_user.challenges_sent.find{|challenge| challenge.sender_game_id == params[:game_id].to_i}
-        if challenge.nil?
-          challenge = current_user.challenges_received.find{|challenge| challenge.receiver_game_id == params[:game_id].to_i}
-          challenge.receiver_status = "finished"
-          challenge.save
-        else
-          challenge.sender_status = "finished"
-          challenge.save
-        end
-        @game.duration = (Time.now - @game.created_at.to_time).round
+        save_challenge_finished(@game)
         flash[:notice] = t(:singleplayer_victory)
       end
       @wikipedia = get_wikipedia_article(article, @game.id)

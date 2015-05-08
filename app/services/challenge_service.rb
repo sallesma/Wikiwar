@@ -54,14 +54,28 @@ module ChallengeService
     def save_withdraw(challenge, user)
         return false if challenge.nil? or user.nil?
 
-        if is_sender?(challenge, user) and challenge.sender_status == "playing"
+        if is_sender?(challenge, user) and (challenge.sender_status == "playing" or challenge.sender_status == "accepted")
             challenge.sender_status = "withdrawn"
             challenge.save
-        elsif is_receiver?(challenge, user) and challenge.receiver_status == "playing"
+        elsif is_receiver?(challenge, user) and (challenge.receiver_status == "playing" or challenge.receiver_status == "accepted")
             challenge.receiver_status = "withdrawn"
             challenge.save
         else
             false
         end
+    end
+
+    def save_challenge_finished(multiplayer_game)
+        challenge = Challenge.find_by_sender_game_id(multiplayer_game.id)
+        if !challenge.nil?
+          challenge.sender_status = "finished"
+          challenge.save
+        else
+          challenge = Challenge.find_by_receiver_game_id(multiplayer_game.id)
+          challenge.receiver_status = "finished"
+          challenge.save
+        end
+        multiplayer_game.duration = (Time.now - multiplayer_game.created_at.to_time).round
+        multiplayer_game.save
     end
 end

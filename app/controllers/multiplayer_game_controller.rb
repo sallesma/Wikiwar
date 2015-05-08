@@ -1,5 +1,5 @@
 class MultiplayerGameController < ApplicationController
-    include GameHelper
+  include GameService, WikipediaService
   before_filter :authenticate_user
 
   def index

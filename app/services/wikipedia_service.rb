@@ -1,16 +1,8 @@
-module GameHelper
-    def is_finished(destination, article)
-      begin
-        current = URI.unescape(article)
-      rescue
-        current = article
-      end
-      destination.downcase.gsub(" ", "_") == current.downcase.gsub(" ", "_")
-    end
+module WikipediaService
 
     def get_wikipedia_random_article_title
       require 'open-uri'
-      doc = Nokogiri::HTML(open(t(:wikipedia_random_url)))
+      doc = Nokogiri::HTML(open(I18n.t(:wikipedia_random_url)))
       title  = doc.at_css "#content h1#firstHeading"
       title.content.gsub(" ", "_")
     end
@@ -44,10 +36,10 @@ module GameHelper
     end
 
     def encode_article(article)
-      article.encrypt(:symmetric, :password => session[:user_id].to_s)
+      article.encrypt(:symmetric, :password => "password")
     end
 
     def decode_article(article)
-      article.decrypt(:symmetric, :password => session[:user_id].to_s)
+      article.decrypt(:symmetric, :password => "password")
     end
 end

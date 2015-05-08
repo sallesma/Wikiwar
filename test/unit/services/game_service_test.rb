@@ -22,4 +22,22 @@ class GameServiceTest < ActiveSupport::TestCase
 
         assert !is_finished(nil, "foo")
     end
+
+    test "add_step" do
+        old_steps = multi_player_games(:martin_playing).steps
+        old_article_nb = multi_player_games(:martin_playing).articles.length
+        add_step(multi_player_games(:martin_playing), "Café")
+
+        assert_equal multi_player_games(:martin_playing).steps, old_steps+1
+        assert_equal multi_player_games(:martin_playing).articles.length, old_article_nb+1
+        assert_equal multi_player_games(:martin_playing).articles.last.title, "Café"
+        
+        old_steps = single_player_games(:lost).steps
+        old_article_nb = single_player_games(:lost).articles.length
+        add_step(single_player_games(:lost), "Café")
+
+        assert_equal single_player_games(:lost).steps, old_steps+1
+        assert_equal single_player_games(:lost).articles.length, old_article_nb+1
+        assert_equal single_player_games(:lost).articles.last.title, "Café"
+    end
 end

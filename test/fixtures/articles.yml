@@ -24,3 +24,8 @@ lost1:
   title: Martin_Luther_King_Jr.
   position: 1
   game: lost(SinglePlayerGame)
+
+martin_playing1:
+  title: Chocolat
+  position: 0
+  game: martin_playing(SinglePlayerGame)

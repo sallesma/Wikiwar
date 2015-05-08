@@ -4,6 +4,7 @@ martin_playing:
     from: Chocolat
     to: Pistache
     locale: fr
+    steps: 0
 
 martin_finished:
     from: Chocolat

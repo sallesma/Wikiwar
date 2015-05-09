@@ -52,6 +52,17 @@ class ChallengeServiceTest < ActiveSupport::TestCase
         assert !challenge_pending_exists?(nil, nil)
     end
 
+    test "test create_challenge" do
+        assert !challenge_pending_exists?(users(:bruno), users(:martin))
+        challenge = create_challenge(users(:bruno), users(:martin))
+        assert_equal challenge.sender, users(:bruno)
+        assert_equal challenge.receiver, users(:martin)
+        assert challenge.sender_game.nil?
+        assert challenge.receiver_game.nil?
+        assert_equal challenge.sender_status, "pending"
+        assert_equal challenge.receiver_status, "pending"
+    end
+
     test "test is_pending?" do
         assert is_pending?(challenges(:pending_pending))
         assert !is_pending?(challenges(:accepted_accepted))
@@ -133,7 +144,7 @@ class ChallengeServiceTest < ActiveSupport::TestCase
         assert_equal challenges(:accepted_accepted).receiver_status, "accepted"
         assert !challenges(:accepted_accepted).sender_game.nil?
         assert challenges(:accepted_accepted).receiver_game.nil?
-        
+
         create_game_from_challenge(challenges(:accepted_accepted), users(:bruno))
         assert_equal challenges(:accepted_accepted).sender_status, "playing"
         assert_equal challenges(:accepted_accepted).receiver_status, "playing"

@@ -24,6 +24,19 @@ module ChallengeService
         !sender.challenges_sent.find{|challenge| challenge.receiver.id == receiver.id and challenge.sender_status == "pending"}.nil?
     end
 
+    def create_challenge(sender, receiver)
+        return nil if sender.nil? or receiver.nil?
+        challenge = Challenge.create(
+            sender: sender,
+            receiver: receiver,
+            locale: I18n.locale.to_s,
+            sender_status: "pending",
+            receiver_status: "pending",
+            sender_game: nil,
+            receiver_game: nil
+        )
+    end
+
     def is_pending?(challenge)
         challenge.sender_status == "pending" and challenge.receiver_status == "pending"
     end
@@ -96,7 +109,7 @@ module ChallengeService
             to = challenge.sender_game.to
         end
       end
-      
+
       game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
 
       if game.save

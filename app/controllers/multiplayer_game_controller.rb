@@ -13,7 +13,7 @@ class MultiplayerGameController < ApplicationController
   def challenge
     receiver = User.find_by_id(params[:id])
     if !challenge_pending_exists?(current_user, receiver)
-        challenge = Challenge.create(sender: current_user, receiver: receiver, locale: I18n.locale.to_s, sender_status: "pending", receiver_status: "pending", sender_game: nil, receiver_game: nil)
+        create_challenge(current_user, receiver)
         flash[:notice] = t(:multiplayer_challenge_success)
     else
         flash[:error] = t(:multiplayer_challenge_already)

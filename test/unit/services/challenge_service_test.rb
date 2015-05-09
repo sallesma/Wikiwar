@@ -20,9 +20,10 @@ class ChallengeServiceTest < ActiveSupport::TestCase
 
     test "test get_suggested_users" do
         users = get_suggested_users
-        assert_equal users.length, 2
+        assert_equal users.length, 3
         assert_equal users[0], users(:martin)
-        assert_equal users[1], users(:bruno)
+        assert_equal users[1], users(:test)
+        assert_equal users[2], users(:bruno)
     end
 
     test "test is_sender?" do
@@ -125,4 +126,41 @@ class ChallengeServiceTest < ActiveSupport::TestCase
         assert_equal challenges(:playing_playing).sender_status, "playing"
         assert_equal challenges(:playing_playing).receiver_status, "finished"
     end
+
+    test "test create_game_from_challenge sender first" do
+        create_game_from_challenge(challenges(:accepted_accepted), users(:martin))
+        assert_equal challenges(:accepted_accepted).sender_status, "playing"
+        assert_equal challenges(:accepted_accepted).receiver_status, "accepted"
+        assert !challenges(:accepted_accepted).sender_game.nil?
+        assert challenges(:accepted_accepted).receiver_game.nil?
+        
+        create_game_from_challenge(challenges(:accepted_accepted), users(:bruno))
+        assert_equal challenges(:accepted_accepted).sender_status, "playing"
+        assert_equal challenges(:accepted_accepted).receiver_status, "playing"
+        assert !challenges(:accepted_accepted).sender_game.nil?
+        assert !challenges(:accepted_accepted).receiver_game.nil?
+    end
+
+    test "test create_game_from_challenge receiver first" do
+        create_game_from_challenge(challenges(:accepted_accepted), users(:bruno))
+        assert_equal challenges(:accepted_accepted).sender_status, "accepted"
+        assert_equal challenges(:accepted_accepted).receiver_status, "playing"
+        assert challenges(:accepted_accepted).sender_game.nil?
+        assert !challenges(:accepted_accepted).receiver_game.nil?
+
+        create_game_from_challenge(challenges(:accepted_accepted), users(:martin))
+        assert_equal challenges(:accepted_accepted).sender_status, "playing"
+        assert_equal challenges(:accepted_accepted).receiver_status, "playing"
+        assert !challenges(:accepted_accepted).sender_game.nil?
+        assert !challenges(:accepted_accepted).receiver_game.nil?
+    end
+
+    test "test create_game_from_challenge invalid user" do
+        assert_nil create_game_from_challenge(challenges(:accepted_accepted), users(:test))
+        assert_equal challenges(:accepted_accepted).sender_status, "accepted"
+        assert_equal challenges(:accepted_accepted).receiver_status, "accepted"
+        assert challenges(:accepted_accepted).receiver_game.nil?
+        assert challenges(:accepted_accepted).sender_game.nil?
+    end
+
 end

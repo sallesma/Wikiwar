@@ -13,3 +13,10 @@ bruno:
   password_salt: $2a$10$lnN4qKaaXd3G33kLMpIbq.
   password_hash: $2a$10$lnN4qKaaXd3G33kLMpIbq.htsvrFnjPDRSS.3jE1XF2kQeogA9Fd6
   # password: test
+
+test:
+  email: test@test.test
+  pseudo: Test
+  password_salt: $2a$10$lnN4qKaaXd3G33kLMpIbq.
+  password_hash: $2a$10$lnN4qKaaXd3G33kLMpIbq.htsvrFnjPDRSS.3jE1XF2kQeogA9Fd6
+  # password: test

@@ -1,4 +1,5 @@
 module ChallengeService
+    include WikipediaService
   
     def get_suggested_users
       User.all.sort_by{|u| u.singleplayer_games_nb * u.singleplayer_victories_rate}.reverse.first(10)
@@ -77,5 +78,38 @@ module ChallengeService
         end
         multiplayer_game.duration = (Time.now - multiplayer_game.created_at.to_time).round
         multiplayer_game.save
+    end
+
+    def create_game_from_challenge(challenge, user)
+      return nil if (!is_sender?(challenge,user) and !is_receiver?(challenge, user)) or challenge.nil? or user.nil?
+
+      if (is_sender?(challenge, user) and challenge.receiver_game.nil?) \
+        or (is_receiver?(challenge, user) and challenge.sender_game.nil?)
+        from = get_wikipedia_random_article_title
+        to = get_wikipedia_random_article_title
+      else
+        if is_sender?(challenge, user)
+            from = challenge.receiver_game.from
+            to = challenge.receiver_game.to
+        else
+            from = challenge.sender_game.from
+            to = challenge.sender_game.to
+        end
+      end
+      
+      game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
+
+      if game.save
+          if is_sender?(challenge, user)
+            challenge.sender_game = game
+            challenge.sender_status = "playing"
+          elsif is_receiver?(challenge, user)
+            challenge.receiver_game = game
+            challenge.receiver_status = "playing"
+          challenge.save
+          end
+      else
+        nil
+      end
     end
 end

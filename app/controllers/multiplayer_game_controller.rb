@@ -10,8 +10,6 @@ class MultiplayerGameController < ApplicationController
     @suggested_users = get_suggested_users
   end
 
-  # ========= Challenges ==========
-
   def challenge
     receiver = User.find_by_id(params[:id])
     if !challenge_pending_exists?(current_user, receiver)
@@ -69,43 +67,16 @@ class MultiplayerGameController < ApplicationController
       flash[:error] = t(:multiplayer_challenge_not_found)
       redirect_to :action => "index"
     else
-      if is_sender?(challenge, current_user)
-        if challenge.receiver_game.nil?
-          from = get_wikipedia_random_article_title
-          to = get_wikipedia_random_article_title
-        else
-          from = challenge.receiver_game.from
-          to = challenge.receiver_game.to
-        end
-        @game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
-        if @game.save
-          challenge.sender_game = @game
-          challenge.sender_status = "playing"
-          challenge.save
-        end
-      elsif is_receiver?(challenge, current_user)
-        if challenge.sender_game.nil?
-          from = get_wikipedia_random_article_title
-          to = get_wikipedia_random_article_title
-        else
-          from = challenge.sender_game.from
-          to = challenge.sender_game.to
-        end
-        @game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
-        if @game.save
-          challenge.receiver_game = @game
-          challenge.receiver_status = "playing"
-          challenge.save
-        end
-      else
+      @game = create_game_from_challenge(challenge, current_user)
+      if @game.nil?
         flash[:error] = t(:multiplayer_challenge_not_found)
         redirect_to :action => "index"
       end
-        @game.articles.create(title: @game.from, position: @game.steps)
-        @wikipedia = get_wikipedia_article(@game.from, @game.id)
-        @game.from_desc = get_small_description(@game.from, @wikipedia)
-        @game.to_desc = get_small_description(@game.to)
-        @game.save
+      @game.articles.create(title: @game.from, position: @game.steps)
+      @wikipedia = get_wikipedia_article(@game.from, @game.id)
+      @game.from_desc = get_small_description(@game.from, @wikipedia)
+      @game.to_desc = get_small_description(@game.to)
+      @game.save
       render "game"
     end
   end

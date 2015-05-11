@@ -1,5 +1,5 @@
 module GameService
-    def is_finished(game, article)
+    def is_on_destination(game, article)
       return false if game.nil?
       begin
         current = URI.unescape(article)

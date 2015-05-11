@@ -8,7 +8,7 @@ class SingleplayerGameController < ApplicationController
     def game
       from = get_wikipedia_random_article_title
       to = get_wikipedia_random_article_title
-      @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_victory: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
+      @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_finished: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
       if @game.save
         @game.articles.create(title: @game.from, position: @game.steps)
         @wikipedia = get_wikipedia_article(@game.from, @game.id)
@@ -25,7 +25,7 @@ class SingleplayerGameController < ApplicationController
     def game_resume
       if params.has_key?("game_id")
         @game = SinglePlayerGame.find(params["game_id"])
-        if not @game.is_victory
+        if not @game.is_finished
           article = @game.articles.last.title
           @wikipedia = get_wikipedia_article(article, @game.id)
           @game.from_desc = get_small_description(@game.from)
@@ -43,8 +43,8 @@ class SingleplayerGameController < ApplicationController
         @game = SinglePlayerGame.find(params["game_id"])
         article = decode_article(params["article"])
         add_step(@game, article)
-        if is_finished(@game, article)
-          @game.is_victory = true
+        if is_on_destination(@game, article)
+          @game.is_finished = true
           @game.duration = (Time.now - @game.created_at.to_time).round
           flash[:notice] = t(:singleplayer_victory)
         end
@@ -59,7 +59,7 @@ class SingleplayerGameController < ApplicationController
     def game_review
       if params.has_key?("game_id")
         @game = SinglePlayerGame.find(params["game_id"])
-        if @game.is_victory
+        if @game.is_finished
           @game.from_desc = get_small_description(@game.from)
           @game.to_desc = get_small_description(@game.to)
           return render "review"

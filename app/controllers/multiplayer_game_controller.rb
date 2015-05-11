@@ -86,7 +86,7 @@ class MultiplayerGameController < ApplicationController
       @game = MultiPlayerGame.find(params[:game_id])
       article = decode_article(params["article"])
       add_step(@game, article)
-      if is_finished(@game, article)
+      if is_on_destination(@game, article)
         save_challenge_finished(@game)
         flash[:notice] = t(:singleplayer_victory)
       end

@@ -26,11 +26,11 @@ class User < ActiveRecord::Base
   end
 
   def singleplayer_games_finished
-    self.single_player_games.where(is_victory: true).sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.where(is_finished: true).sort_by { |h| h[:created_at] }.reverse
   end
 
   def singleplayer_games_playing
-    self.single_player_games.where(is_victory: [false, nil]).sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.where(is_finished: [false, nil]).sort_by { |h| h[:created_at] }.reverse
   end
 
   # ========= Account Challenges ==========
@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   # ========= Account Statistics ==========
 
   def singleplayer_victories_nb
-    self.single_player_games.where(is_victory: true).count
+    self.single_player_games.where(is_finished: true).count
   end
 
   def singleplayer_games_nb
@@ -86,10 +86,10 @@ class User < ActiveRecord::Base
 
   def singleplayer_average_victory_duration
     total_durations = 0
-    for game in self.single_player_games.where(is_victory: true)
+    for game in self.single_player_games.where(is_finished: true)
       total_durations = total_durations + game.duration
     end
-    victories_nb = self.single_player_games.where(is_victory: true).count
+    victories_nb = self.single_player_games.where(is_finished: true).count
     if victories_nb > 0
       total_durations.to_f / victories_nb
     else
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
 
   def singleplayer_victories_rate
     total = self.single_player_games.count
-    victories = self.single_player_games.where(is_victory: true).count
+    victories = self.single_player_games.where(is_finished: true).count
     if total > 0
       victories.to_f / total
     else

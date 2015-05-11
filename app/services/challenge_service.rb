@@ -110,7 +110,7 @@ module ChallengeService
         end
       end
 
-      game = MultiPlayerGame.new(from: from, to: to, duration: 0, steps: 0, locale: I18n.locale.to_s)
+      game = MultiPlayerGame.new(from: from, to: to, is_finished: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
 
       if game.save
           if is_sender?(challenge, user)

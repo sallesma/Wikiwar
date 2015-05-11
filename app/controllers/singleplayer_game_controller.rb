@@ -8,13 +8,12 @@ class SingleplayerGameController < ApplicationController
     def game
       from = get_wikipedia_random_article_title
       to = get_wikipedia_random_article_title
-      @game = SinglePlayerGame.new(user: current_user, from: from, to: to, is_finished: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
+      @game = SinglePlayerGame.create(user: current_user, from: from, to: to, is_finished: false, duration: 0, steps: 0, locale: I18n.locale.to_s)
+      @game.articles.create(title: @game.from, position: @game.steps)
       if @game.save
-        @game.articles.create(title: @game.from, position: @game.steps)
         @wikipedia = get_wikipedia_article(@game.from, @game.id)
         @game.from_desc = get_small_description(@game.from, @wikipedia)
         @game.to_desc = get_small_description(@game.to)
-        @game.save
         render "game"
       else
         flash[:error] = t(:singleplayer_error)
@@ -30,7 +29,6 @@ class SingleplayerGameController < ApplicationController
           @wikipedia = get_wikipedia_article(article, @game.id)
           @game.from_desc = get_small_description(@game.from)
           @game.to_desc = get_small_description(@game.to)
-          @game.save
           return render "game"
         end
       end
@@ -50,7 +48,6 @@ class SingleplayerGameController < ApplicationController
         @wikipedia = get_wikipedia_article(article, @game.id)
         @game.from_desc = get_small_description(@game.from)
         @game.to_desc = get_small_description(@game.to)
-        @game.save
         render "game"
       end
     end

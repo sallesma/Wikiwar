@@ -29,7 +29,6 @@ class AuthenticationController < ApplicationController
     user = authenticate_by_pseudo(params[:user][:pseudo], params[:user][:password])
     if user
         update_authentication_token(user, params[:user][:remember_me])
-        user.save
         session[:user_id] = user.id
         redirect_to root_url, :notice => t(:logged_in)
     else
@@ -42,7 +41,6 @@ class AuthenticationController < ApplicationController
     user = User.find_by_id(session[:user_id])
     if user
       update_authentication_token(user, nil)
-      user.save
     end
     session[:user_id] = nil
     redirect_to root_url, :notice => t(:logged_out)
@@ -56,7 +54,6 @@ class AuthenticationController < ApplicationController
 
   def send_password_reset_instructions
     user = User.find_by_email(params[:user][:email])
-
     if user
       user.password_reset_token = SecureRandom.urlsafe_base64
       user.password_expires_after = 24.hours.from_now
@@ -85,7 +82,6 @@ class AuthenticationController < ApplicationController
 
     if @user.password_expires_after < DateTime.now
       clear_password_reset(@user)
-      @user.save
       flash[:error] = t(:password_request_expired)
       redirect_to :action => "forgot_password"
     end
@@ -129,6 +125,7 @@ class AuthenticationController < ApplicationController
       user.authentication_token = nil
       cookies.permanent[:auth_token] = nil
     end
+    user.save
   end
 
   def verify_new_password(passwords)

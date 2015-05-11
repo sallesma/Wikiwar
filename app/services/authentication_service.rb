@@ -12,6 +12,7 @@ module AuthenticationService
   def clear_password_reset(user)
     user.password_expires_after = nil
     user.password_reset_token = nil
+    user.save
   end
 
 end

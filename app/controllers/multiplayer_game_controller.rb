@@ -4,7 +4,6 @@ class MultiplayerGameController < ApplicationController
 
   def index
     if params.has_key?("find") and not params[:find].empty?
-
       @found_users = get_found_users(params[:find])
     end
     @suggested_users = get_suggested_users
@@ -72,11 +71,9 @@ class MultiplayerGameController < ApplicationController
         flash[:error] = t(:multiplayer_challenge_not_found)
         redirect_to :action => "index"
       end
-      @game.articles.create(title: @game.from, position: @game.steps)
       @wikipedia = get_wikipedia_article(@game.from, @game.id)
       @game.from_desc = get_small_description(@game.from, @wikipedia)
       @game.to_desc = get_small_description(@game.to)
-      @game.save
       render "game"
     end
   end
@@ -93,7 +90,6 @@ class MultiplayerGameController < ApplicationController
       @wikipedia = get_wikipedia_article(article, @game.id)
       @game.from_desc = get_small_description(@game.from)
       @game.to_desc = get_small_description(@game.to)
-      @game.save
       render "game"
     end
   end
@@ -111,7 +107,6 @@ class MultiplayerGameController < ApplicationController
         @wikipedia = get_wikipedia_article(article, @game.id)
         @game.from_desc = get_small_description(@game.from)
         @game.to_desc = get_small_description(@game.to)
-        @game.save
         return render "game"
       end
     end

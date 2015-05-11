@@ -51,3 +51,38 @@
     -o-text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.ui-select {
+    width: 137px;
+    margin-left: 0px !important;
+    vertical-align: middle;
+    min-width: 100px;
+    height: 25px;
+    min-height: 25px !important;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    background-image: url("../../img/select-bg.png"), linear-gradient(to bottom, #FFF 0%, #F0F1F2 100%);
+    background-attachment: scroll, scroll;
+    background-clip: border-box, border-box;
+    background-origin: padding-box, padding-box;
+    background-size: auto auto, auto auto;
+    display: inline-block;
+    border: 1px solid #CFDDE8;
+    border-radius: 5px;
+    background-position: 94% center;
+    background-repeat: no-repeat;
+}
+
+.ui-select select {
+    line-height: inherit;
+    width: 135%;
+    font-family: "Open Sans",Arial;
+    font-size: 12px;
+    border: medium none;
+    padding: 1px 30px 0px 7px;
+    height: 21px;
+    color: #737F8D;
+    text-shadow: 1px 1px 1px #FFF;
+    background: none repeat scroll 0% 0% transparent;
+}

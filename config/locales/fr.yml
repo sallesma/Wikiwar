@@ -58,6 +58,7 @@ fr:
   edit_account_password_confirmation: Confirmation du mot de passe
   edit_account_password_current: Mot de passe actuel
   edit_account_password_error: Le mot de passe est invalide
+  edit_account_preferred_locale: Langue préférée
   edit_account_confirm: Votre compte a été mis à jour.
 
   statistics_title: Vos statistiques
@@ -96,6 +97,7 @@ fr:
   profile_general_title: Informations générales
   profile_general_registered: "Enregistré depuis : "
   profile_general_last: "Dernière connexion : "
+  profile_general_locale: "Langue préférée : "
 
   singleplayer_title: Jeu à un joueur
   singleplayer_about: Le jeu se déroule ici.

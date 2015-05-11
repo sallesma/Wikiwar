@@ -58,6 +58,7 @@ en:
   edit_account_password_confirmation: Password Confirmation
   edit_account_password_current: Current Password
   edit_account_password_error: Password is incorrect
+  edit_account_preferred_locale: Preferred language
   edit_account_confirm: Account settings have been changed.
 
   statistics_title: Your stats
@@ -96,6 +97,7 @@ en:
   profile_general_title: General Information
   profile_general_registered: "Registered since: "
   profile_general_last: "Last connection: "
+  profile_general_locale: "Preferred language: "
 
   singleplayer_title: Single player game
   singleplayer_about: This is the single player game page.

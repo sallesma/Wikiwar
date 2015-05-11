@@ -19,6 +19,12 @@
     <%= @profile.last_signed_in_on.to_s(:date_words) %>
   </p>
   <% end %>
+  <% if !@profile.preferred_locale.nil? %>
+  <p>
+    <strong><%=t :profile_general_locale %></strong>
+    <%= @profile.preferred_locale %>
+  </p>
+  <% end %>
 </div>
 
 <div class="section">

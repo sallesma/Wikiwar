@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :pseudo, :password, :password_confirmation, :remember_me, :new_password, :new_password_confirmation, :signed_up_on, :last_signed_in_on
+  attr_accessible :email, :pseudo, :password, :password_confirmation, :remember_me, :new_password, :new_password_confirmation, :signed_up_on, :last_signed_in_on, :preferred_locale
   has_many :single_player_games
   has_many :challenges_sent, :class_name => "Challenge", :foreign_key => "sender_id"
   has_many :challenges_received, :class_name => "Challenge", :foreign_key => "receiver_id"

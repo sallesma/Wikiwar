@@ -35,6 +35,12 @@
       <%= f.label t(:edit_account_password_confirmation) %><br />
       <%= f.password_field :new_password_confirmation %>
     </p>
+    <p>
+      <%= f.label t(:edit_account_preferred_locale) %>
+      <div class="ui-select">
+        <%= f.select(:preferred_locale, [['en', 'en'], ['fr', 'fr']]) %>
+      </div>
+    </p>
     <p class="button"><%= f.submit t(:edit_account_submit)%></p>
   <% end %>
 </div>

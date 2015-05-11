@@ -47,9 +47,20 @@ class GameServiceTest < ActiveSupport::TestCase
         assert_equal multi_player_games(:martin_playing).articles.length, old_article_nb+1
         assert_equal multi_player_games(:martin_playing).articles.last.title, "Café"
         
+        add_step(multi_player_games(:martin_playing), "")
+        assert_equal multi_player_games(:martin_playing).steps, old_steps+1
+        assert_equal multi_player_games(:martin_playing).articles.length, old_article_nb+1
+        assert_equal multi_player_games(:martin_playing).articles.last.title, "Café"
+
+
         old_steps = single_player_games(:lost).steps
         old_article_nb = single_player_games(:lost).articles.length
         add_step(single_player_games(:lost), "Café")
+
+        assert_equal single_player_games(:lost).steps, old_steps+1
+        assert_equal single_player_games(:lost).articles.length, old_article_nb+1
+        assert_equal single_player_games(:lost).articles.last.title, "Café"
+        add_step(single_player_games(:lost), "")
 
         assert_equal single_player_games(:lost).steps, old_steps+1
         assert_equal single_player_games(:lost).articles.length, old_article_nb+1

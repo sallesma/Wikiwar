@@ -18,7 +18,7 @@ module GameService
     end
 
     def add_step(game, article)
-        if !game.nil? and !article.nil?
+        if !game.nil? and !article.nil? and !article.empty?
             game.steps = game.steps + 1
             game.articles.create(title: article, position: game.steps)
             game.save

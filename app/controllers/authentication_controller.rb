@@ -91,12 +91,8 @@ class AuthenticationController < ApplicationController
     @user = User.find_by_pseudo(pseudo)
 
     if verify_new_password(params[:user])
-      @user.update_attributes(params[:user])
-      @user.password = @user.new_password
-
-      if @user.valid?
+      if update_password(@user, params[:user])
         clear_password_reset(@user)
-        @user.save
         flash[:notice] = t(:password_reset_confirm)
         redirect_to :action => "sign_in"
       else

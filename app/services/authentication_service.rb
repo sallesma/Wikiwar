@@ -20,4 +20,15 @@ module AuthenticationService
     user.password_reset_token = nil
     user.save
   end
+
+  def update_password(user, params)
+    user.update_attributes(params)
+    user.password = user.new_password
+
+    if user.valid?
+      user.save
+    else
+      false
+    end
+  end
 end

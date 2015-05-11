@@ -17,7 +17,7 @@ class AuthenticationServiceTest < ActiveSupport::TestCase
   test "set_password_reset" do
     assert_nil users(:martin).password_expires_after
     assert_nil users(:martin).password_reset_token
-    
+
     set_password_reset(users(:martin))
     assert_not_nil users(:martin).password_expires_after
     assert_not_nil users(:martin).password_reset_token
@@ -31,5 +31,18 @@ class AuthenticationServiceTest < ActiveSupport::TestCase
     clear_password_reset(users(:martin))
     assert_nil users(:martin).password_expires_after
     assert_nil users(:martin).password_reset_token
+  end
+
+  test "update_password" do
+    old_password = users(:martin).password
+
+    update_password(users(:martin), {
+        pseudo: users(:martin).pseudo,
+        email: users(:martin).email,
+        new_password: "aaaa",
+        new_password_confirmation: "aaaa",
+    })
+    assert_not_equal users(:martin).password, old_password
+    assert_equal users(:martin).password, "aaaa"
   end
 end

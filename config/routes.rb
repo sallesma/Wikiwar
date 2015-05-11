@@ -15,8 +15,6 @@ Wikiwar::Application.routes.draw do
   get "update_account" => "users#edit", :as => "update_account"
   put "update_account" => "users#update", :as => "update_account"
   get "statistics" => "users#statistics", :as => "statistics"
-  get "ranking" => "users#ranking", :as => "ranking"
-  get "profile" => "users#profile", :as => "profile"
 
   get "singleplayer" => "singleplayer_game#index", :as => "singleplayer"
   get "singleplayergame" => "singleplayer_game#game", :as => "singleplayergame"
@@ -35,6 +33,8 @@ Wikiwar::Application.routes.draw do
   get "challenge_review" => "multiplayer_game#challenge_review", :as => "challenge_review"
 
   get "about" => "welcome#about", :as => "about"
+  get "ranking" => "welcome#ranking", :as => "ranking"
+  get "profile" => "welcome#profile", :as => "profile"
   root :to => "welcome#index"
 
   # The priority is based upon order of creation:

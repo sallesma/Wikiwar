@@ -24,10 +24,12 @@
                 <ul class="submenu">
                     <li><%= link_to t(:menu_user_update_account), update_account_path %></li>
                     <li><%= link_to t(:menu_user_statistics), statistics_path %></li>
-                    <li><%= link_to t(:menu_user_ranking), ranking_path %></li>
                 </ul>
             </li>
             <% end %>
+            <li>
+                <%= link_to content_tag(:i, "", :class=> "fa fa-list-alt") + content_tag(:span, t(:menu_user_ranking)), ranking_path %>
+            </li>
             <li>
                 <%= link_to content_tag(:i, "", :class=> "fa fa-info") + content_tag(:span, t(:menu_about)), about_path %>
             </li>

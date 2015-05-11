@@ -1,6 +1,6 @@
 <div class="page-title">
   <h1><%=t :profile_title %><%= @profile.pseudo %></h1>
-  <% if @profile.id != current_user.id %>
+  <% if current_user and @profile.id != current_user.id %>
     <%= link_to t(:multiplayer_challenge), challenge_path(id: @profile.id), class: "btn btn-default" %>
   <% end %>
 </div>

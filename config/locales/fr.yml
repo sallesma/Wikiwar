@@ -24,7 +24,8 @@ fr:
   about_content_rails: Cette application web a été mise en place dans le but d'en apprendre un peu sur ruby on rails.
 
   not_signed_in: Vous devez être connecté pour voir cette page.
-  signed_up: Vous êtes inscrit!
+  signed_up: Vous êtes inscrit !
+  signed_up_failed: Votre inscription a échoué.
   sign_up_title: Inscription
   sign_up_submit: S'inscrire!
   invalid_pseudo_or_password: Pseudo ou mot de passe invalide

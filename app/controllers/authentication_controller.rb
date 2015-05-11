@@ -9,12 +9,13 @@ class AuthenticationController < ApplicationController
   end
 
   def create
-      @user = User.new(params[:user])
-      if @user.save
-        UserMailer.welcome_email(@user).deliver
-        redirect_to root_url, :notice => t(:signed_up)
+    @user = User.new(params[:user])
+    if @user.save
+      UserMailer.welcome_email(@user).deliver
+      redirect_to root_url, :notice => t(:signed_up)
     else
-        render "new"
+      flash.now.alert = t(:signed_up_failed)
+      render "new"
     end
   end
 

@@ -25,6 +25,7 @@ en:
 
   not_signed_in: You must be signed in to view that page.
   signed_up: Signed up!
+  signed_up_failed: Sign up process failed.
   sign_up_title: Sign Up
   sign_up_submit: Sign up!
   invalid_pseudo_or_password: Invalid pseudo or password

@@ -44,8 +44,7 @@ class SingleplayerGameController < ApplicationController
         article = decode_article(params["article"])
         add_step(@game, article)
         if is_on_destination(@game, article)
-          @game.is_finished = true
-          @game.duration = (Time.now - @game.created_at.to_time).round
+          mark_finished(@game)
           flash[:notice] = t(:singleplayer_victory)
         end
         @wikipedia = get_wikipedia_article(article, @game.id)

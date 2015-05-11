@@ -23,6 +23,21 @@ class GameServiceTest < ActiveSupport::TestCase
         assert !is_on_destination(nil, "foo")
     end
 
+    test "mark_finished" do
+        assert_nil multi_player_games(:martin_playing).duration
+        assert_false = multi_player_games(:martin_playing).is_finished
+        mark_finished(multi_player_games(:martin_playing))
+        assert_not_nil multi_player_games(:martin_playing).duration
+        assert multi_player_games(:martin_playing).is_finished
+
+
+        assert_nil single_player_games(:lost).duration
+        assert_false = single_player_games(:lost).is_finished
+        mark_finished(single_player_games(:lost))
+        assert_not_nil single_player_games(:lost).duration
+        assert single_player_games(:lost).is_finished
+    end
+
     test "add_step" do
         old_steps = multi_player_games(:martin_playing).steps
         old_article_nb = multi_player_games(:martin_playing).articles.length

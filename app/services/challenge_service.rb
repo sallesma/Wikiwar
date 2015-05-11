@@ -1,5 +1,5 @@
 module ChallengeService
-    include WikipediaService
+    include WikipediaService, GameService
   
     def get_suggested_users
       User.all.sort_by{|u| u.singleplayer_games_nb * u.singleplayer_victories_rate}.reverse.first(10)
@@ -89,8 +89,7 @@ module ChallengeService
           challenge.receiver_status = "finished"
           challenge.save
         end
-        multiplayer_game.duration = (Time.now - multiplayer_game.created_at.to_time).round
-        multiplayer_game.save
+        mark_finished(multiplayer_game)
     end
 
     def create_game_from_challenge(challenge, user)

@@ -9,10 +9,15 @@ module AuthenticationService
     end
   end
 
+  def set_password_reset(user)
+    user.password_expires_after = 24.hours.from_now
+    user.password_reset_token = SecureRandom.urlsafe_base64
+    user.save
+  end
+
   def clear_password_reset(user)
     user.password_expires_after = nil
     user.password_reset_token = nil
     user.save
   end
-
 end

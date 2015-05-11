@@ -56,9 +56,7 @@ class AuthenticationController < ApplicationController
   def send_password_reset_instructions
     user = User.find_by_email(params[:user][:email])
     if user
-      user.password_reset_token = SecureRandom.urlsafe_base64
-      user.password_expires_after = 24.hours.from_now
-      user.save
+      set_password_reset(user)
       UserMailer.reset_password_email(user).deliver
       flash[:notice] = t(:password_sent_mail)
       redirect_to :action => "login"

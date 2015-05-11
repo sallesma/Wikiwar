@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150511094222) do
+ActiveRecord::Schema.define(:version => 20150511111541) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20150511094222) do
     t.string   "authentication_token"
     t.string   "password_reset_token"
     t.datetime "password_expires_after"
+    t.datetime "signed_up_on"
+    t.datetime "last_signed_in_on"
   end
 
 end

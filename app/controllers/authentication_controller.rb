@@ -29,6 +29,7 @@ class AuthenticationController < ApplicationController
   def login
     user = authenticate_by_pseudo(params[:user][:pseudo], params[:user][:password])
     if user
+        mark_login(user)
         update_authentication_token(user, params[:user][:remember_me])
         session[:user_id] = user.id
         redirect_to root_url, :notice => t(:logged_in)

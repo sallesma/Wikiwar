@@ -23,6 +23,14 @@ class AuthenticationServiceTest < ActiveSupport::TestCase
     assert_not_nil users(:martin).password_reset_token
   end
 
+  test "mark_login" do
+    assert_nil users(:martin).last_signed_in_on
+
+    mark_login (users(:martin))
+    assert_not_nil users(:martin).last_signed_in_on
+    assert_equal users(:martin).last_signed_in_on.to_date, Date.today
+  end
+
   test "clear_password_reset" do
     set_password_reset(users(:martin))
     assert_not_nil users(:martin).password_expires_after

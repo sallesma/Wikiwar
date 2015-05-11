@@ -7,14 +7,18 @@
 
 <div class="section">
   <h3><%= t :profile_general_title %></h3>
+  <% if !@profile.signed_up_on.nil? %>
   <p>
     <strong><%=t :profile_general_registered %></strong>
-    <%= @profile.created_at.to_s(:date_words) %>
+    <%= @profile.signed_up_on.to_s(:date_words) %>
   </p>
+  <% end %>
+  <% if !@profile.last_signed_in_on.nil? %>
   <p>
     <strong><%=t :profile_general_last %></strong>
-    <%= @profile.updated_at.to_s(:date_words) %>
+    <%= @profile.last_signed_in_on.to_s(:date_words) %>
   </p>
+  <% end %>
 </div>
 
 <div class="section">

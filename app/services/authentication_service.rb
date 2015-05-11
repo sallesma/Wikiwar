@@ -9,6 +9,11 @@ module AuthenticationService
     end
   end
 
+  def mark_login(user)
+    user.last_signed_in_on = DateTime.now
+    user.save
+  end
+
   def set_password_reset(user)
     user.password_expires_after = 24.hours.from_now
     user.password_reset_token = SecureRandom.urlsafe_base64

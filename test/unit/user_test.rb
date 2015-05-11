@@ -77,17 +77,6 @@ class UserTest < ActiveSupport::TestCase
     assert !user.save, "Saved the user with existing email"
   end
 
-  # ========= Account authentication ==========
-
-  test "authenticate_by_pseudo" do
-    user = User.authenticate_by_pseudo(users(:martin).pseudo, "test")
-    assert_not_nil user
-    user = User.authenticate_by_pseudo(users(:martin).pseudo, "invalid")
-    assert_nil user
-    user = User.authenticate_by_pseudo("invalid", "test")
-    assert_nil user
-  end
-
   # ========= Account SinglePlayerGames ==========
 
   test "singleplayergames list" do

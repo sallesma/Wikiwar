@@ -1,4 +1,5 @@
 class AuthenticationController < ApplicationController
+  include AuthenticationService
   before_filter :authenticate_user, :only => [:logout]
 
 # ========= Handles Registering a New User ==========
@@ -25,7 +26,7 @@ class AuthenticationController < ApplicationController
   end
 
   def login
-    user = User.authenticate_by_pseudo(params[:user][:pseudo], params[:user][:password])
+    user = authenticate_by_pseudo(params[:user][:pseudo], params[:user][:password])
     if user
         update_authentication_token(user, params[:user][:remember_me])
         user.save
@@ -128,11 +129,6 @@ class AuthenticationController < ApplicationController
       user.authentication_token = nil
       cookies.permanent[:auth_token] = nil
     end
-  end
-
-  def clear_password_reset(user)
-    user.password_expires_after = nil
-    user.password_reset_token = nil
   end
 
   def verify_new_password(passwords)

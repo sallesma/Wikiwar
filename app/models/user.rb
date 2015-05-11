@@ -108,15 +108,6 @@ class User < ActiveRecord::Base
   end
 
   # ========= Account Authentication ==========
-
-  def self.authenticate_by_pseudo(pseudo, password)
-    user = find_by_pseudo(pseudo)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
   
   def encrypt_password
     if password.present?

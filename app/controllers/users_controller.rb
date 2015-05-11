@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include AuthenticationService
   before_filter :authenticate_user, :only => [:logout, :edit, :update, :statistics]
 
   # ========= Handles Changing Account Settings ==========
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     old_user = current_user
 
     # verify the current password by creating a new user record.
-    @user = User.authenticate_by_pseudo(old_user.pseudo, params[:user][:password])
+    @user = authenticate_by_pseudo(old_user.pseudo, params[:user][:password])
 
     # verify
     if @user.nil?

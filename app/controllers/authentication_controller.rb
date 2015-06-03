@@ -35,6 +35,7 @@ class AuthenticationController < ApplicationController
         redirect_to root_url, :notice => t(:logged_in)
     else
         flash.now.alert = t(:invalid_pseudo_or_password)
+        @user = User.new
         render "login"
     end
   end

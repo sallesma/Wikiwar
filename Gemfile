@@ -36,6 +36,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "test-unit"
 gem "nokogiri"
+gem 'open_uri_redirections'
 gem 'gravtastic'
 gem 'encrypted_strings'
 

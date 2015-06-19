@@ -2,14 +2,14 @@ module WikipediaService
 
     def get_wikipedia_random_article_title
       require 'open-uri'
-      doc = Nokogiri::HTML(open(I18n.t(:wikipedia_random_url)))
+      doc = Nokogiri::HTML(open(I18n.t(:wikipedia_random_url), :allow_redirections => :safe))
       title  = doc.at_css "#content h1#firstHeading"
       title.content.gsub(" ", "_")
     end
 
     def get_wikipedia_article(article, game_id)
       require 'open-uri'
-      doc = Nokogiri::HTML(open(URI.escape('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article)))
+      doc = Nokogiri::HTML(open(URI.escape('http://'<<I18n.locale.to_s<<'.wikipedia.org/wiki/'+article), :allow_redirections => :safe))
       body  = doc.at_css "body #content"
       for link in body.css("a")
         url = link["href"]

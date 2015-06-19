@@ -8,7 +8,7 @@ echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 
 # essentials
 sudo apt-get -y update
-sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev libcurl4-openssl-dev curl wget
+sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev libcurl4-openssl-dev curl wget libffi-dev
 
 # SQLite, Git and Node.js
 sudo apt-get install -y libsqlite3-dev git nodejs
@@ -29,8 +29,8 @@ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-bu
 export RBENV_ROOT="${HOME}/.rbenv"
 export PATH="${RBENV_ROOT}/bin:${PATH}"
 export PATH="${RBENV_ROOT}/shims:${PATH}"
-rbenv install 2.1.4
-rbenv global 2.1.4
+rbenv install 2.2.0
+rbenv global 2.2.0
 gem install bundler
 rbenv rehash
 

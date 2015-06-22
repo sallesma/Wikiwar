@@ -206,8 +206,7 @@ textarea::-webkit-input-placeholder {
 /* menu toggler */
 .navbar-inverse .navbar-toggle {
     float: left;
-    margin-top: 10px;
-    margin-left: 15px;
+    margin: 4px 15px;
 }
 /* navbar brand*/
 .navbar-inverse .navbar-brand {
@@ -221,6 +220,9 @@ textarea::-webkit-input-placeholder {
     font-weight: normal;
 }
 /* navbar links */
+.navbar-inverse .nav > li {
+    display: inline-block;
+}
 .navbar-inverse .nav > li > a {
     margin: 0;
     padding: 13px 15px 8px;
@@ -235,6 +237,9 @@ textarea::-webkit-input-placeholder {
 }
 .navbar-inverse .nav > li > a:hover {
     background: rgba(25, 31, 36,0.6);
+}
+.navbar-nav {
+    margin: 0px;
 }
 /* dropdown caret */
 .dropdown .caret {

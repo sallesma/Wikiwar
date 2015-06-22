@@ -36,5 +36,8 @@ rbenv rehash
 
 gem install rails
 
+# Install Heroku
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh 
+
 # cleanup
 sudo apt-get clean

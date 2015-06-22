@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
 
 gem 'rails', '4.0.0'
 
@@ -41,3 +42,5 @@ gem 'encrypted_strings'
 
 #Upgrade from rails 3.2 to 4.0
 gem 'protected_attributes'
+
+gem 'rails_12factor', group: :production

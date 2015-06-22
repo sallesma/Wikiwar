@@ -16,8 +16,8 @@ sudo apt-get install -y libsqlite3-dev git nodejs
 # Qt and xvfb-run for Capybara Webkit
 sudo apt-get install -y libqtwebkit-dev xvfb
 
-# SQLite3
-sudo apt-get install -y sqlite3
+# Postgresql
+sudo apt-get install -y libpq-dev postgresql
 
 # setup rbenv and ruby-build
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv

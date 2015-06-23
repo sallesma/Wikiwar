@@ -1,4 +1,4 @@
-Wikiwar::Application.routes.draw do
+Rails.application.routes.draw do
 
   get "logout" => "authentication#logout"
   get "login" => "authentication#sign_in"

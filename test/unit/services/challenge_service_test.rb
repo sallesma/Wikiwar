@@ -127,13 +127,13 @@ class ChallengeServiceTest < ActiveSupport::TestCase
     end
 
     test "test save_challenge_finished sender" do
-        save_challenge_finished(multi_player_games(:martin_playing))
+        save_challenge_finished(multi_player_games(:martin_playing2))
         assert_equal challenges(:playing_playing).sender_status, "finished"
         assert_equal challenges(:playing_playing).receiver_status, "playing"
     end
 
     test "test save_challenge_finished receiver" do
-        save_challenge_finished(multi_player_games(:bruno_playing))
+        save_challenge_finished(multi_player_games(:bruno_playing2))
         assert_equal challenges(:playing_playing).sender_status, "playing"
         assert_equal challenges(:playing_playing).receiver_status, "finished"
     end

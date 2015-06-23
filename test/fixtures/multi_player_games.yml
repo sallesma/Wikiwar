@@ -6,6 +6,12 @@ martin_playing:
     locale: fr
     steps: 0
 
+martin_playing2:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+    steps: 0
+
 martin_finished:
     from: Chocolat
     to: Pistache
@@ -14,6 +20,11 @@ martin_finished:
     duration: 120
 
 bruno_playing:
+    from: Chocolat
+    to: Pistache
+    locale: fr
+
+bruno_playing2:
     from: Chocolat
     to: Pistache
     locale: fr

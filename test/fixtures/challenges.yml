@@ -45,8 +45,8 @@ playing_playing:
   locale: en
   sender_status: playing
   receiver_status: playing
-  sender_game: martin_playing
-  receiver_game: bruno_playing
+  sender_game: martin_playing2
+  receiver_game: bruno_playing2
   updated_at: 2015-04-20 14:39:20
 
 finished_playing:

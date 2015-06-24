@@ -20,12 +20,12 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert_equal '/signup', path
 
     #sign up failed stays on page
-    post_via_redirect "/signup", user: { pseudo: "aaa", email: "test@test.te", password: "bbb", password: ""}
+    post_via_redirect "/signup", user: { pseudo: "aaa", email: "test@test.te", password: ""}
     assert_response :success
     assert_equal '/signup', path
 
     #sign up
-    post_via_redirect "/signup", user: { pseudo: "aaa", email: "test@test.te", password: "bbb", password: "bbb"}
+    post_via_redirect "/signup", user: { pseudo: "aaa", email: "test@test.te", password: "bbb"}
     assert_response :success
     assert_equal '/', path
     assert_equal 'Signed up!', flash[:notice]

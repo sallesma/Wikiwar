@@ -11,7 +11,7 @@ class AuthenticationController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver_now
       redirect_to root_url, :notice => t(:signed_up)
     else
       flash.now.alert = t(:signed_up_failed)
@@ -59,7 +59,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(params[:user][:email])
     if user
       set_password_reset(user)
-      UserMailer.reset_password_email(user).deliver
+      UserMailer.reset_password_email(user).deliver_now
       flash[:notice] = t(:password_sent_mail)
       redirect_to :action => "login"
     else

@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@wikiwar.com"
+  default from: "no-reply@wikiwar.heroku.com"
 
   def welcome_email(user)
     @user = user

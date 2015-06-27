@@ -82,8 +82,8 @@ class UserTest < ActiveSupport::TestCase
   test "singleplayergames list" do
     games = users(:martin).singleplayer_games
     assert_equal games.count, 2
-    assert_equal single_player_games(:lost), games[0]
-    assert_equal single_player_games(:won), games[1]
+    assert_equal single_player_games(:won), games[0]
+    assert_equal single_player_games(:lost), games[1]
   end
 
   test "singleplayergames finished list" do

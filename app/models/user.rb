@@ -23,29 +23,25 @@ class User < ActiveRecord::Base
   # ========= Account SinglePlayerGames ==========
 
   def singleplayer_games
-    self.single_player_games.sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.order(updated_at: :desc)
   end
 
   def singleplayer_games_finished
-    self.single_player_games.where(is_finished: true).sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.where(is_finished: true).order(updated_at: :desc)
   end
 
   def singleplayer_games_playing
-    self.single_player_games.where(is_finished: [false, nil]).sort_by { |h| h[:created_at] }.reverse
+    self.single_player_games.where(is_finished: [false, nil]).order(updated_at: :desc)
   end
 
   # ========= Account Challenges ==========
 
   def challenges_received_pending
-    self.challenges_received.where("receiver_status = 'pending'").sort_by { |h| h[:updated_at] }.reverse
-  end
-
-  def challenges_notification
-    self.challenges_received_pending.concat(challenges_accepted).concat(challenges_playing).sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_received.where("receiver_status = 'pending'").order(updated_at: :desc)
   end
 
   def challenges_sent_pending_or_accepted
-    self.challenges_sent.where("receiver_status = 'pending' OR (sender_status = 'accepted' AND receiver_status = 'accepted')").sort_by { |h| h[:updated_at] }.reverse
+    self.challenges_sent.where("receiver_status = 'pending' OR (sender_status = 'accepted' AND receiver_status = 'accepted')").order(updated_at: :desc)
   end
 
   def challenges_accepted
@@ -63,6 +59,10 @@ class User < ActiveRecord::Base
 
   def challenges_won
     finished = self.challenges_finished.select{|challenge| challenge.winner == self}
+  end
+
+  def challenges_notification
+    self.challenges_received_pending.concat(challenges_accepted).concat(challenges_playing).sort_by { |h| h[:updated_at] }.reverse
   end
 
   def challenges_victory_rate
